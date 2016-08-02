@@ -1,0 +1,15 @@
+- Prologue
+    - [Introduction](/docs/{{version}}/introduction)
+    - [Release Notes](/docs/{{version}}/releases)
+    - [Contribution Guide](/docs/{{version}}/contributing)
+    - [Examples](/docs/{{version}}/examples)
+    - [Having problems?](/docs/{{version}}/faq)
+- The Basics
+    - [Getting Started](/docs/{{version}}/installation)
+    - [Getting the Logs](/docs/{{version}}/getting-logs)
+- Setup
+    - [Installation](/docs/{{version}}/installation)
+    - [Configuration](/docs/{{version}}/configuration)
+- Advanced Options
+    - [Customizing log message](/docs/{{version}}/customizing)
+    - [Configuration](/docs/{{version}}/configuration)
