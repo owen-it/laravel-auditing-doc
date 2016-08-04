@@ -46,6 +46,7 @@ $logs = Team::logs->with(['user'])->get();
 ```
 
 > Note: Remember to properly define the user model in the file ``` config/auditing.php ```.
+
 ```php
     ...
     'model' => App\User::class,
