@@ -56,7 +56,7 @@ Getting change logs
     
 ```
 Featuring log records:
-```html
+```
     // resources/views/admin/auditing.blade.php
     ...
     <ol>
