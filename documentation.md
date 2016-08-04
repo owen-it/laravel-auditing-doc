@@ -1,11 +1,10 @@
 - Prologue
     - [Introduction](/docs/{{version}}/introduction)
-    - [Release Notes](/docs/{{version}}/releases)
     - [Contribution Guide](/docs/{{version}}/contributing)
     - [Examples](/docs/{{version}}/examples)
     - [Having problems?](/docs/{{version}}/faq)
 - The Basics
-    - [Getting Started](/docs/{{version}}/installation)
+    - [Getting Started](/docs/{{version}}/getting-started)
     - [Getting the Logs](/docs/{{version}}/getting-logs)
 - Setup
     - [Installation](/docs/{{version}}/installation)
