@@ -1,5 +1,7 @@
 # Getting the Logs
 
+What you will see now is nothing less than powerful Eloquent, to learn more click [here](https://laravel.com/docs/5.2/eloquent).
+
 ```php
 // app/Http/Controller/MyAppController.php
 namespace App\Http\Controllers;
@@ -44,8 +46,9 @@ $logs = Team::logs->with(['user'])->get();
 ```
 
 > Note: Remember to properly define the user model in the file ``` config/auditing.php ```.
->```php
-> ...
-> 'model' => App\User::class,
-> ... 
->```
+
+```php
+    ...
+    'model' => App\User::class,
+    ... 
+```

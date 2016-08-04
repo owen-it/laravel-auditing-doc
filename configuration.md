@@ -27,14 +27,14 @@ class Team extends Model
     // Clear the oldest records after 100 records.
     protected $historyLimit = 100; 
     
-    // Fields you do NOT want to register.
+    // Fields that you do NOT want to register.
     protected $dontKeepLogOf = ['created_at', 'updated_at'];
     
     // Tell what actions you want to audit.
     protected $auditableTypes = ['created', 'saved', 'deleted'];
 }
 ```
-## Core Configuration
+## General settings
 Using the configuration file, you can define:
 
 * The Model used to represent the current user of application.
