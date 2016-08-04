@@ -1,12 +1,12 @@
 - Prologue
     - [Introduction](/docs/{{version}}/introduction)
     - [Examples](/docs/{{version}}/examples)
-- The Basics
-    - [Getting Started](/docs/{{version}}/getting-started)
-    - [Getting the Logs](/docs/{{version}}/getting-logs)
 - Setup
     - [Installation](/docs/{{version}}/installation)
     - [Configuration](/docs/{{version}}/configuration)
+- The Basics
+    - [Getting Started](/docs/{{version}}/getting-started)
+    - [Getting the Logs](/docs/{{version}}/getting-logs)
 - Advanced Options
     - [Customizing log message](/docs/{{version}}/customizing)
     - [Configuration](/docs/{{version}}/configuration)
