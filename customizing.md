@@ -1,6 +1,6 @@
 # Customizing log message
 
-You can define your own log messages for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as`{object.property.property} or {object.property|Default value} or {object.property||callbackMethod}`. 
+You can define your own log messages for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
 
 > Note: This implementation is optional, you can make these customizations where desired.
 
