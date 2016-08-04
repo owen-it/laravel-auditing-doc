@@ -6,8 +6,7 @@
     - [Configuration](/docs/{{version}}/configuration)
 - The Basics
     - [Getting Started](/docs/{{version}}/getting-started)
-    - [Getting the Logs](/docs/{{version}}/getting-logs)
-    - 
+    - [Getting Logs](/docs/{{version}}/getting-logs)
 - Advanced Options
     - [Customizing](/docs/{{version}}/customizing)
     - [Events](/docs/{{version}}/events)
