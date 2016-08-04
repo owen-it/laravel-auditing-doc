@@ -34,7 +34,7 @@ class Team extends Model
     protected $auditableTypes = ['created', 'saved', 'deleted'];
 }
 ```
-## Core Configuration
+## General settings
 Using the configuration file, you can define:
 
 * The Model used to represent the current user of application.
