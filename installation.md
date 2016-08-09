@@ -32,6 +32,7 @@ php artisan migrate
 
 ## With Lumen 
 > Note: Implementation with lumen is available from the 2.3.7 version of Laravel Auditing.
+
 Open the file ```bootstrap/app.php``` and then add the service provider, this step is required.
 
 ```php
