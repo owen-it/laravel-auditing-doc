@@ -32,3 +32,5 @@ class Team extends Auditing
     // 
 }
 ```
+
+Before that, you should [install the package](/docs/{{version}}/installation).
