@@ -17,6 +17,7 @@ class Team extends Model
     //
 }
 ```
+
 Alternatively, you may also extend the `OwnerIt\Auditing\Auditing` class to enable auditing.
 
 Example:
