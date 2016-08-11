@@ -2,7 +2,7 @@
 
 ## With Trait
 
-To register the change log, use the trait `OwnerIt\Auditing\AuditingTrait` in the model you want to audit
+To register the change log, use the trait `OwnerIt\Auditing\AuditingTrait` in the model you wish to audit
 
 ```php
 // app/Team.php
@@ -21,7 +21,9 @@ class Team extends Model
 
 ## With Legacy Class
 
-It is also possible to have your model extend the `OwnerIt\Auditing\Auditing` class to enable auditing. Example:
+It is also possible to have your model extend the `OwnerIt\Auditing\Auditing` class to enable auditing. Example:Alternatively, you may also extend the `OwnerIt\Auditing\Auditing` class to enable auditing.
+
+Example:
 
 ```php
 // app/Team.php
