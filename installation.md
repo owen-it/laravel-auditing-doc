@@ -51,3 +51,5 @@ Then execute the migration to create the ```logs``` table in your database. This
 ```
 php artisan migrate
 ```
+
+Once Laravel Auditing is installed, you can [get started](/docs/{{version}}/introduction).
