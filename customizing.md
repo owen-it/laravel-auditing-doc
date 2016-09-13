@@ -5,7 +5,8 @@ You can define your own log messages for presentation. These messages can be def
 
 > Note: This implementation is optional, you can make these customizations where desired.
 
-Set messages to the model
+### Set messages to the model
+
 ```php
 <?php
 
@@ -44,7 +45,9 @@ class Post extends Model
     //...
 }
 ```
-Getting change logs 
+
+### Getting change logs 
+
 ```php
 // app/Http/Controllers/MyAppController.php 
     
@@ -59,7 +62,9 @@ Getting change logs
     //...
     
 ```
-Featuring log records:
+
+### Featuring log records
+
 ```
     // resources/views/admin/auditing.blade.php
     ...
