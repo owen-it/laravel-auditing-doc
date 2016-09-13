@@ -1,4 +1,4 @@
-# Getting the Logs
+# Getting the Audits
 
 What you will see now is nothing less than powerful Eloquent, to learn more click [here](https://laravel.com/docs/5.2/eloquent).
 
@@ -34,7 +34,7 @@ Getting audits with user responsible for the change.
 
 ```php
 
-$logs = Auditing::with(['user'])->get();
+$audits = Auditing::with(['user'])->get();
 
 ```
 
@@ -55,6 +55,6 @@ $audits = Invoice::audits->with(['user'])->get();
     ...
 
     'model' => App\User::class,
-    
+
     ... 
 ```
