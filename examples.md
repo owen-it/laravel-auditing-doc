@@ -1,6 +1,6 @@
 # Examples
 
-## Invoce
+## Invoice
 
 Well, talk is easy is not it. So let's see it working. Let's consider this simple example to demonstrate the use of Laravel Auditing.
 
