@@ -10,9 +10,11 @@ Set messages to the model
 <?php
 
 namespace App\Models;
-use OwenIt\Auditing\Auditable;
 
-class Post 
+use OwenIt\Auditing\Auditable;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
 {
   use Auditable;    
 
