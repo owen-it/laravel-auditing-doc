@@ -27,4 +27,4 @@ class MyAuditor implements AuditingContract
 }
 ```
 
-> Note: The return of the `audit` method will then be sent as a parameter to the event `AuditReport`.
+> Note: The return of the `audit` method will then be sent as a parameter to the event `AuditReport`. Access [events](/docs/{{version}}/events) for more information.
