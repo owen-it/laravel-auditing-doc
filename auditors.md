@@ -1,6 +1,8 @@
 
 # Auditors
 
+The auditor's role is to audit when and how the model has changed, to prevent and detect problems in compliance with business rules. The methodologies to audit the models can be developed by developer himself.
+
 ## Creating Auditors
 
 In Laravel Auditing, each auditor is represented by a single class (typically stored in the `app/Auditors`) directory. To create your auditors run the following command:
@@ -23,6 +25,6 @@ class MyAuditor implements AuditingContract
 		// Implement your audit logic
 	}
 }
-
-
 ```
+
+> Note: The return of the `audit` method will then be sent as a parameter to the event `AuditReport`.
