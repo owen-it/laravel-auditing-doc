@@ -1,6 +1,6 @@
 - The Basic
     - [Introduction](/docs/{{version}}/introduction)
-    - [Getting Logs](/docs/{{version}}/getting-logs)
+    - [Getting Audits](/docs/{{version}}/getting-audits)
 - Auditors
     - [Getting Started](/docs/{{version}}/auditors)
 - Setup
