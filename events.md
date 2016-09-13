@@ -1,33 +1,77 @@
-# Events
+# Reviewing audit.
 
-## Registering Events
+We may revise the model before it is audited and say whether it needs to or not be audited.
 
-Typically, events should be registered via the `EventServiceProvider` `$listen` array; however, you may also register events manually with the event dispatcher using either the `Event` facade or the `Illuminate\Contracts\Events\Dispatcher` contract implementation:
 
 ```php
+<?php
+namespace App\Listeners;
+
+use OwenIt\Auditing\Events\AuditReview;
+
+class ReviewInvoiceAudits
+{
     /**
-     * Register any other events for your application.
+     * Create the event listener.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function __construct()
     {
-        parent::boot($events);
-    
-        $events->listen('auditing.created', function ($model) {
-            //
-        });
+        //
     }
-```
-## Wildcard Event Listeners
 
-You may even register listeners using the `*` as a wildcard, allowing you to catch multiple events on the same listener. Wildcard listeners receive the entire event data array as a single argument:
+    /**
+     * Handle the event.
+     *
+     * @param  AuditReview $event
+     * @return void
+     */
+    public function handle(AuditReview $event)
+    {
+        // Your implamentation 
+    }
+}
+```
+
+# Audit report
+
+In some cases it may be interesting to take immediate action depending on the audit report. Suppose that the company in question that we are auditing handles an X value for your purchases and sales, this value ranges from 0 to 10000. Our example will ensure that the company's manager is notified if any invoice is issued to the different value of the value that we specify.
 
 ```php
-    $events->listen('auditing.*', function ($model) {
-        //
-    });
+namespace App\Listeners;
+
+use OwenIt\Auditing\Events\AuditReport;
+
+class ReportInvoiceAudits
+{
+
+    protected $company;
+    
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param AuditReport $event
+     * @return void
+     */
+    public function handle(AuditReport $event)
+    {
+        if($event->auditable->value > 10000.00){
+            $this->company->notify()
+        }
+    }
+}
 ```
+
 
 > For more information about events visit the official documentation of [Laravel](https://laravel.com/docs/5.2/events)

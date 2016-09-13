@@ -1,13 +1,16 @@
-- Prologue
+- The Basic
     - [Introduction](/docs/{{version}}/introduction)
-    - [Examples](/docs/{{version}}/examples)
+    - [Getting Started](/docs/{{version}}/getting-started)
+    - [Getting Logs](/docs/{{version}}/getting-logs)
+- Auditors
+    - [Getting Started](/docs/{{version}}/auditors)
 - Setup
     - [Installation](/docs/{{version}}/installation)
     - [Configuration](/docs/{{version}}/configuration)
-- The Basics
-    - [Getting Started](/docs/{{version}}/getting-started)
-    - [Getting Logs](/docs/{{version}}/getting-logs)
 - Advanced Options
     - [Customizing](/docs/{{version}}/customizing)
     - [Events](/docs/{{version}}/events)
-    - [Configuration](/docs/{{version}}/configuration)
+- Configuration 
+    - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
+    - [Configuring Package](/docs/{{version}}/general-settings)
+

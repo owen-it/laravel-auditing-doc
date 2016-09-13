@@ -1,3 +1,4 @@
+
 # Installation
 
 Laravel Auditing can be installed with [Composer](http://getcomposer.org/doc/00-intro.md), more details about this package in Composer can be found [here](https://packagist.org/packages/owen-it/laravel-auditing).
@@ -39,6 +40,7 @@ Open the file ```bootstrap/app.php``` and then add the service provider, this st
 $app->register(OwenIt\Auditing\AuditingServiceProvider::class);
 ```
 You should uncomment the $app->withFacades() and $app->withEloquent() call in your `bootstrap/app.php` file.
+
 ```php
 // ...
 $app->withFacades();

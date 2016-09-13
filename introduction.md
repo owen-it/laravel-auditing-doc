@@ -1,37 +1,27 @@
 # Introduction
 
-Laravel Auditing allows you to record changes to an Eloquent model's set of data by simply adding its trait to your model. Laravel Auditing also provides a simple interface for retreiving an audit trail for a piece of data and allows for a great deal of customization in how that data is provided.
+The audit can help you understand the activity in the eloquent models and information about discrepancies and anomalies that could indicate business concerns or suspected security breaches. 
 
-To register the change log, use the trait `OwnerIt\Auditing\AuditingTrait` in the model you wish to audit
+Laravel Auditing allows you to record changes to an Eloquent model's set of data by simply adding its trait to your model. It also provides us with a simple interface to retrieve the data audited with a variety of features to customize the display of audits.
+
+Laravel Audit expressed simply a basic audit process. It will identify changes in their models and appoint an auditor responsible for auditing.
+
+To make an auditable model is simple, use the trait `OwnerIt\Auditing\Auditable` in the model you wish to audit
 
 ```php
-// app/Team.php
+// app/Invoice
 namespace App;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\AuditingTrait;
 
-class Team extends Model 
+class Invoice extends Model
 {
-    use AuditingTrait;
-    //
+    use Auditable;
+
+    // ...
 }
 ```
-
-Alternatively, you may also extend the `OwnerIt\Auditing\Auditing` class to enable auditing.
-
-Example:
-
-```php
-// app/Team.php
-namespace App;
-
-use OwenIt\Auditing\Auditing;
-
-class Team extends Auditing 
-{
-    // 
-}
-```
+By default Laravel-Audit will use the database auditor to record the changes in the model. But you can [create your own auditors](/docs/{{version}}/auditors).
 
 Before that, you should [install the package](/docs/{{version}}/installation).
