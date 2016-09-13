@@ -4,7 +4,7 @@ The Auditing behavior settings are carried out with the declaration of attribute
 
 * Disable / enable auditing: `$auditEnabled = false`
 * Clear older history: `$auditLimit = 100`
-* Indicate which fields should not be audited: `$dontKeepLogOf = ['field']`
+* Indicate which fields should not be audited: `dontKeepAuditOf = ['field']`
 * Indicate which fields are to be audited: `$keepAuditOf = ['field']`
 
 > Note: This implementation is optional, you can make these customizations where desired.
