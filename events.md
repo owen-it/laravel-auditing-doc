@@ -74,4 +74,4 @@ class ReportInvoiceAudits
 ```
 
 
-> For more information about events visit the official documentation of [Laravel](https://laravel.com/docs/5.2/events)
+> For more information about events visit the official documentation of [Laravel](https://laravel.com/docs/master/events)

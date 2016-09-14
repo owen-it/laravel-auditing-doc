@@ -7,7 +7,7 @@ The Auditing behavior settings are carried out with the declaration of attribute
 * Indicate which fields should not be audited: `dontKeepAuditOf = ['field']`
 * Indicate which fields are to be audited: `$keepAuditOf = ['field']`
 
-> Note: This implementation is optional, you can make these customizations where desired.
+> {tip} This implementation is optional, you can make these customizations where desired.
 
 ```php
 <?php
@@ -22,7 +22,7 @@ class Invoice extends Model
     use Auditable;
 
     // Disables the auditing in this model.
-    protected $auditEnabled  = false;
+    protected $auditEnabled = false;
 
     // Clear the oldest audits after 100 records.
     protected $auditLimit = 100; 

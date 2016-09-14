@@ -8,7 +8,8 @@ You can change the package's core behavior by changing the configuration file. A
     
 The configuration file can be found at `config/auditing.php`.
 
-> Note: These settings are optional and can be changed when necessary..
+> {tip} These settings are optional and can be changed when necessary.
+> 
 
 ```php
 // config/auditing.php

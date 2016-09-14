@@ -48,7 +48,7 @@ $audits = Invoice::audits->with(['user'])->get();
 
 ```
 
-> Note: Remember to properly define the user model in the file ``` config/auditing.php ```.
+> {note} Remember to properly define the user model in the file `config/auditing.php`.
 
 ```php
 

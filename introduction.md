@@ -9,7 +9,7 @@ Laravel Audit expressed simply a basic audit process. It will identify changes i
 To make an auditable model is simple, use the trait `OwnerIt\Auditing\Auditable` in the model you wish to audit
 
 ```php
-// app/Invoice
+
 namespace App;
 
 use OwenIt\Auditing\Auditable;

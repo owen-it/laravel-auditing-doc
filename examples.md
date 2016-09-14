@@ -4,7 +4,7 @@
 
 Well, talk is easy is not it. So let's see it working. Let's consider this simple example to demonstrate the use of Laravel Auditing.
 
-> {tip} For this example, I assume you already installed the package, set the servicePorvider and performed migration.
+> {note} For this example, I assume you already installed the package, set the servicePorvider and performed migration.
 
 Let's follow some basic steps
 
