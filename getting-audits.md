@@ -1,6 +1,6 @@
 # Getting the Audits
 
-What you will see now is nothing less than powerful Eloquent, to learn more click [here](https://laravel.com/docs/5.2/eloquent).
+What you will see now is nothing less than powerful Eloquent, to learn more click [here](https://laravel.com/docs/master/eloquent).
 
 ```php
 <?php

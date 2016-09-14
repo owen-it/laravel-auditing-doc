@@ -25,9 +25,12 @@ Only after complete the step before, use the following command to publish config
 ```
 php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider"
 ```
+
 Finally, execute the migration to create the ```logs``` table in your database. This table is used to save audit the logs.
 
 ```
+php atisan auditing:table
+
 php artisan migrate
 ```
 
@@ -39,19 +42,25 @@ Open the file ```bootstrap/app.php``` and then add the service provider, this st
 ```php
 $app->register(OwenIt\Auditing\AuditingServiceProvider::class);
 ```
+
 You should uncomment the $app->withFacades() and $app->withEloquent() call in your `bootstrap/app.php` file.
 
 ```php
 // ...
+
 $app->withFacades();
 
 $app->withEloquent();
+
 // ...
 ```
 
 Then execute the migration to create the ```logs``` table in your database. This table is used to save audit the logs.
+
 ```
+php atisan auditing:table
+
 php artisan migrate
 ```
 
-Once Laravel Auditing is installed, you can [get started](/docs/{{version}}/getting-started).
+Once Laravel Auditing is installed, you can [get started](/docs/{{version}}/introduction).

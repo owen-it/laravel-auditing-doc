@@ -9,7 +9,7 @@ In Laravel Auditing, each auditor is represented by a single class (typically st
 
 `php artisan make:auditor MyAuditor`
 
-This command will place a fresh auditor class in your `app/Auditors` directory. Each auditor class contains a `audit` method responsible for auditing the [eloquent model](https://laravel.com/docs/5.3/eloquent).
+This command will place a fresh auditor class in your `app/Auditors` directory. Each auditor class contains a `audit` method responsible for auditing the [eloquent model](https://laravel.com/docs/master/eloquent).
 
 
 ```php
