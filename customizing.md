@@ -1,7 +1,7 @@
 
-# Customizing log message
+# Customizing audits messages
 
-You can define your own log messages for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
+You can define your own audit message for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
 
 > Note: This implementation is optional, you can make these customizations where desired.
 
@@ -20,33 +20,28 @@ class Post extends Model
   use Auditable;    
 
     // with default value
-    public static $logCustomMessage = '{user.name|Anonymous} {type} a post {elapsed_time}'; 
+    public static $auditCustomMessage = '{user.name|Anonymous} {type} a post {elapsed_time}'; 
     
     // with callback method
-    public static $logCustomFields = [
+    public static $auditCustomFields = [
         'title'  => 'The title was defined as "{new.title||getNewTitle}"', 
-        'ip' => 'Registered from the address {ip||getAnotherthing}',
+        'ip_address' => 'Registered from the address {ip_address}',
         'publish_date' => [
             'created' => 'Publication date: {new.publish_date}',
-            'delete' =>  'Post removed from {new.publish_date}'
+            'deleted' => 'Post removed from {new.publish_date}'
         ]
     ];
     
-    public function getNewTitle($log)
+    public function getNewTitle($post)
     {
-        return $log->old['title'];
-    }
-    
-    public function getAnotherthing($log)
-    {
-        return ';)';
+        return $post->old['title'];
     }
     
     //...
 }
 ```
 
-### Getting change logs 
+### Getting audits  
 
 ```php
 // app/Http/Controllers/MyAppController.php 
@@ -54,26 +49,26 @@ class Post extends Model
     //...
     public function auditing()
     {
-        // Get logs of Post
-        $logs = Post::find(1)->logs;
+        // Get audits of Post
+        $autits = Post::find(1)->audits;
         
-        return view('admin.auditing', compact('logs'));
+        return view('admin.auditing', compact('autits'));
     }
     //...
     
 ```
 
-### Featuring log records
+### Featuring audits
 
 ```
     // resources/views/admin/auditing.blade.php
     ...
     <ol>
-        @forelse ($logs as $log)
+        @forelse ($audits as $audit)
             <li>
-                {{ $log->customMessage }}
+                {{ $audit->customMessage }}
                 <ul>
-                    @forelse ($log->customFields as $custom)
+                    @forelse ($audit->customFields as $custom)
                         <li>{{ $custom }}</li>
                     @empty
                         <li>No details</li>
@@ -81,7 +76,7 @@ class Post extends Model
                 </ul>
             </li>
         @empty
-            <p>No logs</p>
+            <p>No audits</p>
         @endforelse
     </ol>
     ...
