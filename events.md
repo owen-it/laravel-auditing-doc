@@ -1,6 +1,6 @@
 # Events
 
-## Reviewing audit.
+## Reviewing Audit.
 
 We may revise the model before it is audited and say whether it needs to or not be audited.
 
@@ -36,7 +36,7 @@ class ReviewInvoiceAudits
 }
 ```
 
-## Audit report
+## Audit Report
 
 In some cases it may be interesting to take immediate action depending on the audit report. Suppose that the company in question that we are auditing handles an X value for your purchases and sales, this value ranges from 0 to 10000. Our example will ensure that the company's manager is notified if any invoice is issued to the different value of the value that we specify.
 
