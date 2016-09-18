@@ -2,12 +2,12 @@
     - [Installation](/docs/{{version}}/installation)
 - The Basics
     - [Introduction](/docs/{{version}}/introduction)
-    - [Getting Audits](/docs/{{version}}/getting-audits)
+    - [Displaying Audits](/docs/{{version}}/getting-audits)
 - Auditors
-    - [Getting Started](/docs/{{version}}/auditors)
+    - [Custom Auditors](/docs/{{version}}/auditors)
 - Configuration 
+    - [Package Options](/docs/{{version}}/general-settings)
     - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
-    - [Configuring Package](/docs/{{version}}/general-settings)
 - Advanced Options
-    - [Customizing](/docs/{{version}}/customizing)
+    - [Customizing Messages](/docs/{{version}}/customizing)
     - [Events](/docs/{{version}}/events)
