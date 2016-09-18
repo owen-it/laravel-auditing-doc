@@ -1,7 +1,7 @@
 
 # Auditors
 
-The auditor's role is to audit when and how the model has changed, to prevent and detect problems in compliance with business rules. The methodologies to audit the models can be developed by developer himself.
+The auditor's role is to audit when the data in the model changes. The methodologies to audit the models can be developed by developer himself.
 
 ## Creating Auditors
 
@@ -9,7 +9,7 @@ In Laravel Auditing, each auditor is represented by a single class (typically st
 
 `php artisan make:auditor MyAuditor`
 
-This command will place a fresh auditor class in your `app/Auditors` directory. Each auditor class contains a `audit` method responsible for auditing the [eloquent model](https://laravel.com/docs/master/eloquent).
+This command will place a fresh auditor class template in your `app/Auditors` directory. Each auditor class contains a `audit` method responsible for auditing the [Eloquent model](https://laravel.com/docs/master/eloquent).
 
 
 ```php
@@ -27,4 +27,4 @@ class MyAuditor implements AuditingContract
 }
 ```
 
-> {tip} The return of the `audit` method will then be sent as a parameter to the event `AuditReport`. Access [events](/docs/{{version}}/events) for more information.
+> {tip} The return of the `audit()` method will be sent as a parameter to the event `AuditReport`. Check [Events](/docs/{{version}}/events) for more information.
