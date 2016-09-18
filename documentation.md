@@ -1,14 +1,13 @@
-- The Basic
+- Setup
+    - [Installation](/docs/{{version}}/installation)
+- The Basics
     - [Introduction](/docs/{{version}}/introduction)
     - [Getting Audits](/docs/{{version}}/getting-audits)
 - Auditors
     - [Getting Started](/docs/{{version}}/auditors)
-- Setup
-    - [Installation](/docs/{{version}}/installation)
-- Advanced Options
-    - [Customizing](/docs/{{version}}/customizing)
-    - [Events](/docs/{{version}}/events)
 - Configuration 
     - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
     - [Configuring Package](/docs/{{version}}/general-settings)
-
+- Advanced Options
+    - [Customizing](/docs/{{version}}/customizing)
+    - [Events](/docs/{{version}}/events)
