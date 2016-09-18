@@ -5,7 +5,6 @@
     - [Getting Started](/docs/{{version}}/auditors)
 - Setup
     - [Installation](/docs/{{version}}/installation)
-    - [Configuration](/docs/{{version}}/configuration)
 - Advanced Options
     - [Customizing](/docs/{{version}}/customizing)
     - [Events](/docs/{{version}}/events)
