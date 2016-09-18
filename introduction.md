@@ -1,12 +1,12 @@
 # Introduction
 
-The audit can help you understand the activity in the eloquent models and information about discrepancies and anomalies that could indicate business concerns or suspected security breaches. 
+This package can help you understand the activities in your eloquent models and provide information about possible discrepancies and anomalies that could indicate business concerns or suspected security breaches. 
 
-Laravel Auditing allows you to record changes to an Eloquent model's set of data by simply adding its trait to your model. It also provides us with a simple interface to retrieve the data audited with a variety of features to customize the display of audits.
+Laravel Auditing allows you to record changes to an Eloquent model's set of data by simply adding its trait to your model. It also provides you with a simple interface to retrieve the data audited with a variety of features to display them in various ways.
 
-Laravel Audit expressed simply a basic audit process. It will identify changes in their models and appoint an auditor responsible for auditing.
+Laravel Auditing simply follows a basic audit process. It will identify changes in your models and appoint an auditor responsible for auditing.
 
-To make an auditable model is simple, use the trait `OwnerIt\Auditing\Auditable` in the model you wish to audit
+Making a model auditable is simple. Use the trait `OwnerIt\Auditing\Auditable` in the model you wish to audit
 
 ```php
 
@@ -22,6 +22,7 @@ class Invoice extends Model
     // ...
 }
 ```
-By default Laravel-Audit will use the database auditor to record the changes in the model. But you can [create your own auditors](/docs/{{version}}/auditors).
 
-Before that, you should [install the package](/docs/{{version}}/installation).
+By default, Laravel Auditing will use the Database Auditor to record the changes in the model. If needed, you can also [create your own auditors](/docs/{{version}}/auditors).
+
+Before that, lets [install the package](/docs/{{version}}/installation).
