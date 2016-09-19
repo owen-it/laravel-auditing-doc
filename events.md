@@ -1,5 +1,7 @@
 # Events
 
+These events are fired during the audit process.
+
 ## Reviewing Audit.
 
 We may revise the model before it is audited and say whether it needs to or not be audited.
