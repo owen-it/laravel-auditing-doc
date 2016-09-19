@@ -1,4 +1,6 @@
-# Events
+# Audit Events
+
+These events are fired during the audit process.
 
 ## Registering Events
 
