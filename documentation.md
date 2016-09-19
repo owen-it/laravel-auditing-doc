@@ -1,13 +1,12 @@
-- Prologue
+- 
+- Getting Started
+    - [Installation](/docs/{{version}}/installation)
+    - [Getting Logs](/docs/{{version}}/getting-logs)
+    - [Configuration](/docs/{{version}}/configuration)
+- The Basic
     - [Introduction](/docs/{{version}}/introduction)
     - [Examples](/docs/{{version}}/examples)
-- Setup
-    - [Installation](/docs/{{version}}/installation)
-    - [Configuration](/docs/{{version}}/configuration)
-- The Basics
-    - [Getting Started](/docs/{{version}}/getting-started)
-    - [Getting Logs](/docs/{{version}}/getting-logs)
 - Advanced Options
     - [Customizing](/docs/{{version}}/customizing)
-    - [Events](/docs/{{version}}/events)
+    - [Audit Events](/docs/{{version}}/events)
     - [Configuration](/docs/{{version}}/configuration)
