@@ -2,13 +2,13 @@
 
 Laravel Auditing can be installed with [Composer](http://getcomposer.org/doc/00-intro.md), more details about this package in Composer can be found [here](https://packagist.org/packages/owen-it/laravel-auditing).
 
-Run the following command to get the latest version package:
+Run the following command to get the stable version package:
 
 ```
 composer require owen-it/laravel-auditing
 ```
 
-## With Laravel
+### Via Laravel
 Open the file ```config/app.php``` and then add the service provider, this step is required.
 
 ```php
@@ -30,7 +30,7 @@ Finally, execute the migration to create the ```logs``` table in your database. 
 php artisan migrate
 ```
 
-## With Lumen 
+## Via Lumen 
 > Note: Implementation with lumen is available from the 2.3.7 version of Laravel Auditing.
 
 Open the file ```bootstrap/app.php``` and then add the service provider, this step is required.
