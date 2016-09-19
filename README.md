@@ -15,7 +15,7 @@
     - [Configuration](configuration.md)
 
 
-> If you are unable to access the site, please report to
+> If you are unable to access the site, please send an email to Antério Vieira at <a href="mailto:anteriovieira@gmail.com">anteriovieira@gmail.com</a>.
 
 ## Contributing
 
