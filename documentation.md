@@ -1,6 +1,6 @@
-- 
-- Getting Started
+- Setup
     - [Installation](/docs/{{version}}/installation)
+- Getting Started
     - [Getting Logs](/docs/{{version}}/getting-logs)
     - [Configuration](/docs/{{version}}/configuration)
 - The Basic
