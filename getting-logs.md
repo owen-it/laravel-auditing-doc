@@ -40,6 +40,40 @@ What you will see now is nothing less than powerful [Eloquent Model](https://lar
     $team->logs->with('user'); 
 ```
 
+### Getting custom message
 
+> Set your custom messages in [Customizing log message](/docs/{{version}}/customizing)
 
+```php
+    // Get team
+    $team = Team::find(1); 
+
+    // Get first log
+    $log = $team->logs->first(); 
+    
+    $log->customMessage;
+    
+    // Antério Vieira created a post 1 day ago 
+```
+
+### Getting custom fields
+
+> Set your custom fields in [Customizing log message](/docs/{{version}}/customizing)
+
+```php
+    // Get team
+    $team = Team::find(1); 
+
+    // Get first log
+    $log = $team->logs->first(); 
+    
+    $log->customFields;
+    
+    /* 
+        [
+            'name' => 'The name was defined as "Team Laravel"'
+            'address' => 'Registered from the address 127.0.0.1'
+        ]
+    */
+```
 
