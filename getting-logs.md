@@ -36,7 +36,7 @@ Remember to properly define the user model in the file ``` config/auditing.php `
 
 ### Getting custom message
 
-Set your custom messages in [Customizing log message](/docs/{{version}}/customizing)
+Set your custom messages in [customizing log message](/docs/{{version}}/customizing)
 
 ```php
     // Get team
@@ -52,7 +52,7 @@ Set your custom messages in [Customizing log message](/docs/{{version}}/customiz
 
 ### Getting custom fields
 
-Set your custom fields in [Customizing log message](/docs/{{version}}/customizing)
+Set your custom fields in [customizing log fields](/docs/{{version}}/customizing)
 
 ```php
     // Get team
