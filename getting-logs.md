@@ -26,12 +26,6 @@ What you will see now is nothing less than powerful [Eloquent Model](https://lar
 > Note: Remember to properly define the user model in the file ``` config/auditing.php ```.
 
 ```php
-    ...
-    'model' => App\User::class,
-    ... 
-```
-
-```php
 
     // Get team
     $team = Team::find(1); 
