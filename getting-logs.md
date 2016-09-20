@@ -23,7 +23,7 @@ What you will see now is nothing less than powerful [Eloquent Model](https://lar
 
 ### Getting logs with user responsible for the change.
 
-> Note: Remember to properly define the user model in the file ``` config/auditing.php ```.
+Remember to properly define the user model in the file ``` config/auditing.php ```.
 
 ```php
 
@@ -36,7 +36,7 @@ What you will see now is nothing less than powerful [Eloquent Model](https://lar
 
 ### Getting custom message
 
-> Set your custom messages in [Customizing log message](/docs/{{version}}/customizing)
+Set your custom messages in [Customizing log message](/docs/{{version}}/customizing)
 
 ```php
     // Get team
@@ -52,7 +52,7 @@ What you will see now is nothing less than powerful [Eloquent Model](https://lar
 
 ### Getting custom fields
 
-> Set your custom fields in [Customizing log message](/docs/{{version}}/customizing)
+Set your custom fields in [Customizing log message](/docs/{{version}}/customizing)
 
 ```php
     // Get team
