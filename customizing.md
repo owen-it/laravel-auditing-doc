@@ -2,9 +2,9 @@
 
 You can define your own log messages for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
 
-> Note: This implementation is optional, you can make these customizations where desired.
+> {tip} This implementation is optional, you can make these customizations where desired.
 
-Set messages to the model
+### Set messages to the model
 ```php
 // app/models/Post.php
 
@@ -40,7 +40,7 @@ class Post extends Auditing
     //...
 }
 ```
-Getting change logs 
+### Getting change logs 
 ```php
 // app/Http/Controllers/MyAppController.php 
     
@@ -55,7 +55,7 @@ Getting change logs
     //...
     
 ```
-Featuring log records:
+### Featuring log records:
 ```
     // resources/views/admin/auditing.blade.php
     ...
