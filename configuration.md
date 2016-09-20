@@ -9,7 +9,7 @@ The Auditing behavior settings are carried out with the declaration of attribute
 * Turn off logging for specific fields: `$dontKeepLogOf = ['created_at', 'updated_at']`
 * Tell what actions you want to audit: `$auditableTypes = ['created', 'saved', 'deleted']`
 
-> Note: This implementation is optional, you can make these customizations where desired.
+> {tip} This implementation is optional, you can make these customizations where desired.
 
 ```php
 // app/Team.php
@@ -43,7 +43,7 @@ Using the configuration file, you can define:
     
 The configuration file can be found at `config/auditing.php`.
 
-> Note: This implementation is optional.
+> {note} This implementation is optional.
 
 ```php
 // config/auditing.php
