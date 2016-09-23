@@ -1,7 +1,5 @@
 # Displaying the Audits
-
 Using [Eloquent](https://laravel.com/docs/master/eloquent), we can fetch the logs very easily.
-
 
 ### Retrieving audit logs
 
@@ -22,7 +20,7 @@ Using [Eloquent](https://laravel.com/docs/master/eloquent), we can fetch the log
     $team->logs->find(2); 
 ```
 
-### To include the user responsible for the change, use `with()`.
+### Getting logs with user responsible for the change.
 Remember to properly define the user model in the file ``` config/auditing.php ```.
 
 ```php
