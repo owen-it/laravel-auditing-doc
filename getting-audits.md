@@ -1,6 +1,6 @@
-# Getting the Audits
+# Displaying the Audits
 
-What you will see now is nothing less than powerful Eloquent, to learn more click [here](https://laravel.com/docs/master/eloquent).
+Using [Eloquent](https://laravel.com/docs/master/eloquent), we can fetch the logs very easily.
 
 ```php
 <?php
@@ -30,7 +30,7 @@ class MyAppController extends BaseController
 }
 ```
 
-Getting audits with user responsible for the change.
+To include the user responsible for the change, use `with()`. Following example fetches all the changes made by the logged in user in auditable models.
 
 ```php
 
@@ -38,7 +38,7 @@ $audits = Auditing::with(['user'])->get();
 
 ```
 
-or
+Following code will fetch the changes made by logged in user in `Invoice` model.
 
 ```php
 
@@ -48,7 +48,7 @@ $audits = Invoice::audits->with(['user'])->get();
 
 ```
 
-> {note} Remember to properly define the user model in the file `config/auditing.php`.
+> {note} If your authentication model is different than `User`, you can define in the file `config/auditing.php`.
 
 ```php
 

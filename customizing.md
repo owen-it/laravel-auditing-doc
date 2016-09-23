@@ -1,11 +1,9 @@
 
 # Customizing audits messages
 
-You can define your own audit message for presentation. These messages can be defined for both the model as well as for each one of fields.The dynamic part of the message can be done by targeted fields per dot segmented as `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
+You can define your own audit messages for presentation. These messages can be defined for both the model as well as for each of fields. The dynamic properties of the message can be specified by targeted fields using dot syntax like `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
 
-> {tip} This implementation is optional, you can make these customizations where desired.
-
-### Set messages to the model
+> {tip} This step is optional, you can make these customizations where desired.
 
 ```php
 <?php
@@ -22,8 +20,8 @@ class Post extends Model
     // with default value
     public static $auditCustomMessage = '{user.name|Anonymous} {type} a post {elapsed_time}'; 
     
-    // with callback method
     public static $auditCustomFields = [
+        // with callback method
         'title'  => 'The title was defined as "{new.title||getNewTitle}"', 
         'ip_address' => 'Registered from the address {ip_address}',
         'publish_date' => [
@@ -41,7 +39,7 @@ class Post extends Model
 }
 ```
 
-### Getting audits  
+### Fetching audits  
 
 ```php
 // app/Http/Controllers/MyAppController.php 
@@ -49,16 +47,16 @@ class Post extends Model
     //...
     public function auditing()
     {
-        // Get audits of Post
-        $autits = Post::find(1)->audits;
+        // Fetch audits of a Post
+        $audits = Post::find(1)->audits;
         
-        return view('admin.auditing', compact('autits'));
+        return view('admin.auditing', compact('audits'));
     }
     //...
     
 ```
 
-### Featuring audits
+### Displaying audits
 
 ```
     // resources/views/admin/auditing.blade.php

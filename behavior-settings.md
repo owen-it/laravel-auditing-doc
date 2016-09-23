@@ -2,12 +2,13 @@
 
 The Auditing behavior settings are carried out with the declaration of attributes in the model. See the examples below:
 
-* Disable / enable auditing: `$auditEnabled = false`
-* Clear older history: `$auditLimit = 100`
-* Indicate which fields should not be audited: `dontKeepAuditOf = ['field']`
-* Indicate which fields are to be audited: `$keepAuditOf = ['field']`
+* Disable / enable auditing for the model: `$auditEnabled = false`
+* Number of records to maintain before deleting older entries: `$auditLimit = 100`
+* Determine which fields should not be audited: `$dontKeepAuditOf = ['field']`
+* Or determine which fields should be audited: `$keepAuditOf = ['field']`
+* Determine the actione to be audited: `$auditableTypes = ['created', 'saved', 'deleted']`
 
-> {tip} This implementation is optional, you can make these customizations where desired.
+> {tip} This step is optional. you can make these customizations only where desired.
 
 ```php
 <?php
@@ -21,7 +22,7 @@ class Invoice extends Model
 {
     use Auditable;
 
-    // Disables the auditing in this model.
+    // Disables the auditing for this model.
     protected $auditEnabled = false;
 
     // Clear the oldest audits after 100 records.
@@ -30,7 +31,7 @@ class Invoice extends Model
     // Fields that you do NOT want to audit.
     protected $dontKeepAuditOf = ['created_at', 'updated_at'];
 
-    // Tell what actions you want to audit.
+    // Specify what actions you want to audit.
     protected $auditableTypes = ['created', 'saved', 'deleted'];
 }
 ```
