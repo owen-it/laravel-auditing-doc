@@ -1,19 +1,19 @@
 
 # Laravel Auditing Documentation
 
-- The Basic
-    - [Introduction](introduction.md)
-    - [Getting Audits](getting-audits.md)
-- Auditors
-    - [Getting Started](auditors.md)
 - Setup
     - [Installation](installation.md)
-- Advanced Options
-    - [Customizing](customizing.md)
-    - [Events](events.md)
+- The Basics
+    - [Introduction](introduction.md)
+    - [Displaying Audits](getting-audits.md)
+- Auditors
+    - [Custom Auditors](auditors.md)
 - Configuration 
+    - [Package Options](general-settings.md)
     - [Configuring Auditable Model](behavior-settings.md)  
-    - [Configuring Package](general-settings.md)
+- Advanced Options
+    - [Customizing Messages](customizing.md)
+    - [Audit Events](events.md)
 
 
 
