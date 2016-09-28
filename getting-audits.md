@@ -7,17 +7,17 @@ Using [Eloquent](https://laravel.com/docs/master/eloquent), we can fetch the log
     // Get team
     $team = Team::find(1); 
     
-    // Get all logs
-    $team->logs; 
+    // Get all audits
+    $team->audits; 
     
-    // Get first log
-    $team->logs->first(); 
+    // Get first audit
+    $team->audits->first(); 
     
-    // Get last log
-    $team->logs->last();  
+    // Get last audit
+    $team->audits->last();  
     
-    // Selects log
-    $team->logs->find(2); 
+    // Selects audit
+    $team->audits->find(2); 
 ```
 
 ### Getting logs with user responsible for the change.
@@ -28,8 +28,8 @@ Remember to properly define the user model in the file ``` config/auditing.php `
     // Get team
     $team = Team::find(1); 
     
-    // Get all logs
-    $team->logs->with('user'); 
+    // Get all audits
+    $team->audits->with('user'); 
 ```
 
 ### Getting custom message
@@ -39,10 +39,10 @@ Set your custom messages in [customizing log message](/docs/{{version}}/customiz
     // Get team
     $team = Team::find(1); 
 
-    // Get first log
-    $log = $team->logs->first(); 
+    // Get first audit
+    $audit = $team->audits->first(); 
     
-    $log->customMessage;
+    $audit->customMessage;
     
     // Antério Vieira created a post 1 day ago 
 ```
@@ -54,10 +54,10 @@ Set your custom fields in [customizing log fields](/docs/{{version}}/customizing
     // Get team
     $team = Team::find(1); 
 
-    // Get first log
-    $log = $team->logs->first(); 
+    // Get first audit
+    $audits = $team->audits->first(); 
     
-    $log->customFields;
+    $audits->customFields;
     
     /* 
         [
