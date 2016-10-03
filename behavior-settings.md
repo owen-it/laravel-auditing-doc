@@ -6,7 +6,7 @@ The Auditing behavior settings are carried out with the declaration of attribute
 * Number of records to maintain before deleting older entries: `$auditLimit = 100`
 * Determine which fields should not be audited: `$dontKeepAuditOf = ['field']`
 * Or determine which fields should be audited: `$keepAuditOf = ['field']`
-* Determine the actione to be audited: `$auditableTypes = ['created', 'saved', 'deleted']`
+* Determine the actions to be audited: `$auditableTypes = ['created', 'saved', 'deleted']`
 
 > {tip} This step is optional. you can make these customizations only where desired.
 
