@@ -10,4 +10,5 @@
     - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
 - Advanced Options
     - [Customizing Messages](/docs/{{version}}/customizing)
-    - [Events](/docs/{{version}}/events)
+    - [Audit Events](/docs/{{version}}/events)
+    - [Audit Queues](/docs/{{version}}/queues)
