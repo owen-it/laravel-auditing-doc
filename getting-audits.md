@@ -1,61 +1,69 @@
 # Displaying the Audits
-
 Using [Eloquent](https://laravel.com/docs/master/eloquent), we can fetch the logs very easily.
 
+### Retrieving audit logs
+
 ```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Repositories\InvoiceRepository;
-
-class MyAppController extends BaseController 
-{
-    public function index(InvoiceRepository $invoiceRepository)
-    {
-        // Get invoice
-        $invoice = $invoiceRepository->find(1); 
-        
-        // Get all audits
-        $invoice->audits; 
-        
-        // Get first 
-        $invoice->audits->first(); 
-        
-        // Get last 
-        $invoice->audits->last();  
-        
-    }
-    //...
-}
+    // Get team
+    $team = Team::find(1); 
+    
+    // Get all audits
+    $team->audits; 
+    
+    // Get first audit
+    $team->audits->first(); 
+    
+    // Get last audit
+    $team->audits->last();  
+    
+    // Selects audit
+    $team->audits->find(2); 
 ```
 
-To include the user responsible for the change, use `with()`. Following example fetches all the changes made by the logged in user in auditable models.
+### Getting logs with user responsible for the change.
+Remember to properly define the user model in the file ``` config/auditing.php ```.
 
 ```php
 
-$audits = Auditing::with(['user'])->get();
-
+    // Get team
+    $team = Team::find(1); 
+    
+    // Get all audits
+    $team->audits->with('user'); 
 ```
 
-Following code will fetch the changes made by logged in user in `Invoice` model.
+### Getting custom message
+Set your custom messages in [customizing log message](/docs/{{version}}/customizing)
 
 ```php
+    // Get team
+    $team = Team::find(1); 
 
-use App\Invoice;
-
-$audits = Invoice::audits->with(['user'])->get();
-
+    // Get first audit
+    $audit = $team->audits->first(); 
+    
+    $audit->customMessage;
+    
+    // Antério Vieira created a post 1 day ago 
 ```
 
-> {note} If your authentication model is different than `User`, you can define in the file `config/auditing.php`.
+### Getting custom fields
+Set your custom fields in [customizing log fields](/docs/{{version}}/customizing)
 
 ```php
+    // Get team
+    $team = Team::find(1); 
 
-    ...
-
-    'model' => App\User::class,
-
-    ... 
+    // Get first audit
+    $audits = $team->audits->first(); 
+    
+    $audits->customFields;
+    
+    /* 
+        [
+            'name' => 'The name was defined as "Team Laravel"'
+            'address' => 'Registered from the address 127.0.0.1'
+        ]
+    */
 ```
 

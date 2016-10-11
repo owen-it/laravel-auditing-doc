@@ -15,13 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-  use Auditable;    
+    use Auditable;    
 
-    // with default value
     public static $auditCustomMessage = '{user.name|Anonymous} {type} a post {elapsed_time}'; 
     
     public static $auditCustomFields = [
-        // with callback method
         'title'  => 'The title was defined as "{new.title||getNewTitle}"', 
         'ip_address' => 'Registered from the address {ip_address}',
         'publish_date' => [
