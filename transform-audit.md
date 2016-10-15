@@ -18,11 +18,11 @@ class User extends Model;
   
   public function transformAudit(array $data)
   {
-    if(Arr::has('new.role_id')){
-      Arr::set($data, 'new.role',  $this->role->name)
-    }
+      if(Arr::has('new.role_id')){
+        Arr::set($data, 'new.role',  $this->role->name)
+      }
     
-    return $data;
+      return $data;
   }
 }
 
