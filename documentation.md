@@ -9,6 +9,7 @@
     - [Package Options](/docs/{{version}}/general-settings)
     - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
 - Advanced Options
-    - [Customizing Messages](/docs/{{version}}/customizing)
+    - [Transform Audit](/docs/{{version}}/transform-audit)
+    - [Custom Messages](/docs/{{version}}/customizing)
     - [Audit Events](/docs/{{version}}/events)
     - [Audit Queues](/docs/{{version}}/queues)
