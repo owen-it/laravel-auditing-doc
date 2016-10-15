@@ -1,5 +1,5 @@
 
-# Customizing audits messages
+# Custom audit messages
 
 You can define your own audit messages for presentation. These messages can be defined for both the model as well as for each of fields. The dynamic properties of the message can be specified by targeted fields using dot syntax like `{object.property.property}` or  `{object.property|Default value}` or `{object.property||callbackMethod}`. 
 
