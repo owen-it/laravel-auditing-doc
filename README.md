@@ -12,9 +12,9 @@
     - [Package Options](general-settings.md)
     - [Configuring Auditable Model](behavior-settings.md)  
 - Advanced Options
-    - [Customizing Messages](customizing.md)
+    - [Custom Messages](customizing.md)
     - [Audit Events](events.md)
-
+    - [Audit Queues](queues.md)
 
 
 ## Contributing
