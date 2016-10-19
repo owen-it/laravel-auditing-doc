@@ -22,7 +22,7 @@ return [
     'connection' => null,
 
     // Table Name
-    'table' => 'logs',
+    'table' => 'audits',
 
     // Audit via console
     'audit_console' => false,
