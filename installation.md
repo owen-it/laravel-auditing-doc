@@ -28,7 +28,7 @@ After completing the step above, use the following command to publish configurat
 php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider"
 ```
 
-Finally, execute the migration to create the ```logs``` table in your database. This table is used to save audit the logs.
+Finally, execute the migration to create the ```audits``` table in your database. This table is used to save audit the logs.
 
 ```
 php artisan auditing:table
