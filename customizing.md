@@ -5,6 +5,30 @@ You can define your own audit messages for presentation. These messages can be d
 
 > {tip} This step is optional, you can make these customizations where desired.
 
+Create a translation file for your model.
+
+```php
+<?php
+
+return [
+    'audit' => [
+        // with default value
+        'message' => '{user.name|Anonymous} {type} a post {elapsed_time}',
+        'fields'  => [
+            // with callback method
+            'title'        => 'The title was defined as "{new.title||getNewTitle}"',
+            'ip_address'   => 'Registered from the address {ip_address}',
+            'publish_date' => [
+                'created' => 'Publication date: {new.publish_date}',
+                'deleted' => 'Post removed from {new.publish_date}',
+            ],
+        ],
+    ],
+];
+```
+
+Set the `$auditCustomMessage` and `$auditCustomFields` properties of your model to the corresponding language lines.
+
 ```php
 <?php
 
@@ -17,19 +41,10 @@ class Post extends Model
 {
   use Auditable;    
 
-    // with default value
-    public static $auditCustomMessage = '{user.name|Anonymous} {type} a post {elapsed_time}'; 
-    
-    public static $auditCustomFields = [
-        // with callback method
-        'title'  => 'The title was defined as "{new.title||getNewTitle}"', 
-        'ip_address' => 'Registered from the address {ip_address}',
-        'publish_date' => [
-            'created' => 'Publication date: {new.publish_date}',
-            'deleted' => 'Post removed from {new.publish_date}'
-        ]
-    ];
-    
+    public static $auditCustomMessage = 'post.audit.message';
+
+    public static $auditCustomFields = 'post.audit.fields';
+
     public function getNewTitle($post)
     {
         return $post->old['title'];
