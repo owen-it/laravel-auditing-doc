@@ -25,14 +25,12 @@ Open the file ```config/app.php``` and then add following service provider.
 After completing the step above, use the following command to publish configuration settings:
 
 ```
-php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider"
+php artisan auditing:install
 ```
 
 Finally, execute the migration to create the ```audits``` table in your database. This table is used to save audit the logs.
 
 ```
-php artisan auditing:table
-
 php artisan migrate
 ```
 
