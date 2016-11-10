@@ -31,7 +31,7 @@ php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider"
 Finally, execute the migration to create the ```logs``` table in your database. This table is used to save audit the logs.
 
 ```
-php atisan auditing:table
+php artisan auditing:table
 
 php artisan migrate
 ```
