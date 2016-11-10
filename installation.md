@@ -58,8 +58,6 @@ $app->withEloquent();
 Then execute these commands to create the ```logs``` table in your database. This table is used to save the audit logs.
 
 ```
-php artisan auditing:table
-
 php artisan migrate
 ```
 
