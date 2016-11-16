@@ -29,7 +29,7 @@ Remember to properly define the user model in the file ``` config/auditing.php `
     $team = Team::find(1); 
     
     // Get all audits
-    $team->audits->with('user'); 
+    $team->audits()->with('user')->get(); 
 ```
 
 ### Getting custom message
