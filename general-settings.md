@@ -4,6 +4,7 @@ You can change the package's core behavior by changing the configuration file. A
 * Specify a different database connection for audit.
 * Specify the table name for the audit records. (When using DatabaseAuditor)
 * Decide whether audit should be performed or not when execution is done from the console.
+* Specify the default auditor used to audit the eloquent model.
     
 The configuration file can be found at `config/auditing.php`.
 
@@ -17,9 +18,13 @@ return [
     'connection' => null,
 
     // Table Name
-    'table' => 'logs',
+    'table' => 'audits',
 
     // Audit via console
     'audit_console' => false,
+    
+    // Default auditor 
+    'default_auditor' => 'database',
+    
 ];
 ```
