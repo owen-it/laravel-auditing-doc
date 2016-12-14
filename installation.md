@@ -1,50 +1,38 @@
-
 # Installation
 
-Laravel Auditing can be installed with [Composer](http://getcomposer.org/doc/00-intro.md). More details about this package in Composer can be found [here](https://packagist.org/packages/owen-it/laravel-auditing).
+The Laravel Auditing package should be installed via [Composer](http://getcomposer.org/doc/00-intro.md).
 
-Run the following command in your project to get the latest version of the package:
+To get the latest package version, run the following command from your project root:
 
-```
+```sh
 composer require owen-it/laravel-auditing
 ```
 
-You can use Laravel Auditing with **Laravel** as well as **Lumen**.
+> {tip} This package supports **Laravel** and **Lumen** from version 5.1 onwards.
 
-### With Laravel
-Open the file ```config/app.php``` and then add following service provider.
+# Configuration
+
+The Laravel and Lumen configurations vary slightly, so here are the instructions for each of the frameworks.
+
+## in Laravel
+Edit the `config/app.php` file and add the following line to register the service provider:
 
 ```php
 'providers' => [
     // ...
     OwenIt\Auditing\AuditingServiceProvider::class,
+    // ...
 ],
 ```
 
-> Note: This step is required for the publication of configuration files.
-
-After completing the step above, use the following command to publish configuration settings:
-
-```
-php artisan auditing:install
-```
-
-Finally, execute the migration to create the ```audits``` table in your database. This table is used to save audit the logs.
-
-```
-php artisan migrate
-```
-
-### With Lumen 
-> Note: Implementation with lumen is available from the 2.3.7 version of Laravel Auditing.
-
-Open the file ```bootstrap/app.php``` and then add following service provider. This step is required.
+## in Lumen
+Edit the `bootstrap/app.php` file and add the following line to register the service provider:
 
 ```php
 $app->register(OwenIt\Auditing\AuditingServiceProvider::class);
 ```
 
-You should also uncomment the $app->withFacades() and $app->withEloquent() call in your `bootstrap/app.php` file.
+You will also need to enable `Facades` and `Eloquent` in `bootstrap/app.php`:
 
 ```php
 // ...
@@ -56,10 +44,20 @@ $app->withEloquent();
 // ...
 ```
 
-Then execute these commands to create the ```logs``` table in your database. This table is used to save the audit logs.
+> Note: The service provider registration is mandatory in order for the configuration to be published!
 
+## Publishing
+After configuring your framework of choice, use the following command to publish the configuration settings:
+
+```sh
+php artisan auditing:install
 ```
+
+## Database
+Finally, execute the migrate `artisan` command to create the `audits` table in your database:
+
+```sh
 php artisan migrate
 ```
 
-Once Laravel Auditing is installed, you can [start using it](/docs/{{version}}/introduction) in your models.
+This is where the Eloquent model audits will be stored, by default.
