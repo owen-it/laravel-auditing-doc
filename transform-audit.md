@@ -1,29 +1,31 @@
-# Transform audit
+# Audit transformations
 
-
-Transform the audit data array before it is passed into the database.
-
+If needed, the `Audit` data can be transformed before being stored.
 
 ```php
+<?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Auditable;
-use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class User extends Model;
+class User extends Model implements AuditableContract;
 {
-  use Auditable;
+    use Auditable;
   
-  // ...
-  
-  public function transformAudit(array $data)
-  {
-      if(Arr::has('new.role_id')){
-          Arr::set($data, 'new.role',  $this->role->name)
-      }
-    
-      return $data;
-  }
-}
+    // ...
 
+    /**
+     * {@inheritdoc}
+     */
+    public function transformAudit(array $data)
+    {
+        if (Arr::has('new_values.role_id')) {
+            Arr::set($data, 'new_values.role_name',  $this->role->name);
+        }
+
+        return $data;
+    }
+}
 ```
