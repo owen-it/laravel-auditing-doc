@@ -5,6 +5,8 @@ If needed, the `Audit` data can be transformed before being stored.
 ```php
 <?php
 
+namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Auditable;
