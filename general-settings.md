@@ -53,4 +53,4 @@ return [
 ];
 ```
 
-> {tip} Resolving a `User` in the console may not work.
+> {note} Resolving a `User` in the console may not work.
