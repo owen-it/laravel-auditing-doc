@@ -20,10 +20,10 @@ array(8) {
   string(7) "updated"
   ["audit_url"]=>
   string(29) "http://example.com/my/profile"
+  ["audit_ip_address"]=>
+  string(9) "127.0.0.1"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
-  ["user_ip_address"]=>
-  string(9) "127.0.0.1"
   ["user_id"]=>
   string(1) "1"
   ["user_email"]=>
