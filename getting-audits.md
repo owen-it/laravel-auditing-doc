@@ -55,14 +55,7 @@ array(6) {
   ["audit_url"]=>
   string(29) "http://example.com/my/profile"
   ["audit_created_at"]=>
-  object(Carbon\Carbon)#357 (3) {
-    ["date"]=>
-    string(26) "2017-01-01 01:02:03.000000"
-    ["timezone_type"]=>
-    int(3)
-    ["timezone"]=>
-    string(3) "UTC"
-  }
+  string(19) "2017-01-01 01:02:03"
   ["user_ip_address"]=>
   string(9) "127.0.0.1"
   ["user_id"]=>
