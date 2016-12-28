@@ -27,7 +27,7 @@ array(8) {
   ["user_id"]=>
   string(1) "1"
   ["user_email"]=>
-  string(16) "user@example.com"
+  string(15) "bob@example.com"
   ["user_name"]=>
   string(3) "Bob"
 }
@@ -99,16 +99,16 @@ array(2) {
   ["name"]=>
   array(2) {
     ["new"]=>
-    string(11) "Jimmy Jones"
+    string(3) "Bob"
     ["old"]=>
-    string(11) "James Jones"
+    string(6) "Robert"
   }
   ["email"]=>
   array(2) {
     ["new"]=>
-    string(17) "jimmy@example.com"
+    string(15) "bob@example.com"
     ["old"]=>
-    string(17) "james@example.com"
+    string(18) "robert@example.com"
   }
 }
 ```
@@ -150,7 +150,7 @@ echo $audit->getModified(true);
 
 **Output:**
 ```json
-{"name":{"new":"Jimmy Jones","old":"James Jones"},"email":{"new":"jimmy@example.com","old":"james@example.com"}}"
+{"name":{"new":"Bob","old":"Robert"},"email":{"new":"bob@example.com","old":"robert@example.com"}}
 ```
 
 ## Full example

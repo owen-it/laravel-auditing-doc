@@ -54,10 +54,10 @@ array(6) {
   string(7) "updated"
   ["audit_url"]=>
   string(29) "http://example.com/my/profile"
+  ["audit_ip_address"]=>
+  string(9) "127.0.0.1"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
-  ["user_ip_address"]=>
-  string(9) "127.0.0.1"
   ["user_id"]=>
   string(1) "1"
 }
@@ -83,16 +83,16 @@ array(2) {
   ["name"]=>
   array(2) {
     ["new"]=>
-    string(11) "Jimmy Jones"
+    string(3) "Bob"
     ["old"]=>
-    string(11) "James Jones"
+    string(6) "Robert"
   }
   ["email"]=>
   array(2) {
     ["new"]=>
-    string(17) "jimmy@example.com"
+    string(15) "bob@example.com"
     ["old"]=>
-    string(17) "james@example.com"
+    string(18) "robert@example.com"
   }
 }
 ```
