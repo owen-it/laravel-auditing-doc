@@ -1,81 +1,75 @@
 # Events
 
-These events are fired during the audit process.
+During and after the audit process, two events are fired.
 
-## Reviewing Audit.
+## Auditing
 
-We may revise the model before it is audited and say whether it needs to or not be audited.
+This event is fired while the auditing is being processed. If needed, the `Audit` can be canceled by returning `false` from the event listener `handle()` method.
 
 
 ```php
 <?php
+
 namespace App\Listeners;
 
-use OwenIt\Auditing\Events\AuditReview;
+use OwenIt\Auditing\Events\Auditing;
 
-class ReviewInvoiceAudits
+class AuditingListener
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
+     * Create the Auditing event listener.
      */
     public function __construct()
     {
-        //
+        // ...
     }
 
     /**
-     * Handle the event.
+     * Handle the Auditing event.
      *
-     * @param  AuditReview $event
+     * @param \OwenIt\Auditing\Events\Auditing $event
      * @return void
      */
-    public function handle(AuditReview $event)
+    public function handle(Auditing $event)
     {
-        // Your implamentation 
+        // Implement logic
     }
 }
 ```
 
-## Audit Report
+## Audited
 
-In some cases it may be interesting to take immediate action depending on the audit report. Suppose that the company in question that we are auditing handles an X value for your purchases and sales, this value ranges from 0 to 10000. Our example will ensure that the company's manager is notified if any invoice is issued to the different value of the value that we specify.
+This other event, happens when the `Audit` has just been created.
+In case some immediate action needs to take place after the event, this is where it should go.
 
 ```php
+<?php
+
 namespace App\Listeners;
 
-use OwenIt\Auditing\Events\AuditReport;
+use OwenIt\Auditing\Events\Audited;
 
-class ReportInvoiceAudits
+class AuditedListener
 {
-
-    protected $company;
-    
     /**
-     * Create the event listener.
-     *
-     * @return void
+     * Create the Audited event listener.
      */
-    public function __construct(Company $company)
+    public function __construct()
     {
-        $this->company = $company;
+        // ...
     }
 
     /**
-     * Handle the event.
+     * Handle the Audited event.
      *
-     * @param AuditReport $event
+     * @param \OwenIt\Auditing\Events\Audited $event
      * @return void
      */
-    public function handle(AuditReport $event)
+    public function handle(Audited $event)
     {
-        if($event->auditable->value > 10000.00){
-            $this->company->notify()
-        }
+        // Implement logic
     }
 }
 ```
 
-
-> {tip} For more information about events visit the official documentation of [Laravel](https://laravel.com/docs/master/events)
+> {tip} For more information about events, check Laravel's official documentation about [events](https://laravel.com/docs/master/events)!

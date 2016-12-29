@@ -3,13 +3,13 @@
 - The Basics
     - [Introduction](/docs/{{version}}/introduction)
     - [Displaying Audits](/docs/{{version}}/getting-audits)
-- Auditors
-    - [Custom Auditors](/docs/{{version}}/auditors)
+- Auditor
+    - [Auditor](/docs/{{version}}/auditor)
+    - [Audit Drivers](/docs/{{version}}/audit-drivers)
 - Configuration 
     - [Package Options](/docs/{{version}}/general-settings)
-    - [Configuring Auditable Model](/docs/{{version}}/behavior-settings)  
-- Advanced Options
+    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
+- Advanced
     - [Transform Audit](/docs/{{version}}/transform-audit)
-    - [Custom Messages](/docs/{{version}}/customizing)
+    - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/events)
-    - [Audit Queues](/docs/{{version}}/queues)

@@ -1,21 +1,25 @@
 # Introduction
 
-This package can help you understand the activities in your eloquent models and provide information about possible discrepancies and anomalies that could indicate business concerns or suspected security breaches. 
+This package will help you understand changes in your Eloquent models, by providing information about possible discrepancies and anomalies that could indicate business concerns or suspect security breaches.
 
-Laravel Auditing allows you to record changes to an Eloquent model's set of data by simply adding its trait to your model. It also provides you with a simple interface to retrieve the data audited with a variety of features to display them in various ways. Laravel Auditing simply follows a basic audit process. It will identify changes in your models and appoint an auditor responsible for auditing.
+Laravel Auditing allows you to record changes of an Eloquent model's set of data by simply using a trait in your model.
+It also provides you with a simple interface to retrieve the audited data, making it straightforward to display it in various ways.
 
 If you have [installed the package](/docs/{{version}}/installation) already, lets start using it.
 
-Making a model auditable is simple. Use the trait `OwnerIt\Auditing\Auditable` in the model you wish to audit
+Setting a model for auditing is simple.
+Just `use` the `OwnerIt\Auditing\Auditable` trait in the model you wish to audit and `implement` the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 ```php
+<?php
 
 namespace App;
 
-use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model
+class User extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -23,4 +27,5 @@ class Invoice extends Model
 }
 ```
 
-By default, Laravel Auditing will use the Database Auditor to record the changes in the model. If needed, you can also [create your own auditors](/docs/{{version}}/auditors).
+By default, Laravel Auditing will use the Database Auditor to record the changes in the model.
+If needed, you can implement your own [Audit Driver](/docs/{{version}}/audit-drivers).
