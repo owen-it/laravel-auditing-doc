@@ -36,7 +36,7 @@ When using other authentication mechanisms like [Sentinel](https://github.com/ca
 
 ## Audit driver
 
-Being the only driver provided, the `Database` driver is set as the default.
+Being the only driver provided, the `Database` driver is set as default.
 
 The `Database` driver allows modifying:
 - The database connection.
