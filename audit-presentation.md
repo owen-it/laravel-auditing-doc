@@ -19,7 +19,7 @@ array(8) {
   ["audit_event"]=>
   string(7) "updated"
   ["audit_url"]=>
-  string(29) "http://example.com/my/profile"
+  string(26) "http://example.com/posts/1"
   ["audit_ip_address"]=>
   string(9) "127.0.0.1"
   ["audit_created_at"]=>
@@ -33,7 +33,7 @@ array(8) {
 }
 ```
 
-An easy way to display the metadata using translations would be:
+Displaying the metadata using translations for the `updated` event:
 
 ```php
 // ...
@@ -43,32 +43,34 @@ An easy way to display the metadata using translations would be:
 // ...
 ```
 
+Blade template to display a `Collection` of `Audit` models:
+
 ```html
 <ol>
     @forelse ($audits as $audit)
-        <li>
-            @lang('user.updated.metadata', $audit->getMetadata())
-            <ul>
-                ...
-            </ul>
-        </li>
+    <li>
+        @lang('post.updated.metadata', $audit->getMetadata())
+        <ul>
+            ...
+        </ul>
+    </li>
     @empty
     <p>No Audits available</p>
     @endforelse
 </ol>
 ```
 
-By passing `true` as an argument, the metadata will be converted to a **JSON** object,
+By passing `true`, the metadata will be converted to a **JSON** object instead,
 
 ```html
-<div id="invoice" data-metadata='{!! $log->getMetadata(true) !!}'>
+<div id="post" data-metadata='{!! $log->getMetadata(true) !!}'>
 </div>
 ```
 
-making it easy to be consumed from the **DOM** via JavaScript
+making it easy to work with the data in the **DOM** via JavaScript.
 
 ```js
-var metadata = JSON.parse(document.getElementById('invoice').getAttribute('data-metadata'));
+var metadata = JSON.parse(document.getElementById('post').getAttribute('data-metadata'));
 ```
 
 > {note} Depending on the `$visible` property of the `User` model, other `user_` attributes may be available.
@@ -76,7 +78,7 @@ var metadata = JSON.parse(document.getElementById('invoice').getAttribute('data-
 Lastly, the `Audit` properties can also be accessed directly from the model, as like any other `Eloquent` object:
 
 ```php
-@lang('user.updated.metadata', [
+@lang('post.updated.metadata', [
     'audit_created_at' => (string) $audit->created_at,
     'user_name'        => $audit->user->name,
     'audit_ip_address' => $audit->ip_address,
@@ -86,8 +88,8 @@ Lastly, the `Audit` properties can also be accessed directly from the model, as 
 
 ## Modified
 
-The `getModified()` method works in the same fashion as the `getMetadata()` one, meaning it will return an `array` with the `Auditable` model modified attributes by default.
-Each of the attributes will have the **old** and **new** values.
+The `getModified()` method works in the same fashion as its `metadata` counterpart, meaning it will return an `array` by default.
+Each of the modified `Auditable` model attributes will have the **old** and **new** values.
 
 ```php
 var_dump($audit->getModified());
@@ -96,24 +98,24 @@ var_dump($audit->getModified());
 **Output:**
 ```php
 array(2) {
-  ["name"]=>
+  ["title"]=>
   array(2) {
     ["new"]=>
-    string(3) "Bob"
+    string(28) "How To Audit Eloquent Models"
     ["old"]=>
-    string(6) "Robert"
+    string(19) "How to audit models"
   }
-  ["email"]=>
+  ["content"]=>
   array(2) {
     ["new"]=>
-    string(15) "bob@example.com"
+    string(62) "First, let's start by installing the laravel-auditing package."
     ["old"]=>
-    string(18) "robert@example.com"
+    string(16) "This is a draft."
   }
 }
 ```
 
-> {tip} The resolver will honor any **casts** or **mutators** that the `Auditable` model may have defined and apply them the corresponding attributes.
+> {tip} The resolver will honor any **mutators** or **casts** that the `Auditable` model may have defined.
 
 Displaying changes to the user, can be as simple as setting the translation file:
 
@@ -121,8 +123,8 @@ Displaying changes to the user, can be as simple as setting the translation file
 // ...
 'updated' => [
     'modified' => [
-        'name'  => 'The name has been modified from <strong>:old</strong> to <strong>:new</strong>',
-        'email' => 'The email address has been modified from <strong>:old</strong> to <strong>:new</strong>',
+        'title'   => 'The title has been modified from <strong>:old</strong> to <strong>:new</strong>',
+        'content' => 'The content has been modified from <strong>:old</strong> to <strong>:new</strong>',
     ],
 ],
 // ...
@@ -135,7 +137,7 @@ and adding the following markup to a view:
 <li>
     @foreach ($audit->getModified() as $attribute => $modified)
     <ul>
-        @lang('user.'.$audit->event.'.modified.'.$attribute, $modified)
+        @lang('post.'.$audit->event.'.modified.'.$attribute, $modified)
     </ul>
     @endforeach
 </li>
@@ -150,34 +152,36 @@ echo $audit->getModified(true);
 
 **Output:**
 ```json
-{"name":{"new":"Bob","old":"Robert"},"email":{"new":"bob@example.com","old":"robert@example.com"}}
+{"title":{"new":"How To Audit Eloquent Models","old":"How to audit models"},"content":{"new":"First, let's start by installing the laravel-auditing package.","old":"This is a draft."}}
 ```
 
 ## Full example
 
-Translation file
+Translation for the `updated` event:
+
 ```php
 // ...
 'updated' => [
     'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
     'modified' => [
-        'name'  => 'The name has been modified from <strong>:old</strong> to <strong>:new</strong>',
-        'email' => 'The email address has been modified from <strong>:old</strong> to <strong>:new</strong>',
+        'title'   => 'The title has been modified from <strong>:old</strong> to <strong>:new</strong>',
+        'content' => 'The content has been modified from <strong>:old</strong> to <strong>:new</strong>',
     ],
 ],
 // ...
 ```
 
-View file
+Blade template to display a `Collection` of `Audit` models:
+
 ```html
 <ol>
     @forelse ($audits as $audit)
     <li>
-        @lang('user.updated.metadata', $audit->getMetadata())
+        @lang('post.updated.metadata', $audit->getMetadata())
 
         @foreach ($audit->getModified() as $attribute => $modified)
         <ul>
-            @lang('user.'.$audit->event.'.modified.'.$attribute, $modified)
+            @lang('post.'.$audit->event.'.modified.'.$attribute, $modified)
         </ul>
         @endforeach
     </li>
