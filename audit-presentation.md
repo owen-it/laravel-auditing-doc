@@ -1,7 +1,7 @@
 # Audit presentation
 
-Keeping a history of changes for a model is only half of it. The next step is to display them to the user.
-To aid in such task, there are a few methods that the `Audit` model provides.
+With `Audit` records in the database, the next step is to display them to the user.
+To aid in such task, the `Audit` model provides a few methods.
 
 ## Metadata
 
