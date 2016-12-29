@@ -4,7 +4,7 @@ The auditing process can behave differently, depending on the values some `Audit
 
 ## Include attributes
 
-The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in the `array`, will be audited.
+The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in that `array`, will be audited.
 
 ```php
 <?php
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -25,8 +25,8 @@ class Invoice extends Model implements AuditableContract;
      * @var array
      */
     protected $auditInclude = [
-        'anImportantProperty',
-        'anotherPropertyWeWantToKeep',
+        'title',
+        'content',
     ];
 }
 ```
@@ -45,7 +45,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -55,8 +55,7 @@ class Invoice extends Model implements AuditableContract;
      * @var array
      */
     protected $auditExclude = [
-        'anUnneededProperty',
-        'anotherUnwantedProperty',
+        'category_id',
     ];
 }
 ```
@@ -77,7 +76,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -104,7 +103,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -131,7 +130,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
@@ -164,7 +163,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Invoice extends Model implements AuditableContract;
+class Post extends Model implements AuditableContract;
 {
     use Auditable;
 
