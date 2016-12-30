@@ -44,7 +44,7 @@ $app->withEloquent();
 // ...
 ```
 
-> Note: The service provider registration is mandatory in order for the configuration to be published!
+> {note} The service provider registration is mandatory in order for the configuration to be published!
 
 # Publishing
 After configuring your framework of choice, use the following command to publish the configuration settings:
