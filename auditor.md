@@ -1,10 +1,10 @@
 # Auditor
 
-The `Auditor` is the class responsible for executing audits and pruning old `Audit` records.
+The `Auditor` is the class responsible for auditing and pruning old `Audit` records.
 
 Usually, there's no need to use it directly, since the `AuditableObserver` takes care of things for us.
 
-Yet, should the need to call it manually arise, here are two ways of doing it.
+Yet, should the need to call it manually arise, here is how it could be done.
 
 ## Using the Auditor Facade
 
@@ -13,16 +13,19 @@ Yet, should the need to call it manually arise, here are two ways of doing it.
 
 namespace App\Http\Controllers;
 
-use OwenIt\Auditing\Contracts\Auditor;
+use App\Models\Post;
+use App\Http\Requests\Request;
 use OwenIt\Auditing\Facades\Auditor;
 
-class MyController extends Illuminate\Routing\Controller
+class PostController extends Illuminate\Routing\Controller
 {
-    public function updateModel(Auditable $model)
+    public function update(Request $request, Post $post)
     {
-        Auditor::execute($model);
+        $post->update($request->all());
 
-        Auditor::prune($model);
+        if ($audit = Auditor::execute($post)) {
+            Auditor::prune($post);
+        }
     }
 }
 ```
@@ -36,16 +39,21 @@ With the `AuditingServiceProvider` registered, we can use the IoC to resolve and
 
 namespace App\Http\Controllers;
 
-use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\Post;
+use App\Http\Requests\Request;
 use OwenIt\Auditing\Contracts\Auditor;
 
-class MyController extends Illuminate\Routing\Controller
+class PostController extends Illuminate\Routing\Controller
 {
-    public function updateModel(Auditable $model, Auditor $auditor)
+    public function update(Request $request, Post $post, Auditor $auditor)
     {
-        $auditor->execute($model);
+        $post->update($request->all());
 
-        $auditor->prune($model);
+        if ($audit = $auditor->execute($post)) {
+            $auditor->prune($post);
+        }
     }
 }
 ```
+
+> {note} Business logic shouldn't go into a Controller! These are just examples on how to manually call an `Auditor`. Also keep in mind that, unless you set the `Post` model `$auditableEvents` property to an empty `array`, you'll get duplicate `Audit` records.
