@@ -148,7 +148,7 @@ The above configuration, will keep the `10` latest `Audit` records, purging ever
 > {tip} By default, the value is set to `0` (zero), which stands for no limit.
 
 
-## Auditable types
+## Auditable events
 
 On a default configuration, the `created`, `updated`, `deleted` and `restored` Eloquent events will trigger an audit action.
 
