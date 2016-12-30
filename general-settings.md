@@ -1,6 +1,6 @@
 # General settings
 
-The default auditing behavior can be changed by overriding the settings in the configuration file, which can be found at `config/audit.php`.
+The default auditing behavior can be changed by overriding the settings in the configuration file, which can be found in `config/audit.php`.
 
 ## User Model & Resolver
 
