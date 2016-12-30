@@ -4,7 +4,7 @@ The auditing process can behave differently, depending on the values some `Audit
 
 ## Include attributes
 
-The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in that `array`, will be audited.
+The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in that `array` will be audited.
 
 ```php
 <?php
@@ -64,7 +64,7 @@ class Post extends Model implements AuditableContract;
 
 ## Strict audits
 
-By default, the `$hidden` and `$visible` values aren't considered when including/excluding audited properties.
+By default, the `$hidden` and `$visible` values of a model aren't considered when including/excluding audited properties.
 When set to `true`, the `$auditStrict` property will use the `$hidden` and `$visible` in the same fashion as the `$auditExclude` and `$auditInclude`, respectively.
 
 ```php
@@ -148,7 +148,7 @@ The above configuration, will keep the `10` latest `Audit` records, purging ever
 > {tip} By default, the value is set to `0` (zero), which stands for no limit.
 
 
-## Auditable types
+## Auditable events
 
 On a default configuration, the `created`, `updated`, `deleted` and `restored` Eloquent events will trigger an audit action.
 

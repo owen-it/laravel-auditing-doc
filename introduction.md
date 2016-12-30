@@ -27,5 +27,5 @@ class User extends Model implements AuditableContract;
 }
 ```
 
-By default, the `Database` audit driver is used to record changes to the model.
+By default, the `Database` audit driver is used when recording model attribute changes.
 If needed, you can also implement your own [Audit Driver](/docs/{{version}}/audit-drivers).
