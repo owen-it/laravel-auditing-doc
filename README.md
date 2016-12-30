@@ -4,7 +4,7 @@
     - [Installation](installation.md)
 - The Basics
     - [Introduction](introduction.md)
-    - [Displaying Audits](getting-audits.md)
+    - [Getting Audits](getting-audits.md)
 - Auditor
     - [Auditor](auditor.md)
     - [Audit Drivers](audit-drivers.md)

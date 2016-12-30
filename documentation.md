@@ -2,7 +2,7 @@
     - [Installation](/docs/{{version}}/installation)
 - The Basics
     - [Introduction](/docs/{{version}}/introduction)
-    - [Displaying Audits](/docs/{{version}}/getting-audits)
+    - [Getting Audits](/docs/{{version}}/getting-audits)
 - Auditor
     - [Auditor](/docs/{{version}}/auditor)
     - [Audit Drivers](/docs/{{version}}/audit-drivers)

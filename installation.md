@@ -14,7 +14,7 @@ composer require owen-it/laravel-auditing
 
 The Laravel and Lumen configurations vary slightly, so here are the instructions for each of the frameworks.
 
-## in Laravel
+## Laravel
 Edit the `config/app.php` file and add the following line to register the service provider:
 
 ```php
@@ -25,7 +25,7 @@ Edit the `config/app.php` file and add the following line to register the servic
 ],
 ```
 
-## in Lumen
+## Lumen
 Edit the `bootstrap/app.php` file and add the following line to register the service provider:
 
 ```php
@@ -46,14 +46,14 @@ $app->withEloquent();
 
 > Note: The service provider registration is mandatory in order for the configuration to be published!
 
-## Publishing
+# Publishing
 After configuring your framework of choice, use the following command to publish the configuration settings:
 
 ```sh
 php artisan auditing:install
 ```
 
-## Database
+# Database
 Finally, execute the migrate `artisan` command to create the `audits` table in your database:
 
 ```sh

@@ -1,9 +1,9 @@
 # Audit Drivers
 
 Drivers contain logic to perform audits to `Auditable` models.
-By default, a `Database` driver comes bundled with the Laravel Auditing package.
+Out of the box, the Laravel Auditing package includes a `Database` driver.
 
-Besides storing the attribute changes of a model, drivers also handle pruning, in case a threshold has been set.
+Besides storing attribute changes of a model, drivers also handle pruning when an audit threshold has been set.
 
 While for most use cases the `Database` driver should suffice, the need for something custom is also catered for.
 
@@ -57,4 +57,4 @@ class MyCustomDriver implements AuditDriver
 }
 ```
 
-> {tip} The `Database` driver is a good starting point to get ideas for a new custom driver.
+> {tip} The `Database` driver is a good starting point to get ideas for a new custom driver implementation.
