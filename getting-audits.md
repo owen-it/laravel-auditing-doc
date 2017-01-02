@@ -14,13 +14,13 @@ $post = Post::first();
 $all = $post->audits;
 
 // Get first Audit
-$first = $post->audits->first();
+$first = $post->audits()->first();
 
-// Get last audit
-$last = $post->audits->last();
+// Get last Audit
+$last = $post->audits()->last();
 
 // Get Audit by id
-$audit = $post->audits->find(4);
+$audit = $post->audits()->find(4);
 ```
 
 ## Getting audit logs with the associated User model
@@ -40,7 +40,7 @@ Retrieve an `array` with the `Audit` metadata.
 $post = Post::first();
 
 // Get latest Audit
-$audit = $post->audits->last();
+$audit = $post->audits()->last();
 
 var_dump($audit->getMetadata());
 ```
@@ -72,7 +72,7 @@ The data includes the **old** and **new** values for each attribute.
 $post = Post::first();
 
 // Get latest Audit
-$audit = $post->audits->last();
+$audit = $post->audits()->last();
 
 var_dump($audit->getModified());
 ```
