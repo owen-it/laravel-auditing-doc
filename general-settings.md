@@ -38,14 +38,31 @@ When using other authentication mechanisms like [Sentinel](https://github.com/ca
 
 Being the only driver provided, the `Database` driver is set as default.
 
+```php
+return [
+    'default' => 'database',
+];
+```
+
 The `Database` driver allows modifying:
 - The database connection.
 - The table where the `Audit` records are stored.
 
+```php
+return [
+    'drivers' => [
+        'database' => [
+            'table'      => 'audits',
+            'connection' => null,
+        ],
+    ],
+];
+```
+
 ## Console
 
 Eloquent events that are fired when running in the console, are not audited by default.
-To enable console auditing, set the `'console'` value to `true`.
+To enable console auditing, set the `console` value to `true`.
 
 ```php
 return [
