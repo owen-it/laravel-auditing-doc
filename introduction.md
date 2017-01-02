@@ -2,12 +2,12 @@
 
 This package will help you understand changes in your Eloquent models, by providing information about possible discrepancies and anomalies that could indicate business concerns or suspect activities.
 
-Laravel Auditing allows you to keep a record of model changes by simply using a trait.
-A simple interface is also provided to retrieve the audited data, making it straightforward to display it in various ways.
+Laravel Auditing allows you to keep a history of model changes by simply using a trait.
+Retrieving the audited data is straightforward, making it possible to display it in various ways.
 
-If you have already [installed](/docs/{{version}}/installation) the package, lets start using it.
+If the package is already [installed](/docs/{{version}}/installation), lets start using it!
 
-Setting up a model for auditing couldn't be easier.
+Setting up a model for auditing couldn't be simpler.
 Just _use_ the `OwnerIt\Auditing\Auditable` trait in the model you wish to audit and _implement_ the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 ```php
@@ -27,5 +27,5 @@ class User extends Model implements AuditableContract;
 }
 ```
 
-By default, the `Database` audit driver is used when recording model attribute changes.
+By default, the `Database` audit driver will be used.
 If needed, you can also implement your own [Audit Driver](/docs/{{version}}/audit-drivers).
