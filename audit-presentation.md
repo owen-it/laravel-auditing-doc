@@ -176,7 +176,7 @@ return [
 
 Blade template:
 
-```html
+```php
 <ul>
     @forelse ($audits as $audit)
     <li>
@@ -231,7 +231,7 @@ new Vue({
 
 Blade template with Vue data bindings:
 
-```html
+```php
 <div id="post" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
     <div v-model="metadata">
         <div class="row">
