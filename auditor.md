@@ -1,10 +1,10 @@
 # Auditor
 
-The `Auditor` is the class responsible for auditing and pruning old `Audit` records.
+The `Auditor` class is responsible for auditing and clearing `Audit` records.
 
 Usually, there's no need to use it directly, since the `AuditableObserver` takes care of things for us.
 
-Yet, should the need to call it manually arise, here is how it could be done.
+Yet, should the need to call it manually arise, here is how it _could_ be done.
 
 ## Using the Auditor Facade
 
@@ -56,4 +56,4 @@ class PostController extends Illuminate\Routing\Controller
 }
 ```
 
-> {note} Business logic shouldn't go into a Controller! These are just examples on how to manually call an `Auditor`. Also keep in mind that, unless you set the `Post` model `$auditableEvents` property to an empty `array`, you'll get duplicate `Audit` records.
+> {note} Business logic shouldn't go into a Controller! These are _just_ examples on how to manually call the `Auditor`. Also keep in mind that, unless you set the model's `$auditableEvents` property to an empty `array`, you'll get duplicate `Audit` records this way.

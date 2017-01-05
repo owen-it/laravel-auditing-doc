@@ -1,11 +1,12 @@
 # Audit presentation
 
-With `Audit` records in the database, the next step is to display them to the user.
-To aid in such task, the `Audit` model provides a few methods.
+The metadata and modified data can be accessed in several ways.
 
 ## Metadata
 
-By default, the `Audit` metadata can be fetched via the `getMetadata()` method as an `array`.
+The `Audit` data is referred as metadata, since it's information about the modified attributes of an `Auditable` model.
+
+Metadata can be fetched through the `getMetadata()` method as an `array`.
 
 ```php
 var_dump($audit->getMetadata());
@@ -33,63 +34,60 @@ array(8) {
 }
 ```
 
-Displaying the metadata using translations for the `updated` event:
+Passing `true` as the first argument will convert the data into its **JSON** representation.
 
 ```php
-// ...
-'updated' => [
-    'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
-],
-// ...
+echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
 ```
 
-Blade template to display a `Collection` of `Audit` models:
+> {tip} The second argument accepts a bitmask of options. For more info, read the [`json_encode()`](http://php.net/manual/en/function.json-encode.php) function documentation.
 
-```html
-<ol>
-    @forelse ($audits as $audit)
-    <li>
-        @lang('post.updated.metadata', $audit->getMetadata())
-        <ul>
-            ...
-        </ul>
-    </li>
-    @empty
-    <p>No Audits available</p>
-    @endforelse
-</ol>
+**Output:**
+```json
+{
+    "audit_id": "123b4567-4b94-41f1-9f12-fb1c7d1c9b3d",
+    "audit_event": "updated",
+    "audit_url": "http:\/\/example.com\/posts\/1",
+    "audit_ip_address": "127.0.0.1",
+    "audit_created_at": "2017-01-01 01:02:03",
+    "user_id": "1",
+    "user_email":"bob@example.com",
+    "user_name":"Bob"
+}
 ```
 
-By passing `true`, the metadata will be converted to a **JSON** object instead,
+> {note} Depending on the `$visible` property of the `User` model, other `user_` prefixed attributes may become available.
 
-```html
-<div id="post" data-metadata='{!! $log->getMetadata(true) !!}'>
-</div>
-```
-
-making it easy to work with the data in the **DOM** via JavaScript.
-
-```js
-var metadata = JSON.parse(document.getElementById('post').getAttribute('data-metadata'));
-```
-
-> {note} Depending on the `$visible` property of the `User` model, other `user_` attributes may be available.
-
-Lastly, the `Audit` properties can also be accessed directly from the model, as like any other `Eloquent` object:
+Lastly, the `Audit` attributes can also be accessed directly, like in any other `Eloquent` model:
 
 ```php
-@lang('post.updated.metadata', [
-    'audit_created_at' => (string) $audit->created_at,
-    'user_name'        => $audit->user->name,
-    'audit_ip_address' => $audit->ip_address,
-    'audit_url'        => $audit->url,
-])
+echo $audit->id.PHP_EOL;
+echo $audit->event.PHP_EOL;
+echo $audit->url.PHP_EOL;
+echo $audit->ip_address.PHP_EOL;
+echo $audit->created_at->toDateTimeString().PHP_EOL;
+echo $audit->user_id.PHP_EOL;
+echo $audit->user->email.PHP_EOL;
+echo $audit->user->name.PHP_EOL;
+```
+
+**Output:**
+```txt
+123b4567-4b94-41f1-9f12-fb1c7d1c9b3d
+updated
+http://example.com/posts/1
+127.0.0.1
+2017-01-01 01:02:03
+1
+bob@example.com
+Bob
 ```
 
 ## Modified
 
-The `getModified()` method works in the same fashion as its `metadata` counterpart, meaning it will return an `array` by default.
-Each of the modified `Auditable` model attributes will have the **old** and **new** values.
+The modified data is a set of `Auditable` model attributes that changed since the last event: `created`, `updated`, `deleted` and `restored`.
+
+Only modified attributes will make part of the `array`, which consists in the **old** and **new** values for each one.
 
 ```php
 var_dump($audit->getModified());
@@ -108,43 +106,14 @@ array(2) {
   ["content"]=>
   array(2) {
     ["new"]=>
-    string(62) "First, let's start by installing the laravel-auditing package."
+    string(56) "First, start by installing the laravel-auditing package."
     ["old"]=>
     string(16) "This is a draft."
   }
 }
 ```
 
-> {tip} The resolver will honor any **mutators** or **casts** that the `Auditable` model may have defined.
-
-Displaying changes to the user, can be as simple as setting the translation file:
-
-```php
-// ...
-'updated' => [
-    'modified' => [
-        'title'   => 'The title has been modified from <strong>:old</strong> to <strong>:new</strong>',
-        'content' => 'The content has been modified from <strong>:old</strong> to <strong>:new</strong>',
-    ],
-],
-// ...
-```
-
-and adding the following markup to a view:
-
-```html
-...
-<li>
-    @foreach ($audit->getModified() as $attribute => $modified)
-    <ul>
-        @lang('post.'.$audit->event.'.modified.'.$attribute, $modified)
-    </ul>
-    @endforeach
-</li>
-...
-```
-
-If needed, the data can be converted to **JSON** by passing `true` as an argument to the method.
+Like with the `getMetadata()` method, passing `true` as the first argument will convert the data into a **JSON** string.
 
 ```php
 echo $audit->getModified(true);
@@ -152,41 +121,168 @@ echo $audit->getModified(true);
 
 **Output:**
 ```json
-{"title":{"new":"How To Audit Eloquent Models","old":"How to audit models"},"content":{"new":"First, let's start by installing the laravel-auditing package.","old":"This is a draft."}}
+{"title":{"new":"How To Audit Eloquent Models","old":"How to audit models"},"content":{"new":"First, start by installing the laravel-auditing package.","old":"This is a draft."}}
 ```
 
-## Full example
+> {tip} The `getModified()` method honors all attribute **mutators** and/or **casts** defined in the `Auditable` model, transforming the data accordingly.
 
-Translation for the `updated` event:
+Direct access to the **old** and **new** values is also possible:
 
 ```php
-// ...
-'updated' => [
-    'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
-    'modified' => [
-        'title'   => 'The title has been modified from <strong>:old</strong> to <strong>:new</strong>',
-        'content' => 'The content has been modified from <strong>:old</strong> to <strong>:new</strong>',
-    ],
-],
-// ...
+var_dump($audit->old_values, $audit->new_values);
 ```
 
-Blade template to display a `Collection` of `Audit` models:
+**Output:**
+```php
+array(2) {
+  ["title"]=>
+  string(19) "How to audit models"
+  ["content"]=>
+  string(16) "This is a draft."
+}
+array(2) {
+  ["title"]=>
+  string(28) "How To Audit Eloquent Models"
+  ["content"]=>
+  string(56) "First, start by installing the laravel-auditing package."
+}
+```
 
-```html
-<ol>
+## Examples
+To better understand how the `Audit` methods can be used, here are some presentation examples.
+
+### Listing Audits
+Displaying a `Collection` of `Audit` models in an HTML unordered list.
+
+`Post` translation file:
+
+```php
+return [
+    // ...
+
+    'unavailable_audits' => 'No Post Audits available',
+
+    'updated'            => [
+        'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
+        'modified' => [
+            'title'   => 'The Title has been modified from <strong>:old</strong> to <strong>:new</strong>',
+            'content' => 'The Content has been modified from <strong>:old</strong> to <strong>:new</strong>',
+        ],
+    ],
+
+    // ...
+];
+```
+
+Blade template:
+
+```php
+<ul>
     @forelse ($audits as $audit)
     <li>
         @lang('post.updated.metadata', $audit->getMetadata())
 
         @foreach ($audit->getModified() as $attribute => $modified)
         <ul>
-            @lang('post.'.$audit->event.'.modified.'.$attribute, $modified)
+            <li>@lang('post.'.$audit->event.'.modified.'.$attribute, $modified)</li>
         </ul>
         @endforeach
     </li>
     @empty
-    <p>No Audits available</p>
+    <p>@lang('post.unavailable_audits')</p>
     @endforelse
-</ol>
+</ul>
+```
+
+> {tip} The use of pagination should be taken into account when dealing with large `Audit` collections.
+
+### Displaying a single Audit
+Present a single `Audit` using a _diff like_ view.
+
+Common translation file:
+
+```php
+return [
+    // ...
+
+    'attribute'  => 'Attribute',
+    'event'      => 'Event',
+    'id'         => 'ID',
+    'ip_address' => 'IP Address',
+    'new'        => 'New',
+    'old'        => 'Old',
+    'url'        => 'URL',
+    'user'       => 'User',
+
+    // ...
+];
+```
+
+Vue app to set the `data`:
+```javascript
+new Vue({
+    el: '.container',
+    data: {
+        metadata: JSON.parse(document.getElementById('post').getAttribute('data-metadata')),
+        modified: JSON.parse(document.getElementById('post').getAttribute('data-modified'))
+    }
+});
+```
+
+Blade template with Vue data bindings:
+
+```php
+<div id="post" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
+    <div v-model="metadata">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.id')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_id }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.event')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_event }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.user')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.user_name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.ip_address')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_ip_address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.url')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_url }}</div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@lang('common.attribute')</th>
+                <th>@lang('common.old')</th>
+                <th>@lang('common.new')</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(value, attribute) in modified">
+                <td><strong>@{{ attribute }}</strong></td>
+                <td class="danger">@{{ value.old }}</td>
+                <td class="success">@{{ value.new }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 ```

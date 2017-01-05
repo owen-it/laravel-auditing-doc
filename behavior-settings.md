@@ -65,7 +65,7 @@ class Post extends Model implements AuditableContract;
 ## Strict audits
 
 By default, the `$hidden` and `$visible` values of a model aren't considered when including/excluding audited properties.
-When set to `true`, the `$auditStrict` property will use the `$hidden` and `$visible` in the same fashion as the `$auditExclude` and `$auditInclude`, respectively.
+When the `$auditStrict` property is set to `true`,  the `$hidden` and `$visible` will be used in the same fashion as the `$auditExclude` and `$auditInclude`, respectively.
 
 ```php
 <?php
@@ -118,8 +118,8 @@ class Post extends Model implements AuditableContract;
 
 ## Number of Audit records
 
-Out of the box, the number of `Audit` records that are kept for an `Auditable` model is unlimited.
-To impose a limit, set the `$auditThreshold` property to a positive `int` of your choice.
+Out of the box, there isn't a limit for the number of `Audit` records kept for an `Auditable` model.
+To keep records to a minimum, set the `$auditThreshold` property to a positive `int` of your choice.
 
 ```php
 <?php
@@ -143,9 +143,9 @@ class Post extends Model implements AuditableContract;
 }
 ```
 
-The above configuration, will keep the `10` latest `Audit` records, purging everything else.
+The above configuration, will only keep the `10` latest `Audit` records.
 
-> {tip} By default, the value is set to `0` (zero), which stands for no limit.
+> {tip} By default, the `$auditThreshold` value is set to `0` (zero), which stands for no limit.
 
 
 ## Auditable events

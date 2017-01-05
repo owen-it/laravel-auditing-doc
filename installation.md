@@ -53,6 +53,10 @@ After configuring your framework of choice, use the following command to publish
 php artisan auditing:install
 ```
 
+This will create the `config/audit.php` configuration file.
+
+Read more about it in the [Package Options](general-settings.md).
+
 # Database
 Finally, execute the migrate `artisan` command to create the `audits` table in your database:
 
