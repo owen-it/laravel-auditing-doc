@@ -16,7 +16,7 @@ var_dump($audit->getMetadata());
 ```php
 array(8) {
   ["audit_id"]=>
-  string(36) "123b4567-4b94-41f1-9f12-fb1c7d1c9b3d"
+  string(1) "1"
   ["audit_event"]=>
   string(7) "updated"
   ["audit_url"]=>
@@ -40,12 +40,12 @@ Passing `true` as the first argument will convert the data into its **JSON** rep
 echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
 ```
 
-> {tip} The second argument accepts a bitmask of options. For more info, read the [`json_encode()`](http://php.net/manual/en/function.json-encode.php) function documentation.
+> {tip} The second argument accepts a bitmask of options. To know more, read the [`json_encode()`](http://php.net/manual/en/function.json-encode.php) function documentation.
 
 **Output:**
 ```json
 {
-    "audit_id": "123b4567-4b94-41f1-9f12-fb1c7d1c9b3d",
+    "audit_id": "1",
     "audit_event": "updated",
     "audit_url": "http:\/\/example.com\/posts\/1",
     "audit_ip_address": "127.0.0.1",
@@ -73,7 +73,7 @@ echo $audit->user->name.PHP_EOL;
 
 **Output:**
 ```txt
-123b4567-4b94-41f1-9f12-fb1c7d1c9b3d
+1
 updated
 http://example.com/posts/1
 127.0.0.1
