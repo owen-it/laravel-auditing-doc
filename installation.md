@@ -8,7 +8,7 @@ To get the latest package version, run the following command from your project r
 composer require owen-it/laravel-auditing
 ```
 
-> {tip} This package supports **Laravel** and **Lumen** from version 5.1 onwards.
+> {tip} This package supports **Laravel** and **Lumen** from version 5.2 onwards.
 
 # Configuration
 
