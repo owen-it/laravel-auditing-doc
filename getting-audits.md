@@ -49,7 +49,7 @@ var_dump($audit->getMetadata());
 ```php
 array(6) {
   ["audit_id"]=>
-  string(36) "123b4567-4b94-41f1-9f12-fb1c7d1c9b3d"
+  string(1) "1"
   ["audit_event"]=>
   string(7) "updated"
   ["audit_url"]=>
@@ -96,3 +96,5 @@ array(2) {
   }
 }
 ```
+
+> {note} By default, `Audit` records will be sorted by `created_at` in descending order.

@@ -8,7 +8,7 @@ To get the latest package version, run the following command from your project r
 composer require owen-it/laravel-auditing
 ```
 
-> {tip} This package supports **Laravel** and **Lumen** from version 5.1 onwards.
+> {tip} This package supports **Laravel** and **Lumen** from version 5.2 onwards.
 
 # Configuration
 
@@ -42,6 +42,20 @@ $app->withFacades();
 $app->withEloquent();
 
 // ...
+```
+
+The `vendor:publish` command doesn't exist in Lumen, so an extra package must be installed:
+
+```sh
+composer require laravelista/lumen-vendor-publish
+```
+
+After the package is installed, the command must be registered in `app/Console/Kernel.php`:
+
+```php
+protected $commands = [
+    \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
+];
 ```
 
 > {note} The service provider registration is mandatory in order for the configuration to be published!
