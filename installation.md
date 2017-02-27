@@ -44,6 +44,20 @@ $app->withEloquent();
 // ...
 ```
 
+The `vendor:publish` command doesn't exist in Lumen, so an extra package must be installed:
+
+```sh
+composer require laravelista/lumen-vendor-publish
+```
+
+After the package is installed, the command must be registered in `app/Console/Kernel.php`:
+
+```php
+protected $commands = [
+    \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
+];
+```
+
 > {note} The service provider registration is mandatory in order for the configuration to be published!
 
 # Publishing
