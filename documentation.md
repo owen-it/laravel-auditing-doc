@@ -13,3 +13,5 @@
     - [Transform Audit](/docs/{{version}}/transform-audit)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/events)
+- Help
+    - [Troubleshooting](troubleshooting.md)

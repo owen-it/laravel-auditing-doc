@@ -15,6 +15,8 @@
     - [Transform Audit](transform-audit.md)
     - [Audit Presentation](audit-presentation.md)
     - [Audit Events](events.md)
+- Help
+    - [Troubleshooting](troubleshooting.md)
 
 ## Contributing
 
