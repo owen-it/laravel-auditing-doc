@@ -14,4 +14,4 @@
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/events)
 - Help
-    - [Troubleshooting](troubleshooting)
+    - [Troubleshooting](/docs/{{version}}/troubleshooting)
