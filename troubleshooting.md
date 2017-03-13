@@ -4,16 +4,16 @@ This is a list of common problems and their respective solutions.
 ## Auditing not working
 You followed the documentation to the letter and yet, the package doesn't work?
 
-So you know, this package relies on Eloquent [events](https://laravel.com/docs/5.4/eloquent#events) and if they don't fire, the package has no way to know something happened.
+This package relies on Eloquent [events](https://laravel.com/docs/5.4/eloquent#events) and if they don't fire, there's no way to know something happened.
 
-The most common mistake is when someone tries to `update` or `delete` using a `Builder` instance, rather than an Eloquent model.
+The most common mistake is doing an `update` or `delete` using a `Builder` instance, rather than an Eloquent `Model`.
 
 Usually, something like this happens:
 ```php
 Post::where('id', $id)->update($data);
 ```
 
-Instead, you should do:
+Instead, what should be done is:
 ```php
 Post::find('id', $id)->update($data);
 ```
@@ -33,10 +33,16 @@ $table->foreign('user_id')
     ->onUpdate('cascade');
 ```
 
-Just make sure the `id` column type of the `users` table matches the `user_id` column type in `audits`.
+> {tip} Make sure the `id` column type of the `users` table matches the `user_id` column type in `audits`.
 
 ### URL
-Sometimes, the audited URLs are longer than 255 characters, so the `url` column must be changed from `VARCHAR(255)` to `TEXT`.
+Sometimes, the audited URLs are longer than 255 characters, so the `url` column must be updated from `VARCHAR(255)`
+
+```php
+$table->string('url')->nullable();
+```
+
+to `TEXT`
 
 ```php
 $table->text('url')->nullable();
