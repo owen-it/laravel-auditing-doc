@@ -16,6 +16,7 @@
     - [Audit Presentation](audit-presentation.md)
     - [Audit Events](events.md)
 - Help
+    - [Upgrading](upgrading.md)
     - [Troubleshooting](troubleshooting.md)
 
 ## Contributing
