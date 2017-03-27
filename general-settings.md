@@ -18,7 +18,10 @@ return [
 ```
 
 ### Resolver
-A resolver is a `callable` that returns the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
+A resolver can be a `callable` or a [FQCN](http://php.net/manual/en/language.namespaces.rules.php) implementing `OwenIt\Auditing\Contracts\UserResolver`.
+
+#### Callable
+The `callable` should return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
 
 The default resolver uses the Laravel `Auth`.
 
@@ -26,13 +29,54 @@ The default resolver uses the Laravel `Auth`.
 return [
     'user' = [
         'resolver' => function () {
-            return auth()->check() ? auth()->user()->getAuthIdentifier() : null;
+            return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
         },
     ],
 ];
 ```
 
-When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), change the resolver accordingly.
+#### Fully Qualified Class Name
+
+Using a FQCN is advantageous over a `callable` when the configuration needs to be cached, since anonymous functions cannot be cached.
+The class implementing `OwenIt\Auditing\Contracts\UserResolver` only needs a `resolveId()` method with the same functionality as the `callable` above.
+
+Configuration:
+```php
+return [
+    'user' = [
+        'resolver' => App\User::class,
+    ],
+];
+```
+
+Implementation:
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\UserResolver;
+
+class User extends Model implements AuditableContract, UserResolver
+{
+    use Auditable;
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function resolveId()
+    {
+        return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
+    }
+
+    // ...
+}
+```
+
+> {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), change the resolver accordingly.
 
 ## Audit driver
 
