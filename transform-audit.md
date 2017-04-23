@@ -23,7 +23,7 @@ class User extends Model implements AuditableContract;
      */
     public function transformAudit(array $data)
     {
-        if (Arr::has('new_values.role_id')) {
+        if (Arr::has($data, 'new_values.role_id')) {
             Arr::set($data, 'new_values.role_name',  $this->role->name);
         }
 
