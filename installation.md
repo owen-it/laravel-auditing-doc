@@ -69,7 +69,7 @@ php artisan auditing:install
 
 This will create the `config/audit.php` configuration file.
 
-Read more about it in the [Package Options](general-settings.md).
+Read more about it in the [Package Options](general-settings).
 
 # Database
 Finally, execute the migrate `artisan` command to create the `audits` table in your database:
