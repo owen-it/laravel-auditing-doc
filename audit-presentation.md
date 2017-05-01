@@ -14,7 +14,7 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(8) {
+array(9) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
@@ -23,6 +23,8 @@ array(8) {
   string(26) "http://example.com/posts/1"
   ["audit_ip_address"]=>
   string(9) "127.0.0.1"
+  ["audit_user_agent"]=>
+  string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
@@ -49,6 +51,7 @@ echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
     "audit_event": "updated",
     "audit_url": "http:\/\/example.com\/posts\/1",
     "audit_ip_address": "127.0.0.1",
+    "audit_user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0",
     "audit_created_at": "2017-01-01 01:02:03",
     "user_id": "1",
     "user_email":"bob@example.com",
@@ -65,6 +68,7 @@ echo $audit->id.PHP_EOL;
 echo $audit->event.PHP_EOL;
 echo $audit->url.PHP_EOL;
 echo $audit->ip_address.PHP_EOL;
+echo $audit->user_agent.PHP_EOL;
 echo $audit->created_at->toDateTimeString().PHP_EOL;
 echo $audit->user_id.PHP_EOL;
 echo $audit->user->email.PHP_EOL;
@@ -77,6 +81,7 @@ echo $audit->user->name.PHP_EOL;
 updated
 http://example.com/posts/1
 127.0.0.1
+Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0
 2017-01-01 01:02:03
 1
 bob@example.com
@@ -209,6 +214,7 @@ return [
     'event'      => 'Event',
     'id'         => 'ID',
     'ip_address' => 'IP Address',
+    'user_agent' => 'User Agent',
     'new'        => 'New',
     'old'        => 'Old',
     'url'        => 'URL',
@@ -257,6 +263,12 @@ Blade template with Vue data bindings:
                 <strong>@lang('common.ip_address')</strong>
             </div>
             <div class="col-md-9">@{{ metadata.audit_ip_address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.user_agent')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_user_agent }}</div>
         </div>
         <div class="row">
             <div class="col-md-3">
