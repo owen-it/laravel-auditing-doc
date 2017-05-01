@@ -47,7 +47,3 @@ to `TEXT`
 ```php
 $table->text('url')->nullable();
 ```
-
-## [MySQL] QueryException: Syntax error or access violation
-This error happens when the connection configuration has the `strict` value set to `true`.
-To fix the problem, change the value to `false`.
