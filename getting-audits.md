@@ -99,4 +99,4 @@ array(2) {
 }
 ```
 
-> {note} By default, `Audit` records will be sorted by `created_at` in descending order.
+> {note} By default, `Audit` records will be sorted by `created_at` in ascending order (oldest to newest).

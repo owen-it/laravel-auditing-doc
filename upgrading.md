@@ -1,12 +1,57 @@
 # Upgrading
-This document provides the necessary steps that need to be performed when upgrading from the previous version (`3.1`).
+This document provides the necessary steps that need to be performed when upgrading from previous versions.
 
-## Model
+## Upgrading from version [4.0.0, 4.0.3] to version >= 4.0.4
+### Table
+Version `4.0.4` introduced a new `user_agent` column to the `audits` table.
+Use the following migration to convert a _default_ [`4.0.0`, `4.0.3`] table structure into the `4.0.4` version:
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class UpdateAuditsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::connection(config('audit.drivers.database.connection'))
+            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+                $table->string('user_agent')->nullable();
+            });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::connection(config('audit.drivers.database.connection'))
+            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+                $table->dropColumn('user_agent');
+            });
+    }
+}
+```
+
+> {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
+
+## Upgrading from version >= 3.1.0 to version >= 4.0.4
+### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Introduction](introduction).
 
-## Table
+### Table
 The `audits` table structure was slightly modified.
 Use the following migration to convert a _default_ `3.1` table structure into the `4.0` version:
 
@@ -34,6 +79,7 @@ class UpdateAuditsTable extends Migration
                 $table->renameColumn('new', 'new_values');
                 $table->unsignedInteger('user_id')->nullable()->change();
                 $table->renameColumn('route', 'url');
+                $table->string('user_agent')->nullable();
             });
     }
 
@@ -52,6 +98,7 @@ class UpdateAuditsTable extends Migration
                 $table->renameColumn('new_values', 'new');
                 $table->string('user_id')->nullable()->change();
                 $table->renameColumn('url', 'route');
+                $table->dropColumn('user_agent');
             });
     }
 }
@@ -59,17 +106,17 @@ class UpdateAuditsTable extends Migration
 
 > {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
 
-## Configuration
+### Configuration
 
 The configuration file has been renamed from `auditing.php` to `audit.php`.
 Its `array` structure has also been updated, with options having been **added**, **modified** and **removed**.
 
 > {tip} When in doubt, check the bundled configuration file.
 
-## Queues
+### Queues
 Audit queue support has been removed.
 
-## Custom message and fields
+### Custom message and fields
 `Auditable` custom message and fields are no longer necessary.
 Models should be updated to reflect this change, by removing the `$auditCustomMessage` and `$auditCustomFields` attributes.
 
