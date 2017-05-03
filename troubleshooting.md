@@ -47,3 +47,11 @@ to `TEXT`
 ```php
 $table->text('url')->nullable();
 ```
+
+### Error: Call to undefined method Closure::__set_state()
+This error happens when Laravel is set to cache the configuration.
+
+By default, the `User` resolver is a `Closure` in the `config/audits.php` file, which causes this issue.
+To overcome this, the resolver should be set as a FQCN instead.
+
+Read the resolver [documentation](/docs/{{version}}/general-settings) for more information.
