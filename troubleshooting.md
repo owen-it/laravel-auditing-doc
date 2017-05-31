@@ -55,3 +55,25 @@ By default, the `User` resolver is a `Closure` in the `config/audits.php` file, 
 To overcome this, the resolver should be set as a FQCN instead.
 
 Read the resolver [documentation](/docs/{{version}}/general-settings) for more information.
+
+### Attributes are considered modified, when they're not
+
+When updating a model with **BOOLEAN** or **DATE** attributes, the following happens:
+
+In the Eloquent `$attributes` attributes `array`
+- `true` stays `true`
+- `false` stays `false`
+- `YYYY-MM-DD` stays `YYYY-MM-DD`
+
+In the Eloquent `$original` attributes `array`
+- `true` becomes `1`
+- `false` becomes `0`
+- `YYYY-MM-DD` becomes `YYYY-MM-DD 00:00:00`
+
+This makes the `getDirty()` and `isDirty()` methods to consider wrongful attribute changes.
+
+According to a [maintainer](https://github.com/laravel/framework/issues/16823#issuecomment-267573840), this is an **expected behaviour**.
+
+As a workaround, consider passing `1` and `0`, instead of `true` and `false`. For date values, append ` 00:00:00`.
+
+At the time of writing, [this](https://github.com/laravel/internals/issues/349) is the only open issue about ths subject.
