@@ -33,7 +33,38 @@ $table->foreign('user_id')
     ->onUpdate('cascade');
 ```
 
-> {tip} Make sure the `id` column type of the `users` table matches the `user_id` column type in `audits`.
+### UUID
+Some developers prefer to use a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) instead of an auto-increment id in their tables.
+If that's your case, make sure you update the `audits` migration like so:
+
+For the `User`, change from
+```php
+$table->unsignedInteger('user_id')->nullable();
+```
+
+to
+
+```php
+$table->uuid('user_id')->nullable();
+```
+
+For the `Auditable`, change from
+```php
+$table->morphs('auditable');
+```
+
+to
+
+```php
+$this->uuid('auditable_id');
+$this->string('auditable_type');
+$this->index([
+    'auditable_id', 
+    'auditable_type',
+]);
+```
+
+> {note} Make sure the `user_id`/`auditable_id` column types match the ones used in the other tables!
 
 ### URL
 Sometimes, the audited URLs are longer than 255 characters, so the `url` column must be updated from `VARCHAR(255)`
