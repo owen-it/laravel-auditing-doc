@@ -64,7 +64,7 @@ $this->index([
 ]);
 ```
 
-> {note} Make sure the `user_id`/`auditable_id` column types match the ones used in the other tables!
+> {note} Make sure the `user_id` and/or `auditable_id` column types match the ones used in the other tables!
 
 ### URL
 Sometimes, the audited URLs are longer than 255 characters, so the `url` column must be updated from `VARCHAR(255)`
