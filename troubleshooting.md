@@ -76,4 +76,4 @@ According to a [maintainer](https://github.com/laravel/framework/issues/16823#is
 
 As a workaround, consider passing `1` and `0`, instead of `true` and `false`. For date values, append ` 00:00:00`.
 
-At the time of writing, [this](https://github.com/laravel/internals/issues/349) is the only open issue about ths subject.
+At the time of writing, [this](https://github.com/laravel/internals/issues/349) is the only open issue about this subject.
