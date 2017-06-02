@@ -15,7 +15,7 @@ Post::where('id', $id)->update($data);
 
 When in fact, it should be:
 ```php
-Post::find('id', $id)->update($data);
+Post::find($id)->update($data);
 ```
 
 ## The default table schema doesn't suit me
