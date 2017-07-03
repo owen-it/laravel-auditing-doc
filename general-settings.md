@@ -2,6 +2,19 @@
 
 The default auditing behavior can be changed by overriding the settings in the configuration file, which can be found in `config/audit.php`.
 
+## Audit implementation
+From version **4.1**, the audit implementation can be configured.
+
+By default, the package will use `OwenIt\Auditing\Models\Audit`.
+
+```
+return [
+    'implementation' => OwenIt\Auditing\Models\Audit::class,
+];
+```
+
+Read more about it in the [Audit Implementation](audit-implementation) section.
+
 ## User Keys, Model & Resolver
 
 Specify the `User` keys, model and resolver.
