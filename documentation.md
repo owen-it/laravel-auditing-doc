@@ -10,9 +10,10 @@
     - [Package Options](/docs/{{version}}/general-settings)
     - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
 - Advanced
-    - [Transform Audit](/docs/{{version}}/transform-audit)
+    - [Audit Implementation](/docs/{{version}}/audit-implementation)
+    - [Audit Transformation](/docs/{{version}}/audit-transformation)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
-    - [Audit Events](/docs/{{version}}/events)
+    - [Audit Events](/docs/{{version}}/audit-events)
 - Help
     - [Upgrading](/docs/{{version}}/upgrading)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)

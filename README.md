@@ -12,9 +12,10 @@
     - [Package Options](general-settings.md)
     - [Auditable Model Configuration](behavior-settings.md)
 - Advanced
-    - [Transform Audit](transform-audit.md)
+    - [Audit Implementation](audit-implementation.md)
+    - [Audit Transformation](audit-transformation.md)
     - [Audit Presentation](audit-presentation.md)
-    - [Audit Events](events.md)
+    - [Audit Events](audit-events.md)
 - Help
     - [Upgrading](upgrading.md)
     - [Troubleshooting](troubleshooting.md)
