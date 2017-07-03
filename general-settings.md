@@ -2,9 +2,24 @@
 
 The default auditing behavior can be changed by overriding the settings in the configuration file, which can be found in `config/audit.php`.
 
-## User Model & Resolver
+## User Keys, Model & Resolver
 
-Specify the `User` model and resolver `callable`.
+Specify the `User` keys, model and resolver.
+
+### Primary and Foreign Keys
+Sometimes, for whatever reason (legacy database, etc), a different key needs to be used.
+The default primary and foreign key values are `id` and `user_id`, respectively.
+
+```php
+return [
+    'user' = [
+        'primary_key' => 'id,
+        'foreign_key' => 'user_id,
+    ],
+];
+```
+
+> {note} The `Audit` **resolveData()** method will still use `user_id` and other `user_` prefixed keys for any `User` data, regardless of the foreign key.
 
 ### Model
 The model value should be set to the fully qualified `User` class name the application is using.
