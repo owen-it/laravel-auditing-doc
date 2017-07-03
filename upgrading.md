@@ -1,16 +1,17 @@
 # Upgrading
 This document provides the necessary steps that need to be performed when upgrading from previous versions.
 
-## Upgrading from version [4.0.0, 4.0.3] to version >= 4.0.4
+## Upgrading from version 4.0.4+ to version >= 4.1.0
 ### Table
-Version `4.0.4` introduced a new `user_agent` column to the `audits` table.
-Use the following migration to convert a _default_ [`4.0.0`, `4.0.3`] table structure into the `4.0.4` version:
+Version `4.1.0` introduced an `updated_at` column to the `audits` table.
+Use the following migration to convert a _default_ `4.0.4+` table structure into the `4.1.0` version:
 
 ```php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 class UpdateAuditsTable extends Migration
@@ -22,8 +23,53 @@ class UpdateAuditsTable extends Migration
      */
     public function up()
     {
-        Schema::connection(config('audit.drivers.database.connection'))
-            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
+                $table->timestamp('updated_at')->nullable();
+            });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
+                $table->dropColumn('updated_at');
+            });
+    }
+}
+```
+
+> {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
+
+## Upgrading from version [4.0.0, 4.0.3] to version >= 4.0.4
+### Table
+Version `4.0.4` introduced a new `user_agent` column to the `audits` table.
+Use the following migration to convert a _default_ [`4.0.0`, `4.0.3`] table structure into the `4.0.4` version:
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
+
+class UpdateAuditsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
                 $table->string('user_agent')->nullable();
             });
     }
@@ -35,8 +81,8 @@ class UpdateAuditsTable extends Migration
      */
     public function down()
     {
-        Schema::connection(config('audit.drivers.database.connection'))
-            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
                 $table->dropColumn('user_agent');
             });
     }
@@ -60,6 +106,7 @@ Use the following migration to convert a _default_ `3.1` table structure into th
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 class UpdateAuditsTable extends Migration
@@ -71,8 +118,8 @@ class UpdateAuditsTable extends Migration
      */
     public function up()
     {
-        Schema::connection(config('audit.drivers.database.connection'))
-            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
                 $table->increments('id')->change();
                 $table->renameColumn('type', 'event');
                 $table->renameColumn('old', 'old_values');
@@ -90,8 +137,8 @@ class UpdateAuditsTable extends Migration
      */
     public function down()
     {
-        Schema::connection(config('audit.drivers.database.connection'))
-            ->table(config('audit.drivers.database.table'), function (Blueprint $table) {
+        Schema::connection(Config::get('audit.drivers.database.connection'))
+            ->table(Config::get('audit.drivers.database.table'), function (Blueprint $table) {
                 $table->string('id')->change();
                 $table->renameColumn('event', 'type');
                 $table->renameColumn('old_values', 'old');
