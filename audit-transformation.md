@@ -1,4 +1,4 @@
-# Audit transformations
+# Audit transformation
 
 If needed, the `Audit` data can be transformed before being stored.
 
