@@ -25,7 +25,7 @@ Edit the `config/app.php` file and add the following line to register the servic
 ],
 ```
 
-> {tip} This part of the setup can be skipped in favour of the Auto-Discovery feature, if you're using version **5.5** or higher.
+> {tip} If you're on version **5.5** or higher, you can skip this part of the setup in favour of the Auto-Discovery feature.
 
 ## Lumen
 Edit the `bootstrap/app.php` file and add the following line to register the service provider:
