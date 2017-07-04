@@ -1,9 +1,16 @@
 # Audit Implementation
-From version **4.1** onward, an `Audit` class can extend other implementations besides `Illuminate\Database\Eloquent\Model`.
+Starting from version **4.1**, support for custom `Audit` models was added.
+This lets the user extend implementations other than the traditional `Illuminate\Database\Eloquent\Model`.
 
-## MongoDB auditing
+> {tip} `Audit` models must implement the `OwenIt\Auditing\Contracts\Audit` interface!
 
-In the following example, the `Audit` class implementation extends `Jenssegers\Mongodb\Eloquent\Model`.
+## MongoDB Audit model example
+Start by installing the [jenssegers/mongodb](https://github.com/jenssegers/laravel-mongodb) package:
+```sh
+composer require jenssegers/mongodb
+```
+
+Implementation:
 
 ```php
 <?php
@@ -32,12 +39,14 @@ class Audit extends Model implements AuditContract
 }
 ```
 
-## Defining which Audit implementation to use
+> {tip} The bulk of the `Audit` logic is in the `OwenIt\Auditing\Audit` trait.
 
-In order to use an `Audit` model, the FQCN must be set in the `config/audit.php` configuration.
-If the value is missing from the configuration, the package will default to `OwenIt\Auditing\Models\Audit`.
+## Defining the Audit model
 
-Example, of how to set the previous `Audit` implementation for MongoDB:
+In the `config/audit.php` file, set the `implementation` value as the [FQCN](http://php.net/manual/en/language.namespaces.rules.php) of the `Audit` model you wish to use.
+If the value is missing from the configuration, the `audits()` relation method of the `Auditing` trait will default to `OwenIt\Auditing\Models\Audit`.
+
+Here's how to set the MongoDB `Audit` implementation above:
 ```
 return [
     // ...
