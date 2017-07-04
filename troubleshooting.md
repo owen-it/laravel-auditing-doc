@@ -21,7 +21,7 @@ Post::find($id)->update($data);
 ## The default table schema doesn't suit me
 While the package comes with a pretty standard migration file which should cover most use cases, that does not mean it cannot be tweaked.
 
-### Foreign key for the User ID
+### User ID foreign key relation
 Some developers like to have the relation between tables properly set, by enforcing foreign keys.
 At the end of the **up()** method, add the following:
 
@@ -32,6 +32,25 @@ $table->foreign('user_id')
     ->onDelete('cascade')
     ->onUpdate('cascade');
 ```
+
+### Using a different column name for the User ID
+A different column name can be used, instead of the typical `user_id`:
+
+```php
+$table->unsignedInteger('owner_id')->nullable();
+```
+
+Just make sure the `foreign_key` value in the configuration is also updated, to reflect that change:
+
+```php
+return [
+    'user' = [
+        'foreign_key' => 'owner_id,
+    ],
+];
+```
+
+> {tip} Read more about this and the `User` model ID in the [General Settings](general-settings) section.
 
 ### UUID over auto-incrementing integer
 Some developers prefer to use a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) instead of auto-incrementing integer ids.
