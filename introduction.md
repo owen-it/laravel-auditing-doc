@@ -8,7 +8,7 @@ Retrieving the audited data is straightforward, making it possible to display it
 If the package is already [installed](/docs/{{version}}/installation), lets start using it!
 
 Setting up a model for auditing couldn't be simpler.
-Just _use_ the `OwnerIt\Auditing\Auditable` trait in the model you wish to audit and _implement_ the `OwenIt\Auditing\Contracts\Auditable` interface.
+Just _use_ the `OwenIt\Auditing\Auditable` trait in the model you wish to audit and _implement_ the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 ```php
 <?php
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class User extends Model implements AuditableContract;
+class User extends Model implements AuditableContract
 {
     use Auditable;
 

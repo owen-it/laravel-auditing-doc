@@ -1,4 +1,4 @@
-# Events
+# Audit Events
 
 During and after the audit process, two events are fired.
 

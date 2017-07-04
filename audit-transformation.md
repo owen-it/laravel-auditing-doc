@@ -1,4 +1,4 @@
-# Audit transformations
+# Audit transformation
 
 If needed, the `Audit` data can be transformed before being stored.
 
@@ -12,7 +12,7 @@ use Illuminate\Support\Arr;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class User extends Model implements AuditableContract;
+class User extends Model implements AuditableContract
 {
     use Auditable;
   
@@ -23,7 +23,7 @@ class User extends Model implements AuditableContract;
      */
     public function transformAudit(array $data)
     {
-        if (Arr::has('new_values.role_id')) {
+        if (Arr::has($data, 'new_values.role_id')) {
             Arr::set($data, 'new_values.role_name',  $this->role->name);
         }
 

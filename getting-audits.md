@@ -47,7 +47,7 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(6) {
+array(7) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
@@ -56,6 +56,8 @@ array(6) {
   string(26) "http://example.com/posts/1"
   ["audit_ip_address"]=>
   string(9) "127.0.0.1"
+  ["audit_user_agent"]=>
+  string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
@@ -97,4 +99,4 @@ array(2) {
 }
 ```
 
-> {note} By default, `Audit` records will be sorted by `created_at` in descending order.
+> {note} By default, `Audit` records will be sorted by `created_at` in ascending order (oldest to newest).

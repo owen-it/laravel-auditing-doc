@@ -25,6 +25,8 @@ Edit the `config/app.php` file and add the following line to register the servic
 ],
 ```
 
+> {tip} This part of the setup can be skipped in favour of the Auto-Discovery feature, if you're using version **5.5** or higher.
+
 ## Lumen
 Edit the `bootstrap/app.php` file and add the following line to register the service provider:
 
@@ -69,7 +71,7 @@ php artisan auditing:install
 
 This will create the `config/audit.php` configuration file.
 
-Read more about it in the [Package Options](general-settings.md).
+Read more about it in the [Package Options](general-settings).
 
 # Database
 Finally, execute the migrate `artisan` command to create the `audits` table in your database:
