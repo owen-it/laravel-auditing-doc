@@ -1,10 +1,10 @@
 # Upgrading
 This document provides the necessary steps that need to be performed when upgrading from previous versions.
 
-## Upgrading from version 4.0.4+ to version >= 4.1.0
+## Upgrading from version [4.0.4, 4.0.7] to version >= 4.1.0
 ### Table
-Version `4.1.0` introduced an `updated_at` column to the `audits` table.
-Use the following migration to convert a _default_ `4.0.4+` table structure into the `4.1.0` version:
+Version `4.1.0` introduces an `updated_at` column to the `audits` table.
+Use the following migration to convert a _default_ [`4.0.4`, `4.0.7`] table structure into the `4.1.0` version:
 
 ```php
 <?php
