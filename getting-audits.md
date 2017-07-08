@@ -30,7 +30,7 @@ $audit = $post->audits()->find(4);
 $all = $post->audits()->with('user')->get();
 ```
 
-> {tip} Remember to properly set the `User` **model** and **resolver** in the `config/audit.php` file.
+> {tip} Remember to properly set the `User` **keys**, **model** and **resolver** in the `config/audit.php` file.
 
 ## Getting the Audit metadata
 Retrieve an `array` with the `Audit` metadata.
@@ -59,6 +59,8 @@ array(7) {
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
   ["audit_created_at"]=>
+  string(19) "2017-01-01 01:02:03"
+  ["audit_updated_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
   string(1) "1"

@@ -45,7 +45,7 @@ Just make sure the `foreign_key` value in the configuration is also updated, to 
 ```php
 return [
     'user' = [
-        'foreign_key' => 'owner_id,
+        'foreign_key' => 'owner_id',
     ],
 ];
 ```
