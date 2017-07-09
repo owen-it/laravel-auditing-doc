@@ -26,8 +26,8 @@ The default primary and foreign key values are `id` and `user_id`, respectively.
 ```php
 return [
     'user' = [
-        'primary_key' => 'id,
-        'foreign_key' => 'user_id,
+        'primary_key' => 'id',
+        'foreign_key' => 'user_id',
     ],
 ];
 ```
