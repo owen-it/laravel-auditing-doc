@@ -158,7 +158,7 @@ class UpdateAuditsTable extends Migration
 ### Configuration
 
 From version `4.0.0` onward, the configuration file has been renamed from `auditing.php` to `audit.php`.
-Its `array` structure has also been updated, with options having been **added**, **modified** and **removed**.
+Its `array` structure has also been updated, with options being **added**, **modified** and **removed**.
 
 > {tip} When in doubt, check the bundled configuration file.
 
