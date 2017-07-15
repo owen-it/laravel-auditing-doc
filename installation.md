@@ -10,6 +10,11 @@ composer require owen-it/laravel-auditing
 
 > {tip} This package supports **Laravel** and **Lumen** from version 5.2 onwards.
 
+# Upgrading
+If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
+
+>{tip} Changes to the table schema are needed when upgrading from versions `3.x.y` and `4.0.x`!
+
 # Configuration
 
 The Laravel and Lumen configurations vary slightly, so here are the instructions for each of the frameworks.

@@ -2,6 +2,7 @@
 
 - Setup
     - [Installation](installation.md)
+    - [Upgrading](upgrading.md)
 - The Basics
     - [Introduction](introduction.md)
     - [Getting Audits](getting-audits.md)
@@ -17,7 +18,6 @@
     - [Audit Presentation](audit-presentation.md)
     - [Audit Events](audit-events.md)
 - Help
-    - [Upgrading](upgrading.md)
     - [Troubleshooting](troubleshooting.md)
 
 ## Contributing

@@ -1,5 +1,6 @@
 - Setup
     - [Installation](/docs/{{version}}/installation)
+    - [Upgrading](/docs/{{version}}/upgrading)
 - The Basics
     - [Introduction](/docs/{{version}}/introduction)
     - [Getting Audits](/docs/{{version}}/getting-audits)
@@ -15,5 +16,4 @@
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/audit-events)
 - Help
-    - [Upgrading](/docs/{{version}}/upgrading)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)
