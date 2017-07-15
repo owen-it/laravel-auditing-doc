@@ -44,6 +44,15 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
+Set the same `created_at` column value to `updated_at` and make sure the `created_at` stays the same.
+
+```php
+DB::table('audits')->whereNull('updated_at')->update([
+    'created_at' => DB::raw('created_at'),
+    'updated_at' => DB::raw('created_at'),
+]);
+```
+
 > {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
 
 ## Upgrading from version [4.0.0, 4.0.3] to version >= 4.1.0
@@ -88,6 +97,15 @@ class UpdateAuditsTable extends Migration
             });
     }
 }
+```
+
+Set the same `created_at` column value to `updated_at` and make sure the `created_at` stays the same.
+
+```php
+DB::table('audits')->whereNull('updated_at')->update([
+    'created_at' => DB::raw('created_at'),
+    'updated_at' => DB::raw('created_at'),
+]);
 ```
 
 > {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
@@ -151,6 +169,15 @@ class UpdateAuditsTable extends Migration
             });
     }
 }
+```
+
+Set the same `created_at` column value to `updated_at` and make sure the `created_at` stays the same.
+
+```php
+DB::table('audits')->whereNull('updated_at')->update([
+    'created_at' => DB::raw('created_at'),
+    'updated_at' => DB::raw('created_at'),
+]);
 ```
 
 > {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy-paste!
