@@ -130,3 +130,10 @@ According to a [maintainer](https://github.com/laravel/framework/issues/16823#is
 As a workaround, consider passing `1` and `0`, instead of `true` and `false`. For date values, append ` 00:00:00`.
 
 At the time of writing, [this](https://github.com/laravel/internals/issues/349) is the only open issue about this subject.
+
+## Argument 1 passed to Illuminate\Database\Eloquent\Model::serializeDate() must implement interface DateTimeInterface, null given
+This might happen in version **4.1.x**, because the `updated_at` column values in the `audits` table are set to `NULL`.
+
+After upgrading the table schema for **4.1.x**, don't forget to set the `updated_at` values to match the ones from `created_at`.
+
+Read the [upgrading](/docs/{{version}}/upgrading) documentation for more information.
