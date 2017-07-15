@@ -13,7 +13,7 @@ composer require owen-it/laravel-auditing
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
 
->{tip} Changes to the table schema are needed when upgrading from versions `3.x.y` and `4.0.x`!
+>{tip} Changes to the table schema are needed when upgrading from versions `3.x.y` or `4.0.x`!
 
 # Configuration
 
