@@ -58,3 +58,36 @@ class MyCustomDriver implements AuditDriver
 ```
 
 > {tip} The `Database` driver is a good starting point to get ideas for a new custom driver implementation.
+
+## Defining the custom driver
+
+Here's how to set the custom driver `MyCustomDriver`:
+```php
+<?php
+namespace App\Models;
+
+use App\AuditDrivers\MyCustomDriver;
+use Jenssegers\Mongodb\Eloquent\Model;
+use OwenIt\Auditing\Audit as AuditTrait;
+use OwenIt\Auditing\Contracts\Audit as AuditContract;
+
+class Audit extends Model implements AuditContract
+{
+    use AuditTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $guarded = [];
+    
+    protected $auditDriver = MyCustomDriver::class;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'old_values' => 'json',
+        'new_values' => 'json',
+    ];
+}
+```
