@@ -137,3 +137,7 @@ This might happen in version **4.1.x**, because the `updated_at` column values i
 After upgrading the table schema for **4.1.x**, don't forget to set the `updated_at` values to match the ones from `created_at`.
 
 Read the [upgrading](/docs/{{version}}/upgrading) documentation for more information.
+
+## Pivot value change not saved
+
+For now there is an [issue related to pivot](https://github.com/owen-it/laravel-auditing/issues/58). Laravel doesn't provide events related to pivot change, so it's a limitation on this library, for now.
