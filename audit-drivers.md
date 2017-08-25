@@ -1,6 +1,6 @@
 # Audit Drivers
 
-Drivers have the logic to audit `Auditable` models.
+Drivers have the audit logic for `Auditable` models.
 Out of the box, the Laravel Auditing package includes a `Database` driver.
 
 Besides storing model attribute changes, drivers also handle pruning when an audit threshold is set.
@@ -58,3 +58,31 @@ class MyCustomDriver implements AuditDriver
 ```
 
 > {tip} The `Database` driver is a good starting point to get ideas for a new custom driver implementation.
+
+## Using a custom driver
+
+Once the audit logic is put in place, here is how to set the `MyCustomDriver` driver as the default driver in an `Auditable` model:
+
+```php
+<?php
+namespace App\Models;
+
+use App\AuditDrivers\MyCustomDriver;
+use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+
+class SomeModel extends Model implements AuditableContract
+{
+    use Auditable;
+
+    /**
+     * Custom Audit Driver
+     *
+     * @var \App\AuditDrivers\MyCustomDriver
+     */
+    protected $auditDriver = MyCustomDriver::class;
+
+    // ...
+}
+```
