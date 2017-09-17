@@ -9,7 +9,9 @@ By default, the package will use `OwenIt\Auditing\Models\Audit`.
 
 ```
 return [
+    // ...
     'implementation' => OwenIt\Auditing\Models\Audit::class,
+    // ...
 ];
 ```
 
@@ -25,55 +27,54 @@ The default primary and foreign key values are `id` and `user_id`, respectively.
 
 ```php
 return [
+    // ...
     'user' = [
+        // ...
         'primary_key' => 'id',
         'foreign_key' => 'user_id',
+        // ...
     ],
+    // ...
 ];
 ```
 
-> {note} The `Audit` **resolveData()** method will still use `user_id` and other `user_` prefixed keys for any `User` data, regardless of the foreign key.
+> {note} The `Audit` **resolveData()** method will still use `user_id` and other `user_` prefixed keys for any `User` data, regardless of the foreign key that was set.
 
 ### Model
 The model value should be set to the fully qualified `User` class name the application is using.
 
 ```php
 return [
+    // ...
     'user' = [
+        // ...
         'model' => App\User::class,
+        // ...
     ],
+    // ...
 ];
 ```
 
 ### Resolver
 A resolver can be a `callable` or a [FQCN](http://php.net/manual/en/language.namespaces.rules.php) implementing `OwenIt\Auditing\Contracts\UserResolver`.
 
-#### Callable
-The `callable` should return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
-
-The default resolver uses the Laravel `Auth`.
-
-```php
-return [
-    'user' = [
-        'resolver' => function () {
-            return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
-        },
-    ],
-];
-```
-
 #### Fully Qualified Class Name
 
-Using a FQCN is advantageous over a `callable` when the configuration needs to be cached, since anonymous functions cannot be cached.
-The class implementing `OwenIt\Auditing\Contracts\UserResolver` only needs a `resolveId()` method with the same functionality as the `callable` above.
+This is the preferred way to configure a resolver, since using a `callable` causes problems when caching the configuration.
+The class implementing `OwenIt\Auditing\Contracts\UserResolver` only needs a `resolveId()` method with the logic to resolve a logged `User`.
+
+The `resolveId()` method should return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
 
 Configuration:
 ```php
 return [
+    // ...
     'user' = [
+        // ...
         'resolver' => App\User::class,
+        // ...
     ],
+    // ...
 ];
 ```
 
@@ -104,7 +105,28 @@ class User extends Model implements AuditableContract, UserResolver
 }
 ```
 
-> {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), change the resolver accordingly.
+#### Callable
+While still supported, using a `Closure` as a resolver isn't encouraged, due to problems with configuration caching.
+
+The `callable` should return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
+
+```php
+return [
+    // ...
+    'user' = [
+        // ...
+        'resolver' => function () {
+            return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
+        },
+        // ...
+    ],
+    // ...
+];
+```
+
+> {note} The next major version won't support the resolver logic as a `callable`.
+
+> {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), change the resolver logic accordingly.
 
 ## Audit driver
 
@@ -112,7 +134,9 @@ Being the only driver provided, the `Database` driver is set as default.
 
 ```php
 return [
+    // ...
     'default' => 'database',
+    // ...
 ];
 ```
 
@@ -122,12 +146,14 @@ The `Database` driver allows modifying:
 
 ```php
 return [
+    // ...
     'drivers' => [
         'database' => [
             'table'      => 'audits',
             'connection' => null,
         ],
     ],
+    // ...
 ];
 ```
 
@@ -138,7 +164,9 @@ To enable console auditing, set the `console` value to `true`.
 
 ```php
 return [
+    // ...
     'console' => true,
+    // ...
 ];
 ```
 
