@@ -74,15 +74,22 @@ After configuring your framework of choice, use the following command to publish
 php artisan auditing:install
 ```
 
-This will create the `config/audit.php` configuration file.
+This will create the `config/audit.php` configuration file and a migration for the `audits` table in the `database/` directory.
 
-Read more about it in the [Package Options](general-settings).
+You can read more about the configuration options in the [Package Options](general-settings).
 
 # Database
-Finally, execute the migrate `artisan` command to create the `audits` table in your database:
+If needed, the migration file can be customised. 
+Have a look at the [Troubleshooting](troubleshooting) section for some of the changes that can be performed.
+
+Once done, execute the migrate `artisan` command to create the `audits` table in your database:
 
 ```sh
 php artisan migrate
 ```
 
-This is where the Eloquent model audits will be stored, by default.
+This is where the `Audit` records will be stored, by default.
+
+# Resolver
+Finally, it's time to implement the `User` resolver.
+Follow the instructions in the [Package Options](general-settings) section, and you're done!
