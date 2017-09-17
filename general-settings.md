@@ -58,6 +58,8 @@ return [
 ### Resolver
 A resolver can be a `callable` or a [FQCN](http://php.net/manual/en/language.namespaces.rules.php) implementing `OwenIt\Auditing\Contracts\UserResolver`.
 
+> {note} The next major version won't support the resolver logic as a `callable`.
+
 #### Fully Qualified Class Name
 
 This is the preferred way to configure a resolver, since using a `callable` causes problems when caching the configuration.
@@ -123,8 +125,6 @@ return [
     // ...
 ];
 ```
-
-> {note} The next major version won't support the resolver logic as a `callable`.
 
 > {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), change the resolver logic accordingly.
 
