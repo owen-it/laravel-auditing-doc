@@ -24,7 +24,8 @@ class User extends Model implements AuditableContract
     public function transformAudit(array $data)
     {
         if (Arr::has($data, 'new_values.role_id')) {
-            Arr::set($data, 'new_values.role_name',  $this->role->name);
+            $data['old_values']['role_name'] = Role::find($this->getOriginal('role_id'))->name;
+            $data['new_values']['role_name'] = Role::find($this->getAttribute('role_id'))->name;
         }
 
         return $data;
