@@ -2,7 +2,7 @@
     - [Installation](/docs/{{version}}/installation)
     - [Introduction](/docs/{{version}}/introduction)
 - Basic Usage
-    - [Auditing models](/docs/{{version}}/getting-audits)
+    - [Implementing audit](/docs/{{version}}/implementing-audit)
     - [Getting Audits](/docs/{{version}}/getting-audits)
 - Advanced
     - [Auditor](/docs/{{version}}/auditor)
