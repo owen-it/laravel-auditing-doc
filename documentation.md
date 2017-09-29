@@ -1,20 +1,21 @@
-- Setup
+- Essentials
     - [Installation](/docs/{{version}}/installation)
-    - [Upgrading](/docs/{{version}}/upgrading)
-- The Basics
     - [Introduction](/docs/{{version}}/introduction)
+- Basic Usage
+    - [Auditing models](/docs/{{version}}/getting-audits)
     - [Getting Audits](/docs/{{version}}/getting-audits)
-- Auditor
+- Advanced
     - [Auditor](/docs/{{version}}/auditor)
     - [Audit Drivers](/docs/{{version}}/audit-drivers)
-- Configuration 
-    - [Package Options](/docs/{{version}}/general-settings)
-    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
-- Advanced
     - [Audit Implementation](/docs/{{version}}/audit-implementation)
     - [Audit Transformation](/docs/{{version}}/audit-transformation)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/audit-events)
+- Configuration 
+    - [Package Options](/docs/{{version}}/general-settings)
+    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
+- Upgrading
+    - [Upgrading](/docs/{{version}}/upgrading)
 - Help
     - [Problems?](/docs/{{version}}/problems)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)
