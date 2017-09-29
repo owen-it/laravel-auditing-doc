@@ -1,7 +1,6 @@
 # Installation
 
 The Laravel Auditing package should be installed via [Composer](http://getcomposer.org/doc/00-intro.md).
-
 To get the latest package version, run the following command from your project root:
 
 ```sh

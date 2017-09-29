@@ -1,6 +1,7 @@
 - Essentials
-    - [Installation](/docs/{{version}}/installation)
     - [Introduction](/docs/{{version}}/introduction)
+    - [Installation](/docs/{{version}}/installation)
+    - [Upgrading](/docs/{{version}}/upgrading)
 - Basic Usage
     - [Implementing audit](/docs/{{version}}/implementing-audit)
     - [Getting Audits](/docs/{{version}}/getting-audits)
@@ -14,8 +15,6 @@
 - Configuration 
     - [Package Options](/docs/{{version}}/general-settings)
     - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
-- Upgrading
-    - [Upgrading](/docs/{{version}}/upgrading)
 - Help
     - [Problems?](/docs/{{version}}/problems)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)
