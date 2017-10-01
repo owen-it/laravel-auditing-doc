@@ -75,7 +75,7 @@ php artisan auditing:install
 
 This will create the `config/audit.php` configuration file and a migration for the `audits` table in the `database/` directory.
 
-You can read more about the configuration options in the [Package Options](general-settings).
+You can read more about the configuration options in the [General Settings](general-settings) section.
 
 # Database
 If needed, the migration file can be customised. 
@@ -91,4 +91,4 @@ This is where the `Audit` records will be stored, by default.
 
 # Resolver
 Finally, it's time to implement the `User` resolver.
-Follow the instructions in the [Package Options](general-settings) section, and you're done!
+Follow the instructions in the [General Settings](general-settings) section, and you're done!

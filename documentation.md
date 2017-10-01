@@ -2,8 +2,11 @@
     - [Introduction](/docs/{{version}}/introduction)
     - [Installation](/docs/{{version}}/installation)
     - [Upgrading](/docs/{{version}}/upgrading)
+- Configuration
+    - [General Settings](/docs/{{version}}/general-settings)
+    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
 - Basic Usage
-    - [Implementing audit](/docs/{{version}}/implementing-audit)
+    - [Model Setup](/docs/{{version}}/model-setup)
     - [Getting Audits](/docs/{{version}}/getting-audits)
 - Advanced
     - [Auditor](/docs/{{version}}/auditor)
@@ -12,9 +15,6 @@
     - [Audit Transformation](/docs/{{version}}/audit-transformation)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/audit-events)
-- Configuration 
-    - [Package Options](/docs/{{version}}/general-settings)
-    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
 - Help
     - [Problems?](/docs/{{version}}/problems)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)

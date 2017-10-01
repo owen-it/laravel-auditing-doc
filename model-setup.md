@@ -1,4 +1,4 @@
-# Implementing audit
+# Model Setup
 
 Setting up a model for auditing couldn't be simpler.
 Just _use_ the `OwenIt\Auditing\Auditable` trait in the model you wish to audit and _implement_ the `OwenIt\Auditing\Contracts\Auditable` interface.
