@@ -5,7 +5,10 @@ Out of the box, the Laravel Auditing package includes a `Database` driver.
 
 Besides storing model attribute changes, drivers also handle pruning when an audit threshold is set.
 
-While for most use cases the `Database` driver should suffice, the need for something custom is also catered for.
+While for most use cases the `Database` driver should suffice, the community has been working to provide alternative drivers as well. Finally, should you need to write a completely custom driver - this is also catered for.
+
+## Community Drivers
+[betapeak/laravel-auditing-filesystem](https://github.com/betapeak/laravel-auditing-filesystem) - Allows you to save your audits to a CSV file, on any storage disk in your Laravel application.
 
 ## Creating a custom Driver
 
