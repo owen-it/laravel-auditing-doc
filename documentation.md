@@ -3,8 +3,8 @@
     - [Installation](/docs/{{version}}/installation)
     - [Upgrading](/docs/{{version}}/upgrading)
 - Configuration
-    - [General Settings](/docs/{{version}}/general-settings)
-    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
+    - [General Configuration](/docs/{{version}}/general-configuration)
+    - [Auditable Configuration](/docs/{{version}}/auditable-configuration)
 - Basic Usage
     - [Model Setup](/docs/{{version}}/model-setup)
     - [Getting Audits](/docs/{{version}}/getting-audits)
