@@ -3,18 +3,19 @@
     - [Installation](/docs/{{version}}/installation)
     - [Upgrading](/docs/{{version}}/upgrading)
 - Configuration
-    - [General Settings](/docs/{{version}}/general-settings)
-    - [Auditable Model Configuration](/docs/{{version}}/behavior-settings)
+    - [General Configuration](/docs/{{version}}/general-configuration)
+    - [Auditable Configuration](/docs/{{version}}/auditable-configuration)
 - Basic Usage
     - [Model Setup](/docs/{{version}}/model-setup)
     - [Getting Audits](/docs/{{version}}/getting-audits)
 - Advanced
-    - [Auditor](/docs/{{version}}/auditor)
+    - [Audit Migration](/docs/{{version}}/audit-migration)
     - [Audit Drivers](/docs/{{version}}/audit-drivers)
     - [Audit Implementation](/docs/{{version}}/audit-implementation)
     - [Audit Transformation](/docs/{{version}}/audit-transformation)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/audit-events)
+    - [Auditor](/docs/{{version}}/auditor)
 - Help
     - [Problems?](/docs/{{version}}/problems)
     - [Troubleshooting](/docs/{{version}}/troubleshooting)

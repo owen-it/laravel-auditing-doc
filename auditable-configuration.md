@@ -1,4 +1,4 @@
-# Auditing Behavior
+# Auditable Configuration
 
 The auditing process can behave differently, depending on the values some `Auditable` attributes may have.
 
@@ -150,9 +150,9 @@ The above configuration, will only keep the `10` latest `Audit` records.
 
 ## Auditable events
 
-On a default configuration, the `created`, `updated`, `deleted` and `restored` Eloquent events will trigger an audit action.
+On a default configuration, the `created`, `updated`, `deleted` and `restored` Eloquent events will trigger an audit.
 
-In case the auditing process only needs to be executed for certain events, the `auditableEvents` property can be set with the events that matter.
+In case the auditing process only needs to execute on certain events, the `auditableEvents` property can be set with the events that matter.
 
 ```php
 <?php
@@ -174,6 +174,34 @@ class Post extends Model implements AuditableContract
      */
     protected $auditableEvents = [
         'deleted',
+        'restored',
     ];
 }
 ```
+
+The above example only takes the `deleted` and `restored` events into account.
+
+### Custom event handlers
+Here's how a custom method for the `restored` event can be defined:
+
+```php
+protected $auditableEvents = [
+    'deleted', 
+    'restored' => 'myRestoredEventHandler', 
+];
+```
+
+The `deleted` event is handled by the default `auditDeletedAttributes()` method, while the `restored` event will be handled by the custom `myRestoredEventHandler()` method.
+
+### Event wildcards
+Wildcards can be used for event names, making it easy to define the same handler to multiple events.
+
+```php
+protected $auditableEvents = [
+    '*ated' => 'myCreatedUpdatedEventHandler',
+];
+```
+
+The `created` and `updated` events will be handled by the custom `myCreatedUpdatedEventHandler()` method
+
+> {note} Support for custom handlers and wildcards has been present since version 4.1.4.
