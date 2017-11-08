@@ -1,4 +1,4 @@
-# General Settings
+# General Configuration
 
 The default auditing behavior can be changed by overriding the settings in the configuration file, which can be found in `config/audit.php`.
 

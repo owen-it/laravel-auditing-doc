@@ -24,7 +24,7 @@ This error happens when Laravel is set to cache the configuration.
 By default, the `User` resolver is a `Closure` in the `config/audits.php` file, which causes this issue.
 To overcome this, the resolver should be set as a FQCN instead.
 
-Read the resolver [General Settings](general-settings) for more information.
+Read the `User` resolver section in the [General Configuration](general-configuration) for more information.
 
 ## Attributes are considered modified, when they're not
 

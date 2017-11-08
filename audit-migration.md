@@ -32,7 +32,7 @@ return [
 ];
 ```
 
-> {tip} Read more about this and the `User` model ID in the [General Settings](general-settings) section.
+> {tip} Read more about this and the `User` model ID in the [General Configuration](general-configuration) section.
 
 ## UUID over auto-incrementing ids
 Some developers prefer to use a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) instead of auto-incrementing ids.
