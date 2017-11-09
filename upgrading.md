@@ -2,6 +2,7 @@
 This document provides the necessary steps to upgrade from a previous version.
 
 > {note} The `doctrine/dbal` package might be required.
+
 > {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy and paste!
 
 ## Upgrading from version 4.0.x to version 4.1.x
