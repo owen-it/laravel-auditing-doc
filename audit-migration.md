@@ -57,9 +57,9 @@ $table->morphs('auditable');
 to
 
 ```php
-$this->uuid('auditable_id');
-$this->string('auditable_type');
-$this->index([
+$table->uuid('auditable_id');
+$table->string('auditable_type');
+$table->index([
     'auditable_id', 
     'auditable_type',
 ]);
