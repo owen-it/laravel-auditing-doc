@@ -1,11 +1,16 @@
 # Upgrading
 This document provides the necessary steps to upgrade from a previous version.
 
-> {note} The `doctrine/dbal` package might be required.
+## Before upgrading
+The `doctrine/dbal` package is required to successfully execute the upgrade migrations, so make sure it is available.
 
-> {tip} Any customisations made to the original migration should be taken into account. Do not blindly copy and paste!
+```sh
+composer require doctrine/dbal
+```
 
-## Upgrading from version 4.0.x to version 4.1.x
+> {note} Any changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
+
+## Upgrade from version 4.0.x to version 4.1.x
 ### Table
 Version `4.1.0` brings back the `updated_at` column to the `audits` table.
 Use the following migration to convert a default **4.0.x** table structure into the **4.1.x** version:
@@ -55,7 +60,7 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrading from version 3.1.x to version 4.1.x
+## Upgrade from version 3.1.x to version 4.1.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
@@ -110,7 +115,7 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrading from version 2.4.x to version 4.1.x
+## Upgrade from version 2.4.x to version 4.1.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
@@ -165,7 +170,7 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-### Configuration
+## Update the configuration
 
 From version **4.0.0** onward, the configuration file has been renamed from `auditing.php` to `audit.php`.
 The structure has also been updated, with options being **added**, **modified** and **removed**.
@@ -173,7 +178,7 @@ The structure has also been updated, with options being **added**, **modified** 
 > {tip} When in doubt, check the bundled configuration file.
 
 ### Queues
-Audit queue support has been removed in version **4.0.0**.
+Audit queue support has been removed from version **4.0.0**.
 
 ### Custom message and fields
 Since version **4.0.0**, `Auditable` custom message and fields are no longer necessary.
