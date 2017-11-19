@@ -13,18 +13,18 @@ Yet, should the need to call it manually arise, here is how it _could_ be done.
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Http\Requests\Request;
+use App\Models\Article;
 use OwenIt\Auditing\Facades\Auditor;
 
-class PostController extends Illuminate\Routing\Controller
+class ArticleController extends Illuminate\Routing\Controller
 {
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Article $article)
     {
-        $post->update($request->all());
+        $article->update($request->all());
 
-        if ($audit = Auditor::execute($post)) {
-            Auditor::prune($post);
+        if ($audit = Auditor::execute($article)) {
+            Auditor::prune($article);
         }
     }
 }
@@ -39,18 +39,18 @@ With the `AuditingServiceProvider` registered, we can use the IoC to resolve and
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Http\Requests\Request;
+use App\Models\Article;
 use OwenIt\Auditing\Contracts\Auditor;
 
-class PostController extends Illuminate\Routing\Controller
+class ArticleController extends Illuminate\Routing\Controller
 {
-    public function update(Request $request, Post $post, Auditor $auditor)
+    public function update(Request $request, Article $article, Auditor $auditor)
     {
-        $post->update($request->all());
+        $article->update($request->all());
 
-        if ($audit = $auditor->execute($post)) {
-            $auditor->prune($post);
+        if ($audit = $auditor->execute($article)) {
+            $auditor->prune($article);
         }
     }
 }

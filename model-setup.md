@@ -9,12 +9,11 @@ Just _use_ the `OwenIt\Auditing\Auditable` trait in the model you wish to audit 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Model implements AuditableContract
+class User extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     // ...
 }

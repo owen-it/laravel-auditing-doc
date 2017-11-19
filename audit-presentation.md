@@ -20,7 +20,7 @@ array(9) {
   ["audit_event"]=>
   string(7) "updated"
   ["audit_url"]=>
-  string(26) "http://example.com/posts/1"
+  string(29) "http://example.com/articles/1"
   ["audit_ip_address"]=>
   string(9) "127.0.0.1"
   ["audit_user_agent"]=>
@@ -51,7 +51,7 @@ echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
 {
     "audit_id": "1",
     "audit_event": "updated",
-    "audit_url": "http:\/\/example.com\/posts\/1",
+    "audit_url": "http:\/\/example.com\/articles\/1",
     "audit_ip_address": "127.0.0.1",
     "audit_user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0",
     "audit_created_at": "2017-01-01 01:02:03",
@@ -83,7 +83,7 @@ echo $audit->user->name.PHP_EOL;
 ```txt
 1
 updated
-http://example.com/posts/1
+http://example.com/articles/1
 127.0.0.1
 Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0
 2017-01-01 01:02:03
@@ -163,13 +163,13 @@ To better understand how the `Audit` methods can be used, here are some presenta
 ### Listing Audits
 Displaying a `Collection` of `Audit` models in an HTML unordered list.
 
-`Post` translation file:
+`Article` translation file:
 
 ```php
 return [
     // ...
 
-    'unavailable_audits' => 'No Post Audits available',
+    'unavailable_audits' => 'No Article Audits available',
 
     'updated'            => [
         'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
@@ -189,16 +189,16 @@ Blade template:
 <ul>
     @forelse ($audits as $audit)
     <li>
-        @lang('post.updated.metadata', $audit->getMetadata())
+        @lang('article.updated.metadata', $audit->getMetadata())
 
         @foreach ($audit->getModified() as $attribute => $modified)
         <ul>
-            <li>@lang('post.'.$audit->event.'.modified.'.$attribute, $modified)</li>
+            <li>@lang('article.'.$audit->event.'.modified.'.$attribute, $modified)</li>
         </ul>
         @endforeach
     </li>
     @empty
-    <p>@lang('post.unavailable_audits')</p>
+    <p>@lang('article.unavailable_audits')</p>
     @endforelse
 </ul>
 ```
@@ -233,8 +233,8 @@ Vue app to set the `data`:
 new Vue({
     el: '.container',
     data: {
-        metadata: JSON.parse(document.getElementById('post').getAttribute('data-metadata')),
-        modified: JSON.parse(document.getElementById('post').getAttribute('data-modified'))
+        metadata: JSON.parse(document.getElementById('article').getAttribute('data-metadata')),
+        modified: JSON.parse(document.getElementById('article').getAttribute('data-modified'))
     }
 });
 ```
@@ -242,7 +242,7 @@ new Vue({
 Blade template with Vue data bindings:
 
 ```php
-<div id="post" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
+<div id="article" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
     <div v-model="metadata">
         <div class="row">
             <div class="col-md-3">

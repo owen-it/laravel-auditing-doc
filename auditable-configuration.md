@@ -12,12 +12,11 @@ The `$auditInclude` property acts as an attribute **white list**, meaning that o
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Attributes to include in the Audit.
@@ -42,12 +41,11 @@ On the other hand, the `$auditExclude` acts as a **black list**, excluding all t
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Attributes to exclude from the Audit.
@@ -73,12 +71,11 @@ When the `$auditStrict` property is set to `true`,  the `$hidden` and `$visible`
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Should the audit be strict?
@@ -100,12 +97,11 @@ If there's a need to include them in the `Audit` data, just set the `$auditTimes
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Should the timestamps be audited?
@@ -127,12 +123,11 @@ To keep records to a minimum, set the `$auditThreshold` property to a positive `
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Audit threshold.
@@ -160,12 +155,11 @@ In case the auditing process only needs to execute on certain events, the `audit
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Post extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Auditable events.

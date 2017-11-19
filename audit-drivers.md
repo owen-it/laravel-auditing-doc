@@ -71,7 +71,9 @@ This is done in the `config/audit.php` configuration file.
 ```php
 return [
     // ...
+
     'driver' => App\AuditDrivers\MyCustomDriver::class,
+
     // ...
 ];
 ```

@@ -10,12 +10,12 @@ The most common mistake is doing an `update` or `delete` using a `Builder` insta
 
 Usually, something like this is used:
 ```php
-Post::where('id', $id)->update($data);
+Article::where('id', $id)->update($data);
 ```
 
 When in fact, it should be:
 ```php
-Post::find($id)->update($data);
+Article::find($id)->update($data);
 ```
 
 ## Error: Call to undefined method Closure::__set_state()

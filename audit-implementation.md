@@ -17,12 +17,10 @@ Implementation:
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
-use OwenIt\Auditing\Audit as AuditTrait;
-use OwenIt\Auditing\Contracts\Audit as AuditContract;
 
-class Audit extends Model implements AuditContract
+class Audit extends Model implements \OwenIt\Auditing\Contracts\Audit
 {
-    use AuditTrait;
+    use \OwenIt\Auditing\Audit;
 
     /**
      * {@inheritdoc}
@@ -47,7 +45,7 @@ In the `config/audit.php` file, set the `implementation` value as the [FQCN](htt
 If the value is missing from the configuration, the `audits()` relation method of the `Auditing` trait will default to `OwenIt\Auditing\Models\Audit`.
 
 Here's how to set the MongoDB `Audit` implementation above:
-```
+```php
 return [
     // ...
 

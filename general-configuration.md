@@ -87,13 +87,12 @@ Implementation:
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Contracts\UserResolver;
 
-class User extends Model implements AuditableContract, UserResolver
+class User extends Model implements Auditable, UserResolver
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * {@inheritdoc}
