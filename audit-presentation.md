@@ -12,7 +12,7 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(9) {
+array(11) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
@@ -23,7 +23,7 @@ array(9) {
   string(9) "127.0.0.1"
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
-  'audit_tags' =>
+  ["audit_tags"]=>
   array(2) {
     [0] =>
     string(3) "foo"
