@@ -79,7 +79,7 @@ You can read more about the configuration options in the [General Configuration]
 
 # Database
 If needed, the migration file can be customised. 
-Have a look at the [Troubleshooting](troubleshooting) section for some of the changes that can be performed.
+Have a look at the [Audit Migration](audit-migration) section for some of the changes that can be performed.
 
 Once done, execute the migrate `artisan` command to create the `audits` table in your database:
 
