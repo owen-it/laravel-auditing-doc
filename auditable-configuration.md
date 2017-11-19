@@ -2,7 +2,6 @@
 The auditing process can behave differently, depending on what has been set.
 
 ## Include attributes
-
 The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in that `array` will be audited.
 
 ```php

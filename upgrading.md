@@ -20,7 +20,6 @@ Use the following migration to convert a default **4.1.x** table structure into 
 
 ```php
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -62,7 +61,6 @@ Use the following migration to convert a default **3.1.x** table structure into 
 
 ```php
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -118,7 +116,6 @@ Use the following migration to convert a default **2.4.x** table structure into 
 
 ```php
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

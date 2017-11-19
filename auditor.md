@@ -1,5 +1,4 @@
 # Auditor
-
 The `Auditor` class is responsible for auditing and clearing `Audit` records.
 
 Usually, there's no need to use it directly, since the `AuditableObserver` takes care of things for us.
@@ -7,10 +6,8 @@ Usually, there's no need to use it directly, since the `AuditableObserver` takes
 Yet, should the need to call it manually arise, here is how it _could_ be done.
 
 ## Using the Auditor Facade
-
 ```php
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Request;
@@ -31,12 +28,10 @@ class ArticleController extends Illuminate\Routing\Controller
 ```
 
 ## Injecting the Auditor as a dependency
-
 With the `AuditingServiceProvider` registered, we can use the IoC to resolve and inject the `Auditor` into a method.
 
 ```php
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Request;

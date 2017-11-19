@@ -1,16 +1,17 @@
 # General Configuration
-
 The default auditing behavior can be altered by updating the default settings in the configuration file, which can be found in `config/audit.php`.
 
 ## Audit implementation
-From version **4.1**, the audit implementation can be configured.
+Since version **4.1.0**, the audit implementation can be configured.
 
 By default, the package will use `OwenIt\Auditing\Models\Audit`.
 
-```
+```php
 return [
     // ...
+
     'implementation' => OwenIt\Auditing\Models\Audit::class,
+
     // ...
 ];
 ```
@@ -18,7 +19,6 @@ return [
 Read more about it in the [Audit Implementation](audit-implementation) section.
 
 ## User Keys, Model & Resolver
-
 Specify the `User` keys, model and resolver.
 
 ### Primary and Foreign Keys
@@ -28,12 +28,12 @@ The default primary and foreign key values are `id` and `user_id`, respectively.
 ```php
 return [
     // ...
+
     'user' = [
-        // ...
         'primary_key' => 'id',
         'foreign_key' => 'user_id',
-        // ...
     ],
+
     // ...
 ];
 ```
@@ -46,11 +46,11 @@ The model value should be set to the [FQCN](http://php.net/manual/en/language.na
 ```php
 return [
     // ...
+
     'user' = [
-        // ...
         'model' => App\User::class,
-        // ...
     ],
+
     // ...
 ];
 ```
@@ -64,7 +64,6 @@ The `resolveId()` method should return the **ID** of the currently logged `User`
 
 ```php
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -94,11 +93,11 @@ The resolver is defined in the `config/audit.php` configuration file. This is do
 ```php
 return [
     // ...
+
     'user' = [
-        // ...
         'resolver' => App\User::class,
-        // ...
     ],
+
     // ...
 ];
 ```
@@ -106,13 +105,14 @@ return [
 > {note} Support for `Closure`/`callable` resolvers has been removed from version **5.0.0** onwards.
 
 ## Audit driver
-
 Being the only driver provided, the `Database` driver is set as default.
 
 ```php
 return [
     // ...
+
     'driver' => 'database',
+
     // ...
 ];
 ```
@@ -124,12 +124,14 @@ The `Database` driver allows modifying:
 ```php
 return [
     // ...
+
     'drivers' => [
         'database' => [
             'table'      => 'audits',
             'connection' => null,
         ],
     ],
+
     // ...
 ];
 ```
@@ -142,7 +144,9 @@ To enable console auditing, set the `console` value to `true`.
 ```php
 return [
     // ...
+
     'console' => true,
+
     // ...
 ];
 ```

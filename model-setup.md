@@ -1,6 +1,5 @@
 # Model Setup
-
-Setting up a model for auditing couldn't be simpler.
+Setting up a model for auditing could not be simpler.
 Just _use_ the `OwenIt\Auditing\Auditable` trait in the model you wish to audit and _implement_ the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 ```php
@@ -20,4 +19,4 @@ class User extends Model implements Auditable
 ```
 
 By default, the `Database` audit driver will be used.
-If needed, you can also implement your own [Audit Driver](/docs/{{version}}/audit-drivers).
+If needed, you can also implement your own [Audit Driver](audit-drivers).

@@ -1,9 +1,7 @@
 # Getting Audits
-
 The `Audit` logs can be fetched very easily, via [Eloquent](https://laravel.com/docs/master/eloquent) relations.
 
-## Retrieving audit logs
-
+## Retrieving audit records
 Using an `Article` model example, here's how it works:
 
 ```php
@@ -23,8 +21,7 @@ $last = $article->audits()->last();
 $audit = $article->audits()->find(4);
 ```
 
-## Getting audit logs with the associated User model
-
+## Getting audit records with the associated User model
 ```php
 // Get all associated Audits
 $all = $article->audits()->with('user')->get();
@@ -47,7 +44,7 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(7) {
+array(9) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
@@ -58,6 +55,13 @@ array(7) {
   string(9) "127.0.0.1"
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
+  ["audit_tags"]=>
+  array(2) {
+    [0] =>
+    string(3) "foo"
+    [1] =>
+    string(3) "bar"
+  }
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["audit_updated_at"]=>
