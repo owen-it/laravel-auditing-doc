@@ -1,5 +1,4 @@
 # Audit Drivers
-
 Drivers have the audit logic for `Auditable` models.
 Out of the box, the Laravel Auditing package includes a `Database` driver.
 
@@ -8,10 +7,11 @@ Besides storing model attribute changes, drivers also handle pruning when an aud
 While for most use cases the `Database` driver should suffice, the community has been working to provide alternative drivers as well. Finally, should you need to write a completely custom driver - this is also catered for.
 
 ## Community Drivers
-[betapeak/laravel-auditing-filesystem](https://github.com/betapeak/laravel-auditing-filesystem) - Allows you to save your audits to a CSV file, on any storage disk in your Laravel application.
+ Package                              | Repository                                              | Description
+:-------------------------------------|:--------------------------------------------------------|:-----------
+ betapeak/laravel-auditing-filesystem | https://github.com/betapeak/laravel-auditing-filesystem | Allows you to store your audits into a CSV file, using any storage disk in your Laravel application.
 
 ## Creating a custom Driver
-
 A driver is just a class that implements the `AuditDriver` interface.
 Usually, a custom driver resides in the `app/AuditDrivers` folder of a Laravel/Lumen project.
 
@@ -25,7 +25,6 @@ The above command will place a file called `MyCustomDriver.php` in the `app/Audi
 
 ```php
 <?php
-
 namespace App\AuditDrivers;
 
 use OwenIt\Auditing\Contracts\Audit;
