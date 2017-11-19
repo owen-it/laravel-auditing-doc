@@ -53,7 +53,7 @@ class MyCustomDriver implements AuditDriver
      *
      * @return bool
      */
-    public function prune(Auditable $model)
+    public function prune(Auditable $model): bool
     {
         // TODO: Implement the pruning logic
     }

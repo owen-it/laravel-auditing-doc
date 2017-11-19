@@ -20,7 +20,7 @@ class User extends Model implements Auditable
     /**
      * {@inheritdoc}
      */
-    public function transformAudit(array $data)
+    public function transformAudit(array $data): array
     {
         if (Arr::has($data, 'new_values.role_id')) {
             $data['old_values']['role_name'] = Role::find($this->getOriginal('role_id'))->name;
