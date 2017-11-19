@@ -1,9 +1,7 @@
 # Audit presentation
-
 The metadata and modified data can be accessed in several ways.
 
 ## Metadata
-
 The `Audit` data is referred as metadata, since it's information about the modified attributes of an `Auditable` model.
 
 Metadata can be fetched through the `getMetadata()` method as an `array`.
@@ -25,6 +23,13 @@ array(9) {
   string(9) "127.0.0.1"
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
+  'audit_tags' =>
+  array(2) {
+    [0] =>
+    string(3) "foo"
+    [1] =>
+    string(3) "bar"
+  }
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["audit_updated_at"]=>
@@ -54,6 +59,10 @@ echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
     "audit_url": "http:\/\/example.com\/articles\/1",
     "audit_ip_address": "127.0.0.1",
     "audit_user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0",
+    "audit_tags": [
+        "foo",
+        "bar"
+   ],
     "audit_created_at": "2017-01-01 01:02:03",
     "audit_updated_at": "2017-01-01 01:02:03",
     "user_id": "1",
@@ -72,6 +81,7 @@ echo $audit->event.PHP_EOL;
 echo $audit->url.PHP_EOL;
 echo $audit->ip_address.PHP_EOL;
 echo $audit->user_agent.PHP_EOL;
+echo implode(',', $audit->tags).PHP_EOL;
 echo $audit->created_at->toDateTimeString().PHP_EOL;
 echo $audit->updated_at->toDateTimeString().PHP_EOL;
 echo $audit->user_id.PHP_EOL;
@@ -86,6 +96,7 @@ updated
 http://example.com/articles/1
 127.0.0.1
 Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0
+foo,bar
 2017-01-01 01:02:03
 1
 bob@example.com
@@ -93,7 +104,6 @@ Bob
 ```
 
 ## Modified
-
 The modified data is a set of `Auditable` model attributes that changed since the last event: `created`, `updated`, `deleted` and `restored`.
 
 Only modified attributes will make part of the `array`, which consists in the **old** and **new** values for each one.
@@ -223,6 +233,7 @@ return [
     'old'        => 'Old',
     'url'        => 'URL',
     'user'       => 'User',
+    'tags'       => 'Tags',
 
     // ...
 ];
@@ -273,6 +284,12 @@ Blade template with Vue data bindings:
                 <strong>@lang('common.user_agent')</strong>
             </div>
             <div class="col-md-9">@{{ metadata.audit_user_agent }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.tags')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_tags.join() }}</div>
         </div>
         <div class="row">
             <div class="col-md-3">
