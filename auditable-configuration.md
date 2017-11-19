@@ -79,7 +79,7 @@ return [
 ```
 
 ### Locally
-This is done on a per `Auditable` model basis, by assigning the `$auditStrict` attribute to a `bool` value.
+This is done on a per `Auditable` model basis, by assigning a `bool` value to the `$auditStrict` attribute.
 
 > {tip} A locally defined strict value **always** takes precedence over a globally defined one.
 
@@ -123,7 +123,7 @@ return [
 ```
 
 ### Locally
-This is done on a per `Auditable` model basis, by assigning the `$auditTimestamps` attribute to a `bool` value.
+This is done on a per `Auditable` model basis, by assigning a `bool` value to the `$auditTimestamps` attribute.
 
 > {tip} A locally defined timestamps value **always** takes precedence over a globally defined one.
 
@@ -167,7 +167,7 @@ return [
 ```
 
 ### Locally
-This is done on a per `Auditable` model basis, by assigning the `$auditThreshold` attribute to an `int` value.
+This is done on a per `Auditable` model basis, by assigning an `int` value to the `$auditThreshold` attribute.
 
 > {tip} A locally defined threshold **always** takes precedence over a globally defined one.
 
@@ -219,7 +219,7 @@ return [
 ```
 
 ### Locally
-This is done on a per `Auditable` model basis, by assigning the `$auditEvents` attribute to an `array` value.
+This is done on a per `Auditable` model basis, by assigning an `array` value to the `$auditEvents` attribute.
 
 > {tip} Locally defined events **always** take precedence over globally defined ones.
 

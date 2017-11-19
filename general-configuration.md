@@ -89,7 +89,7 @@ class User extends Model implements Auditable, UserResolver
 
 > {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), update the resolver logic accordingly.
 
-The resolver is defined in the `config/audit.php` configuration file, by assigning the FQCN of the class implementing it.
+The resolver is defined in the `config/audit.php` configuration file. This is done by assigning the FQCN value of class implementing it to the `user.resolver` index.
 
 ```php
 return [
