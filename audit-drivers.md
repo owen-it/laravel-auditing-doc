@@ -13,7 +13,7 @@ While for most use cases the `Database` driver should suffice, the community has
 ## Creating a custom Driver
 
 A driver is just a class that implements the `AuditDriver` interface.
-Usually, the custom drivers are stored in the `app/AuditDrivers` folder of a Laravel/Lumen project.
+Usually, a custom driver resides in the `app/AuditDrivers` folder of a Laravel/Lumen project.
 
 To create a new driver, run the following command:
 
@@ -26,11 +26,11 @@ The above command will place a file called `MyCustomDriver.php` in the `app/Audi
 ```php
 <?php
 
-namespace App\Drivers;
+namespace App\AuditDrivers;
 
+use OwenIt\Auditing\Contracts\Audit;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Contracts\AuditDriver;
-use OwenIt\Auditing\Models\Audit;
 
 class MyCustomDriver implements AuditDriver
 {
@@ -39,11 +39,11 @@ class MyCustomDriver implements AuditDriver
      *
      * @param \OwenIt\Auditing\Contracts\Auditable $model
      *
-     * @return \OwenIt\Auditing\Models\Audit
+     * @return \OwenIt\Auditing\Contracts\Audit
      */
-    public function audit(Auditable $model)
+    public function audit(Auditable $model): Audit
     {
-        // Implement audit logic
+        // TODO: Implement the audit logic
     }
 
     /**
@@ -55,7 +55,7 @@ class MyCustomDriver implements AuditDriver
      */
     public function prune(Auditable $model)
     {
-        // Implement pruning logic
+        // TODO: Implement the pruning logic
     }
 }
 ```
@@ -63,8 +63,23 @@ class MyCustomDriver implements AuditDriver
 > {tip} The `Database` driver is a good starting point to get ideas for a new custom driver implementation.
 
 ## Using a custom driver
+There are two ways of enabling a different audit driver.
 
-Once the audit logic is put in place, here is how to set the `MyCustomDriver` driver as the default driver in an `Auditable` model:
+### Globally
+This is done in the `config/audit.php` configuration file.
+
+```php
+return [
+    // ...
+    'driver' => App\AuditDrivers\MyCustomDriver::class,
+    // ...
+];
+```
+
+In this example, the previously created `MyCustomDriver`, is set as the default audit driver for all `Auditable` models.
+
+### Locally
+This is done on a per `Auditable` model basis, by assigning the `$auditDriver` attribute value to the FQCN of the desired driver.
 
 ```php
 <?php
@@ -72,12 +87,11 @@ namespace App\Models;
 
 use App\AuditDrivers\MyCustomDriver;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class SomeModel extends Model implements AuditableContract
+class Article extends Model implements Auditable
 {
-    use Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * Custom Audit Driver
@@ -89,3 +103,5 @@ class SomeModel extends Model implements AuditableContract
     // ...
 }
 ```
+
+> {tip} A locally defined driver **always** takes precedence over any globally defined one.
