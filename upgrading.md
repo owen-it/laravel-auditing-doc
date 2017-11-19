@@ -176,6 +176,6 @@ Models should be updated to reflect this change, by removing the `$auditCustomMe
 
 ## User ID resolver
 From version **5.0.0** onwards, using a `Closure` or any sort of `callable` in the configuration for resolving a `User` is no longer supported.
-Instead, a `FQCN` of a class implementing the `OwenIt\Auditing\Contracts\UserResolver` interface should be used.
+Instead, the `FQCN` of a class implementing the `OwenIt\Auditing\Contracts\UserResolver` interface should be used.
 
 > {tip} Read more about it in the [General Configuration](general-configuration) section.
