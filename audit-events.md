@@ -1,11 +1,8 @@
 # Audit Events
-
 During and after the audit process, two events are fired.
 
 ## Auditing
-
 This event is fired while the auditing is being processed. If needed, the `Audit` can be canceled by returning `false` from the event listener `handle()` method.
-
 
 ```php
 <?php
@@ -38,7 +35,6 @@ class AuditingListener
 ```
 
 ## Audited
-
 This other event, happens when the `Audit` has just been created.
 In case some immediate action needs to take place after the event, this is where it should go.
 
