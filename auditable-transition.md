@@ -7,7 +7,7 @@ The idea is to use the `Audit` trail of a model, in order to undo or redo change
 The `Auditable` interface defines a `transitionTo()` method, which does exactly what it says.
 Two arguments are accepted (the first being an `Audit` and the second being a `bool`), although only the first one is mandatory.
 
-Usage:
+Using an Article model example, here's how it works:
 ```php
 <?php
 

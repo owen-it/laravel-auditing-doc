@@ -1,5 +1,5 @@
 # General Configuration
-The default auditing behavior can be altered by updating the default settings in the configuration file, which can be found in `config/audit.php`.
+The default auditing behavior can be altered by updating the settings in the configuration file, which can be found in `config/audit.php`.
 
 ## Audit implementation
 Since version **4.1.0**, the audit implementation can be configured.
@@ -88,7 +88,7 @@ class User extends Model implements Auditable, UserResolver
 
 > {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), update the resolver logic accordingly.
 
-The resolver is defined in the `config/audit.php` configuration file. This is done by assigning the FQCN value of class implementing it to the `user.resolver` index.
+The resolver is defined in the `config/audit.php` configuration file. This is done by assigning the `FQCN` value of class implementing it to the `user.resolver` index.
 
 ```php
 return [
@@ -102,7 +102,7 @@ return [
 ];
 ```
 
-> {note} Support for `Closure`/`callable` resolvers has been removed from version **5.0.0** onwards.
+> {note} Support for `Closure` and `callable` resolvers has been removed from version **5.0.0** onwards.
 
 ## Audit driver
 Being the only driver provided, the `Database` driver is set as default.

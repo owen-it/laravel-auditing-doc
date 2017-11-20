@@ -18,7 +18,7 @@ namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Audit extends Model implements \OwenIt\Auditing\Contracts\Audit
+class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
 {
     use \OwenIt\Auditing\Audit;
 
@@ -44,12 +44,12 @@ class Audit extends Model implements \OwenIt\Auditing\Contracts\Audit
 In the `config/audit.php` file, set the `implementation` value as the [FQCN](http://php.net/manual/en/language.namespaces.rules.php) of the `Audit` model you wish to use.
 If the value is missing from the configuration, the `audits()` relation method of the `Auditing` trait will default to `OwenIt\Auditing\Models\Audit`.
 
-Here's how to set the MongoDB `Audit` implementation above:
+Here's how to set the `MongoAudit` implementation above:
 ```php
 return [
     // ...
 
-    'implementation' => App\Models\Audit::class,
+    'implementation' => App\Models\MongoAudit::class,
 
     // ...
 ];

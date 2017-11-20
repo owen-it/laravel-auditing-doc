@@ -1,5 +1,5 @@
 # Getting Audits
-The `Audit` logs can be fetched very easily, via [Eloquent](https://laravel.com/docs/master/eloquent) relations.
+`Audit` records can be fetched very easily, via [Eloquent](https://laravel.com/docs/master/eloquent) relations.
 
 ## Retrieving audit records
 Using an `Article` model example, here's how it works:

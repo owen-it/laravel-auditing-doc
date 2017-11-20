@@ -54,7 +54,7 @@ class UpdateAuditsTable extends Migration
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
-> {tip} Take a look at the brief example in the [Introduction](introduction).
+> {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
 Use the following migration to convert a default **3.1.x** table structure into the **5.0.x** version:
@@ -109,7 +109,7 @@ class UpdateAuditsTable extends Migration
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
-> {tip} Take a look at the brief example in the [Introduction](introduction).
+> {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
 Use the following migration to convert a default **2.4.x** table structure into the **5.0.x** version:
@@ -172,7 +172,7 @@ Audit queue support has been removed since version **4.0.0**.
 Since version **4.0.0**, `Auditable` custom message and fields are no longer supported.
 Models should be updated to reflect this change, by removing the `$auditCustomMessage` and `$auditCustomFields` attributes.
 
-> {tip} Documentation on how to display changes can be seen in the [Audit presentation](audit-presentation) section.
+> {tip} Documentation on how to display changes can be seen in the [Audit Presentation](audit-presentation) section.
 
 ## User ID resolver
 From version **5.0.0** onwards, using a `Closure` or any sort of `callable` in the configuration for resolving a `User` is no longer supported.

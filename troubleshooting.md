@@ -21,7 +21,7 @@ Article::find($id)->update($data);
 ## Error: Call to undefined method Closure::__set_state()
 This error happens when Laravel tries to cache the configuration and you're using a `Closure` as a `User` resolver in the `config/audits.php` file.
 
-Support for `Closure`/`callable` user resolvers has been dropped from version **5.0.0** onwards.
+Support for `Closure` and `callable` resolvers has been removed from version **5.0.0** onwards.
 
 Read the `User` resolver section in the [General Configuration](general-configuration) for more information.
 
