@@ -80,7 +80,7 @@ return [
 In this example, the previously created `MyCustomDriver`, is set as the default audit driver for all `Auditable` models.
 
 ### Locally
-This is done on a per `Auditable` model basis, by assigning the FQCN value of the driver to the `$auditDriver` attribute.
+This is done on a per `Auditable` model basis, by assigning the `FQCN` value of the driver to the `$auditDriver` attribute.
 
 ```php
 <?php

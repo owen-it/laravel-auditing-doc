@@ -279,4 +279,4 @@ Eloquent **5.5** brings a new `retrieved` event, which is supported, although **
 
 The main reason is to avoid creating **lots** of `Audit` records, specially on busy applications, so enable it with care.
 
-> {note} When caching is enabled and depending on how it's configured, `retrieved` events might not fire as often!
+> {note} When caching is active and depending on how it's configured, `retrieved` events might not fire as often!
