@@ -9,19 +9,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use OwenIt\Auditing\Auditable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Model implements AuditableContract
+class User extends Model implements Auditable
 {
-    use Auditable;
-  
+    use \OwenIt\Auditing\Auditable;
+
     // ...
 
     /**
      * {@inheritdoc}
      */
-    public function transformAudit(array $data)
+    public function transformAudit(array $data): array
     {
         if (Arr::has($data, 'new_values.role_id')) {
             $data['old_values']['role_name'] = Role::find($this->getOriginal('role_id'))->name;

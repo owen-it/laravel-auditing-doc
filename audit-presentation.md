@@ -1,9 +1,7 @@
 # Audit presentation
-
 The metadata and modified data can be accessed in several ways.
 
 ## Metadata
-
 The `Audit` data is referred as metadata, since it's information about the modified attributes of an `Auditable` model.
 
 Metadata can be fetched through the `getMetadata()` method as an `array`.
@@ -14,17 +12,24 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(9) {
+array(11) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
   string(7) "updated"
   ["audit_url"]=>
-  string(26) "http://example.com/posts/1"
+  string(29) "http://example.com/articles/1"
   ["audit_ip_address"]=>
   string(9) "127.0.0.1"
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
+  ["audit_tags"]=>
+  array(2) {
+    [0] =>
+    string(3) "foo"
+    [1] =>
+    string(3) "bar"
+  }
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["audit_updated_at"]=>
@@ -51,9 +56,13 @@ echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
 {
     "audit_id": "1",
     "audit_event": "updated",
-    "audit_url": "http:\/\/example.com\/posts\/1",
+    "audit_url": "http:\/\/example.com\/articles\/1",
     "audit_ip_address": "127.0.0.1",
     "audit_user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0",
+    "audit_tags": [
+        "foo",
+        "bar"
+   ],
     "audit_created_at": "2017-01-01 01:02:03",
     "audit_updated_at": "2017-01-01 01:02:03",
     "user_id": "1",
@@ -72,6 +81,7 @@ echo $audit->event.PHP_EOL;
 echo $audit->url.PHP_EOL;
 echo $audit->ip_address.PHP_EOL;
 echo $audit->user_agent.PHP_EOL;
+echo implode(',', $audit->tags).PHP_EOL;
 echo $audit->created_at->toDateTimeString().PHP_EOL;
 echo $audit->updated_at->toDateTimeString().PHP_EOL;
 echo $audit->user_id.PHP_EOL;
@@ -83,9 +93,10 @@ echo $audit->user->name.PHP_EOL;
 ```txt
 1
 updated
-http://example.com/posts/1
+http://example.com/articles/1
 127.0.0.1
 Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0
+foo,bar
 2017-01-01 01:02:03
 1
 bob@example.com
@@ -93,7 +104,6 @@ Bob
 ```
 
 ## Modified
-
 The modified data is a set of `Auditable` model attributes that changed since the last event: `created`, `updated`, `deleted` and `restored`.
 
 Only modified attributes will make part of the `array`, which consists in the **old** and **new** values for each one.
@@ -163,13 +173,13 @@ To better understand how the `Audit` methods can be used, here are some presenta
 ### Listing Audits
 Displaying a `Collection` of `Audit` models in an HTML unordered list.
 
-`Post` translation file:
+`Article` translation file:
 
 ```php
 return [
     // ...
 
-    'unavailable_audits' => 'No Post Audits available',
+    'unavailable_audits' => 'No Article Audits available',
 
     'updated'            => [
         'metadata' => 'On :audit_created_at, :user_name [:audit_ip_address] updated this record via :audit_url',
@@ -189,16 +199,16 @@ Blade template:
 <ul>
     @forelse ($audits as $audit)
     <li>
-        @lang('post.updated.metadata', $audit->getMetadata())
+        @lang('article.updated.metadata', $audit->getMetadata())
 
         @foreach ($audit->getModified() as $attribute => $modified)
         <ul>
-            <li>@lang('post.'.$audit->event.'.modified.'.$attribute, $modified)</li>
+            <li>@lang('article.'.$audit->event.'.modified.'.$attribute, $modified)</li>
         </ul>
         @endforeach
     </li>
     @empty
-    <p>@lang('post.unavailable_audits')</p>
+    <p>@lang('article.unavailable_audits')</p>
     @endforelse
 </ul>
 ```
@@ -223,6 +233,7 @@ return [
     'old'        => 'Old',
     'url'        => 'URL',
     'user'       => 'User',
+    'tags'       => 'Tags',
 
     // ...
 ];
@@ -233,8 +244,8 @@ Vue app to set the `data`:
 new Vue({
     el: '.container',
     data: {
-        metadata: JSON.parse(document.getElementById('post').getAttribute('data-metadata')),
-        modified: JSON.parse(document.getElementById('post').getAttribute('data-modified'))
+        metadata: JSON.parse(document.getElementById('article').getAttribute('data-metadata')),
+        modified: JSON.parse(document.getElementById('article').getAttribute('data-modified'))
     }
 });
 ```
@@ -242,7 +253,7 @@ new Vue({
 Blade template with Vue data bindings:
 
 ```php
-<div id="post" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
+<div id="article" class="container" data-metadata='{!! $audit->getMetadata(true) !!}' data-modified='{!! $audit->getModified(true) !!}'>
     <div v-model="metadata">
         <div class="row">
             <div class="col-md-3">
@@ -273,6 +284,12 @@ Blade template with Vue data bindings:
                 <strong>@lang('common.user_agent')</strong>
             </div>
             <div class="col-md-9">@{{ metadata.audit_user_agent }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>@lang('common.tags')</strong>
+            </div>
+            <div class="col-md-9">@{{ metadata.audit_tags.join() }}</div>
         </div>
         <div class="row">
             <div class="col-md-3">

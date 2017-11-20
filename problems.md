@@ -1,5 +1,4 @@
 # Having problems?
-
 If you found or have a problem with this package, let us know!
 
 Bear in mind, however, that nobody likes their time wasted, so before you rush to create a new issue on GitHub, ensure that:
@@ -9,7 +8,7 @@ Bear in mind, however, that nobody likes their time wasted, so before you rush t
 
 If all of the above applies, feel free to [open a new issue](https://github.com/owen-it/laravel-auditing/issues/new).
 
-Also be aware that filling the [issue template](https://github.com/owen-it/laravel-auditing/blob/master/.github/ISSUE_TEMPLATE.md) is **mandatory** when opening a new issue.
+Also be aware that filling the [issue template](https://github.com/owen-it/laravel-auditing/blob/master/.github/ISSUE_TEMPLATE.md) is **mandatory**!
 
 Failure to do so, will result in a closed ticket.
 

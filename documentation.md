@@ -11,10 +11,12 @@
 - Advanced
     - [Audit Migration](/docs/{{version}}/audit-migration)
     - [Audit Drivers](/docs/{{version}}/audit-drivers)
+    - [Audit Tags](/docs/{{version}}/audit-tags)
     - [Audit Implementation](/docs/{{version}}/audit-implementation)
     - [Audit Transformation](/docs/{{version}}/audit-transformation)
     - [Audit Presentation](/docs/{{version}}/audit-presentation)
     - [Audit Events](/docs/{{version}}/audit-events)
+    - [Auditable Transition](/docs/{{version}}/auditable-transition)
     - [Auditor](/docs/{{version}}/auditor)
 - Help
     - [Problems?](/docs/{{version}}/problems)
