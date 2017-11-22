@@ -249,30 +249,30 @@ class Article extends Model implements Auditable
 
 The above example only takes the `deleted` and `restored` events into account.
 
-### Custom event handlers
+### Custom attribute getters
 Here's how a custom method for the `restored` event can be defined:
 
 ```php
 protected $auditEvents = [
     'deleted',
-    'restored' => 'myRestoredEventHandler',
+    'restored' => 'myRestoredEventAttributes',
 ];
 ```
 
-The `deleted` event is handled by the default `auditDeletedAttributes()` method, while the `restored` event will be handled by a custom `myRestoredEventHandler()` method.
+The `deleted` event is handled by the default `getDeletedEventAttributes()` method, while the `restored` event will be handled by a custom `myRestoredEventAttributes()` method.
 
 ### Event wildcards
-Wildcards can be used for event names, making it easy to define the same handler to multiple events.
+Wildcards can be used for event names, making it easy to define the same attribute getter to multiple events.
 
 ```php
 protected $auditEvents = [
-    '*ated' => 'myCreatedUpdatedEventHandler',
+    '*ated' => 'getMultiEventAttributes',
 ];
 ```
 
-The `created` and `updated` events will be handled by a custom `myCreatedUpdatedEventHandler()` method
+The `created` and `updated` events will be handled by a custom `getMultiEventAttributes()` method
 
-> {note} Support for custom handlers and wildcards has been present since version 4.1.4.
+> {note} Support for custom attribute getters and wildcards has been present since version 4.1.4.
 
 ### Retrieved event
 Eloquent **5.5** brings a new `retrieved` event, which is supported, although **not** enabled by default.
