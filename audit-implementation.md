@@ -1,5 +1,5 @@
 # Audit Implementation
-Starting from version **4.1**, support for custom `Audit` models was added.
+Starting from version **4.1.0**, support for custom `Audit` models was added.
 This lets the user extend implementations other than the traditional `Illuminate\Database\Eloquent\Model`.
 
 > {tip} `Audit` models must implement the `OwenIt\Auditing\Contracts\Audit` interface!
