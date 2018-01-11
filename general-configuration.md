@@ -66,15 +66,14 @@ The `resolveId()` method should return the **ID** of the currently logged `User`
 <?php
 namespace App;
 
-use Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Contracts\UserResolver;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 class User extends Model implements Auditable, UserResolver
 {
-    use AuditableContract;
+    use \OwenIt\Auditing\Contracts\Auditable;
 
     /**
      * {@inheritdoc}
