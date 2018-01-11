@@ -67,12 +67,13 @@ The `resolveId()` method should return the **ID** of the currently logged `User`
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Contracts\UserResolver;
 
 class User extends Model implements Auditable, UserResolver
 {
-    use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Contracts\Auditable;
 
     /**
      * {@inheritdoc}
