@@ -73,7 +73,7 @@ use OwenIt\Auditing\Contracts\UserResolver;
 
 class User extends Model implements Auditable, UserResolver
 {
-    use \OwenIt\Auditing\Contracts\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * {@inheritdoc}
