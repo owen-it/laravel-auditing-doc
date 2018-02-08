@@ -12,7 +12,7 @@ By default, this resolver uses the `Request::ip()` method to get the current IP 
 
 Most of the times, this will get the correct value, but for applications running behind a proxy or a [load balancer](https://en.wikipedia.org/wiki/Load_balancing_(computing)), IP addresses must be obtained differently.
 
-Usually, the real IP address will be passed via an `X-Forwarded-For` HTTP header.
+Usually, the real IP address will be passed via an **X-Forwarded-For** HTTP header.
 
 ```php
 <?php
@@ -27,7 +27,7 @@ class IpAddressResolver implements \OwenIt\Auditing\Contracts\IpAddressResolver
      */
     public static function resolve(): string
     {
-        return Request::header('HTTP_X_FORWARDED_FOR');
+        return Request::header('HTTP_X_FORWARDED_FOR', '0.0.0.0');
     }
 }
 ```
@@ -136,7 +136,7 @@ return [
 ## User Resolver
 Out of the box, this resolver uses the Laravel `Auth` facade.
 
-The `resolve()` method must return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
+The `resolve()` method must return the **ID** of the currently logged `User`, or `null` if the `User` cannot be resolved.
 
 When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), a different resolver must be implemented.
 
