@@ -1,29 +1,28 @@
 # Troubleshooting
 This is a compilation of common problems and their respective solutions and/or workarounds.
 
-## Auditing not working
-You followed the documentation to the letter and yet, audit records aren't being created?
+## Auditing does not work
+You followed the documentation to the letter and yet, `Audit` records are not being created?
 
-This package relies on Eloquent [events](https://laravel.com/docs/5.5/eloquent#events) and if they don't fire, an `Audit` cannot be created.
+### Builder vs. Eloquent
+Bear in mind that this package relies on Eloquent [events](https://laravel.com/docs/5.6/eloquent#events) and if they don't fire, an `Audit` cannot be created.
 
-The most common mistake is doing an `update` or `delete` using a `Builder` instance, rather than an using an Eloquent `Model` instance.
+The most common mistake is performing an `update` or `delete` using a `Builder` instance, rather than an using an Eloquent `Model`.
 
-Usually, something like this happens:
+Using the `Builder` won't trigger an `Audit`:
 ```php
 Article::where('id', $id)->update($data);
 ```
 
-When in fact, it should be:
+But using `Eloquent` will:
 ```php
 Article::find($id)->update($data);
 ```
 
-## Error: Call to undefined method Closure::__set_state()
-This error happens when Laravel tries to cache the configuration and you're using a `Closure` as a `User` resolver in the `config/audits.php` file.
+### Console and Jobs
+Eloquent events triggered from the console or from a Job won't be audited by default.
 
-Support for `Closure` and `callable` resolvers has been removed from version **5.0.0** onward.
-
-Read the `User` resolver section in the [General Configuration](general-configuration) for more information.
+Check the [General Configuration](general-configuration) to know how to overcome that. 
 
 ## Attributes are considered modified, when they're not
 False positives cause Audit records to be created.
