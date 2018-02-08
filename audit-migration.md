@@ -82,4 +82,4 @@ $table->text('url')->nullable();
 $table->text('user_agent')->nullable();
 ```
 
-> {note} From version 4.1.3 onwards, the default migration creates the `url` column as `text` instead of `string`.
+> {note} From version 4.1.3 onward, the default migration creates the `url` column as `text` instead of `string`.
