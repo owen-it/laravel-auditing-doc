@@ -1,13 +1,11 @@
 # Audit Resolvers
-A resolver is a class implementing one of the following contracts:
+A resolver is a class that implements one of the following contracts:
 - `OwenIt\Auditing\Contracts\IpAddressResolver`
 - `OwenIt\Auditing\Contracts\UrlResolver`
 - `OwenIt\Auditing\Contracts\UserAgentResolver`
 - `OwenIt\Auditing\Contracts\UserResolver`
 
-Each resolver must implement a **public static** `resolve()` method with the appropriate logic.
-
-> {note} Until version **6.0.0**, only the `User` resolver could be easily customised.
+Each resolver must have a **public static** `resolve()` method with the appropriate logic.
 
 ## IP Address Resolver
 By default, this resolver uses the `Request::ip()` method to get the current IP address.
@@ -34,14 +32,16 @@ class IpAddressResolver implements \OwenIt\Auditing\Contracts\IpAddressResolver
 }
 ```
 
-Set the custom _IP Address_ resolver in the `config/audit.php` configuration file, by assigning the `FQCN` of the class:
+Set the custom _IP Address_ resolver in the `config/audit.php` configuration file:
 
 ```php
 return [
     // ...
 
     'resolver' = [
+        // ...
         'ip_address' => App\Resolvers\IpAddressResolver::class,
+        // ...
     ],
 
     // ...
@@ -77,14 +77,16 @@ class UrlResolver implements \OwenIt\Auditing\Contracts\UrlResolver
 }
 ```
 
-Set the custom _URL_ resolver in the `config/audit.php` configuration file, by assigning the `FQCN` of the class:
+Set the custom _URL_ resolver in the `config/audit.php` configuration file:
 
 ```php
 return [
     // ...
 
     'resolver' = [
+        // ...
         'url' => App\Resolvers\UrlResolver::class,
+        // ...
     ],
 
     // ...
@@ -115,14 +117,16 @@ class UserAgentResolver implements \OwenIt\Auditing\Contracts\UserAgentResolver
 }
 ```
 
-Set the custom _User Agent_ resolver in the `config/audit.php` configuration file, by assigning the `FQCN` of the class:
+Set the custom _User Agent_ resolver in the `config/audit.php` configuration file:
 
 ```php
 return [
     // ...
 
     'resolver' = [
+        // ...
         'user_agent' => App\Resolvers\UserAgentResolver::class,
+        // ...
     ],
 
     // ...
@@ -154,14 +158,16 @@ class UserResolver implements \OwenIt\Auditing\Contracts\UserResolver
 }
 ```
 
-Set the custom _User_ resolver in the `config/audit.php` configuration file, by assigning the `FQCN` of the class:
+Set the custom _User_ resolver in the `config/audit.php` configuration file:
 
 ```php
 return [
     // ...
 
     'resolver' = [
+        // ...
         'user' => App\Resolvers\UserResolver::class,
+        // ...
     ],
 
     // ...
