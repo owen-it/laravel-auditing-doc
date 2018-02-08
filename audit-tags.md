@@ -1,8 +1,8 @@
 # Audit Tags
-Version **5.0.0** brings the ability to tag `Audit` records, making it convenient for filtering.
+The ability to tag an `Audit` has been present since version **5.0.0**, making it convenient for filtering.
 
 ## Generating tags
-The `Auditable` interface defines a `generateTags()` method for generating tags in each model.
+The `Auditable` interface defines a `generateTags()` method for generating tags for each model.
 
 That method should return an `array` of strings, which will be converted into a comma separated values string on save.
 
@@ -13,7 +13,6 @@ Implementation:
 <?php
 namespace App\Models;
 
-use App\AuditDrivers\MyCustomDriver;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
