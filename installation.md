@@ -1,12 +1,12 @@
 # Installation
 The Laravel Auditing package should be installed via [Composer](http://getcomposer.org/doc/00-intro.md).
-To get the latest package version, run the following command from your project root:
+To get the latest package version, execute the following command from your project root:
 
 ```sh
 composer require owen-it/laravel-auditing
 ```
 
-> {tip} This package supports **Laravel** and **Lumen** from version 5.2 onwards.
+> {tip} This package supports **Laravel** and **Lumen** from version 5.2 onward.
 
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
@@ -97,6 +97,7 @@ php artisan migrate
 
 This is where the `Audit` records will be stored, by default.
 
-# Resolver
-Finally, it's time to implement the `User` resolver.
-Follow the instructions in the [General Configuration](general-configuration) section, and you're done!
+# Resolvers
+Version **6.0.0** brings more resolvers, which can be replaced with custom ones.
+
+Find out more about them in the [Audit Resolvers](audit-resolvers) section!

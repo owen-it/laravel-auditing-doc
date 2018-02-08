@@ -1,11 +1,14 @@
 # Upgrading
 This document provides the necessary steps to upgrade from a previous version.
 
+> {tip} Version **6.0.x** uses the same database structure as the previous version (**5.0.x**).
+
 ## PHP
-Support for PHP **5.5**/**5.6** has been dropped. Version **5.0.0** of the package requires PHP **7.0.0** or greater.
+Support for PHP **5.5.x**/**5.6.x** has been dropped since version **5.0.0**.
+From version **5.0.0** onward, PHP **7.0.13** or greater is required.
 
 ## Before upgrading
-The `doctrine/dbal` package is required to successfully execute the upgrade migrations, so make sure it is available.
+The `doctrine/dbal` package is required to successfully execute the upgrade migrations, so make sure it's installed.
 
 ```sh
 composer require doctrine/dbal
@@ -13,10 +16,9 @@ composer require doctrine/dbal
 
 > {note} Any changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
 
-## Upgrade from version 4.1.x to version 5.0.x
+## Upgrade from version 4.1.x to version 6.0.x
 ### Table
-Version **5.0.0** adds a `tags` column to the `audits` table.
-Use the following migration to convert a default **4.1.x** table structure into the **5.0.x** version:
+Use the following migration to convert a default **4.1.x** table structure into the **6.0.x** version:
 
 ```php
 <?php
@@ -50,14 +52,14 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrade from version 3.1.x to version 5.0.x
+## Upgrade from version 3.1.x to version 6.0.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **3.1.x** table structure into the **5.0.x** version:
+Use the following migration to convert a default **3.1.x** table structure into the **6.0.x** version:
 
 ```php
 <?php
@@ -105,14 +107,14 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrade from version 2.4.x to version 5.0.x
+## Upgrade from version 2.4.x to version 6.0.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **2.4.x** table structure into the **5.0.x** version:
+Use the following migration to convert a default **2.4.x** table structure into the **6.0.x** version:
 
 ```php
 <?php
@@ -161,7 +163,7 @@ class UpdateAuditsTable extends Migration
 ```
 
 ## Update the configuration
-In version **5.0.0**, more options were added to the default configuration and the `default` key was renamed to `driver`.
+Version **6.0.0** brings a slight change in the way [Audit Resolvers](audit-resolvers.md) are registered.
 
 > {tip} When in doubt, check the bundled configuration file and update or simply replace your current file and make the appropriate changes.
 
@@ -173,9 +175,3 @@ Since version **4.0.0**, `Auditable` custom message and fields are no longer sup
 Models should be updated to reflect this change, by removing the `$auditCustomMessage` and `$auditCustomFields` attributes.
 
 > {tip} Documentation on how to display changes can be seen in the [Audit Presentation](audit-presentation) section.
-
-## User ID resolver
-From version **5.0.0** onwards, using a `Closure` or any sort of `callable` in the configuration for resolving a `User` is no longer supported.
-Instead, the `FQCN` of a class implementing the `OwenIt\Auditing\Contracts\UserResolver` interface should be used.
-
-> {tip} Read more about it in the [General Configuration](general-configuration) section.

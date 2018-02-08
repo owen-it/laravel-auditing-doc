@@ -275,8 +275,8 @@ The `created` and `updated` events will be handled by a custom `getMultiEventAtt
 > {note} Support for custom attribute getters and wildcards has been present since version 4.1.4.
 
 ### Retrieved event
-Eloquent **5.5** brings a new `retrieved` event, which is supported, although **not** enabled by default.
+Since Eloquent **5.5.0**, there's a new `retrieved` event. While supported by this package, `retrieved` audits are **not** enabled by default.
 
-The main reason is to avoid creating **lots** of `Audit` records, specially on busy applications, so enable it with care.
+The main reason is to avoid creating **lots** of `Audit` records, specially on busy applications, so enable with care.
 
-> {note} When caching is active and depending on how it's configured, `retrieved` events might not fire as often!
+> {note} When caching is active and depending on its configuration, the `retrieved` event might not fire as often!

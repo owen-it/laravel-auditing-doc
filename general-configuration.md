@@ -18,8 +18,8 @@ return [
 
 Read more about it in the [Audit Implementation](audit-implementation) section.
 
-## User Keys, Model & Resolver
-Specify the `User` keys, model and resolver.
+## User Keys & Model
+Specify the `User` keys and model.
 
 ### Primary and Foreign Keys
 Sometimes, for whatever reason (legacy database, etc), a different key needs to be used.
@@ -54,56 +54,6 @@ return [
     // ...
 ];
 ```
-
-### Resolver
-A resolver is a class implementing the `OwenIt\Auditing\Contracts\UserResolver` contract.
-
-The only thing needed is a public static `resolveId()` method with the logic to resolve a logged `User`.
-
-The `resolveId()` method should return the **ID** of the currently logged `User`, or `null` if the `User` could not be resolved.
-
-```php
-<?php
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use OwenIt\Auditing\Contracts\Auditable;
-use OwenIt\Auditing\Contracts\UserResolver;
-
-class User extends Model implements Auditable, UserResolver
-{
-    use \OwenIt\Auditing\Auditable;
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function resolveId()
-    {
-        return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
-    }
-
-    // ...
-}
-```
-
-> {tip} When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), update the resolver logic accordingly.
-
-The resolver is defined in the `config/audit.php` configuration file. This is done by assigning the `FQCN` value of class implementing it to the `user.resolver` index.
-
-```php
-return [
-    // ...
-
-    'user' = [
-        'resolver' => App\User::class,
-    ],
-
-    // ...
-];
-```
-
-> {note} Support for `Closure` and `callable` resolvers has been removed from version **5.0.0** onwards.
 
 ## Audit driver
 Being the only driver provided, the `Database` driver is set as default.

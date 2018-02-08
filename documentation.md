@@ -10,6 +10,7 @@
     - [Getting Audits](/docs/{{version}}/getting-audits)
 - Advanced
     - [Audit Migration](/docs/{{version}}/audit-migration)
+    - [Audit Resolvers](/docs/{{version}}/audit-resolvers)
     - [Audit Drivers](/docs/{{version}}/audit-drivers)
     - [Audit Tags](/docs/{{version}}/audit-tags)
     - [Audit Implementation](/docs/{{version}}/audit-implementation)
