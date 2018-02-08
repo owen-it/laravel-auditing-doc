@@ -1,10 +1,10 @@
 # Auditable Transition
-Another feature introduced in version **5.0.0** is the ability use an `Audit` record to transition between states of an `Auditable` model.
+Another feature introduced in version **5.0.0** is the ability use an `Audit` record to transition between the states of an `Auditable` model.
 
 ## Transition Rules
 An `Auditable` model can **only** transition through an `Audit` with the same `auditable_id` and `auditable_type`, otherwise, an `AuditableTransitionException` will be thrown.
 
-Besides a matching `auditable_id` and `auditable_type`, attribute compatibility must be met between the `Audit`'s `old_values` / `new_values` and the `Auditable` class.
+Besides a matching `auditable_id` and `auditable_type`, attribute compatibility must be met between the `Audit`'s `old_values` / `new_values` and the `Auditable` model being used.
 
 An `AuditableTransitionException` will be thrown if an attribute incompatibility is detected.
 
@@ -46,7 +46,7 @@ Still using the same Article model, here's how it works:
 // ...
 
 // Get the latest Article
-$latestArticle = Article::orderBy('created_at', 'desc')->first();
+$latestArticle = Article::latest()->first();
 
 // Get the first Audit from the latest Article
 $firstAudit = $latestArticle->audits()->first();
