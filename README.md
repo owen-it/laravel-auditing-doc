@@ -1,1 +1,1 @@
-{% include "./SUMMARY.md" %}
+{% include "./documentation.md" %}
