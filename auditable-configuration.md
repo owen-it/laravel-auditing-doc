@@ -249,7 +249,7 @@ class Article extends Model implements Auditable
 
 The above example only takes the `deleted` and `restored` events into account.
 
-### Custom attribute getters
+## Custom attribute getters
 Here's how a custom method for the `restored` event can be defined:
 
 ```php
@@ -261,7 +261,7 @@ protected $auditEvents = [
 
 The `deleted` event is handled by the default `getDeletedEventAttributes()` method, while the `restored` event will be handled by a custom `myRestoredEventAttributes()` method.
 
-### Event wildcards
+## Event wildcards
 Wildcards can be used for event names, making it easy to define the same attribute getter to multiple events.
 
 ```php
@@ -274,9 +274,28 @@ The `created` and `updated` events will be handled by a custom `getMultiEventAtt
 
 > {note} Support for custom attribute getters and wildcards has been present since version 4.1.4.
 
-### Retrieved event
+## Retrieved event
 Since Eloquent **5.5.0**, there's a new `retrieved` event. While supported by this package, `retrieved` audits are **not** enabled by default.
 
 The main reason is to avoid a **huge** amount of `Audit` records, specially on busy applications, so enable with care.
 
 > {note} When caching is active and depending on its configuration, the `retrieved` event might not fire as often!
+
+## Enable/Disable
+From version **6.0.1** going forward, enabling and disabling the auditing functionality has become much easier.
+
+Considering the `Article` model from the previous examples, here's how it works:
+```php
+<?php
+
+// Disable auditing from this point on
+Article::disableAuditing();
+
+// This operation won't be audited
+Article::create([
+    // ...
+]);
+
+// Re-enable auditing
+Article::enableAuditing();
+```
