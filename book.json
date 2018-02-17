@@ -1,7 +1,7 @@
 {
   "title": "laravel-auditing",
   "gitbook": ">3.0.0",
-  "plugins": ["edit-link", "theme-laravel-auditing", "-fontsettings", "github", "regexplace"],
+  "plugins": ["edit-link", "theme-laravel-auditing", "-fontsettings", "github", "replace"],
   "structure": {
     "summary": "documentation.md"
   },
@@ -13,9 +13,9 @@
     "github": {
       "url": "https://github.com/owen-it/laravel-auditing"
     },
-    "regexplace": {
+    "replace": {
       "substitutes": [
-        {"pattern": "<!--", "flags": "g", "substitute": "$1"} 
+        {"pattern": "<!--(.*)-->", "flags": "g", "substitute": "$1"} 
       ]
     }
   }
