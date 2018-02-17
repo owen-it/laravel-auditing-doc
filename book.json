@@ -15,7 +15,7 @@
     },
     "regexplace": {
       "substitutes": [
-        {"pattern": "<!--(.*)-->", "flags": "g", "substitute": "$1"} 
+        {"pattern": "<!--\n(.*)\n-->", "flags": "g", "substitute": "$1"} 
       ]
     }
   }
