@@ -5,7 +5,7 @@
   * [Introduction](introduction.md)
   * [Installation](installation.md)
   * [Upgrading](upgrading.md)
-* [Configuration](configuration.md)
+* Configuration
   * [General Configuration](general-configuration.md)
   * [Auditable Configuration](auditable-configuration.md)
 * Basic Usage
