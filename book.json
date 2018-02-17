@@ -15,7 +15,7 @@
     },
     "replace": {
       "substitutes": [
-        {"pattern": "<!--(.*)-->", "flags": "g", "substitute": "$1"} 
+        {"pattern": "<!--", "flags": "g", "substitute": "$1"} 
       ]
     }
   }
