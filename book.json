@@ -1,7 +1,7 @@
 {
   "title": "laravel-auditing",
   "gitbook": ">3.0.0",
-  "plugins": ["edit-link", "theme-laravel-auditing", "-fontsettings", "github", "replace"],
+  "plugins": ["edit-link", "theme-laravel-auditing", "-fontsettings", "github"],
   "structure": {
     "summary": "documentation.md"
   },
@@ -12,11 +12,6 @@
     },
     "github": {
       "url": "https://github.com/owen-it/laravel-auditing"
-    },
-    "replace": {
-      "substitutes": [
-        {"pattern": "Summary", "flags": "g", "substitute": "Sumario"} 
-      ]
     }
   },
   "links": {
