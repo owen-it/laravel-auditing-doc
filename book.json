@@ -18,5 +18,11 @@
         {"pattern": "<!--", "flags": "g", "substitute": ""} 
       ]
     }
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
   }
 }
