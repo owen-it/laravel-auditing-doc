@@ -6,7 +6,5 @@ Contributions are always welcome; to keep things organized, bug reports and pull
 
 All pull requests intended for the next release of Laravel Auditing should be done against the `master` branch.
 
-## Summary
-
 {% include "documentation.md" %}
 
