@@ -20,5 +20,5 @@
     - [Auditable Transition](auditable-transition)
     - [Auditor](auditor)
 - Help
-    - [Problems?](problems)
+    - [Problems?](problems.md)
     - [Troubleshooting](troubleshooting)
