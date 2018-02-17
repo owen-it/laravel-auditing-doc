@@ -7,7 +7,7 @@
   },
   "pluginsConfig": {
     "edit-link": {
-      "base": "https://github.com/owen-it/laravel-auditing-doc/master",
+      "base": "https://github.com/owen-it/laravel-auditing-doc/edit/master/",
       "label": "Edit This Page"
     },
     "github": {
@@ -15,7 +15,7 @@
     },
     "regexplace": {
       "substitutes": [
-        {"pattern": "<!--\n(.*)\n-->", "flags": "g", "substitute": "$1"} 
+        {"pattern": "<!--", "flags": "g", "substitute": "$1"} 
       ]
     }
   }
