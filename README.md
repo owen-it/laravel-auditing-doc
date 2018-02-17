@@ -8,5 +8,5 @@ All pull requests intended for the next release of Laravel Auditing should be do
 
 ## Summary
 
-{% include "./documentation.md" %}
+{% include "documentation.md" %}
 
