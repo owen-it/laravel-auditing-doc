@@ -15,7 +15,7 @@
     },
     "regexplace": {
       "substitutes": [
-        {"pattern": "doc", "flags": "g", "substitute": "__doc"}
+        {"pattern": "\.md", "flags": "g", "substitute": ""}
       ]
     }
   }
