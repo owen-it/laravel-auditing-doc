@@ -1,7 +1,7 @@
 {
   "title": "laravel-auditing",
   "gitbook": ">3.0.0",
-  "plugins": ["edit-link", "-fontsettings", "github", "regexplace"],
+  "plugins": ["edit-link", "theme-vuejs", "-fontsettings", "github", "regexplace", "laravel-auditing"],
   "structure": {
     "summary": "documentation.md"
   },
@@ -15,7 +15,7 @@
     },
     "regexplace": {
       "substitutes": [
-        {"pattern": "\.md", "flags": "g", "substitute": ""}
+        {"pattern": "doc", "flags": "g", "substitute": "__doc"}
       ]
     }
   }
