@@ -1,1 +1,1 @@
-{% include "git+https://github.com/owen-it/laravel-auditing" %}
+{% include "git+https://github.com/owen-it/laravel-auditing.git/README.md" %}
