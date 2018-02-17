@@ -1,7 +1,7 @@
 {
   "title": "laravel-auditing",
   "gitbook": ">3.0.0",
-  "plugins": ["edit-link", "theme-vuejs", "-fontsettings", "github", "regexplace", "laravel-auditing"],
+  "plugins": ["edit-link", "theme-laravel-aduditing", "-fontsettings", "github", "regexplace"],
   "structure": {
     "summary": "documentation.md"
   },
