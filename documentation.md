@@ -1,24 +1,28 @@
-- Essentials
-    - [Introduction](/docs/{{version}}/introduction)
-    - [Installation](/docs/{{version}}/installation)
-    - [Upgrading](/docs/{{version}}/upgrading)
-- Configuration
-    - [General Configuration](/docs/{{version}}/general-configuration)
-    - [Auditable Configuration](/docs/{{version}}/auditable-configuration)
-- Basic Usage
-    - [Model Setup](/docs/{{version}}/model-setup)
-    - [Getting Audits](/docs/{{version}}/getting-audits)
-- Advanced
-    - [Audit Migration](/docs/{{version}}/audit-migration)
-    - [Audit Resolvers](/docs/{{version}}/audit-resolvers)
-    - [Audit Drivers](/docs/{{version}}/audit-drivers)
-    - [Audit Tags](/docs/{{version}}/audit-tags)
-    - [Audit Implementation](/docs/{{version}}/audit-implementation)
-    - [Audit Transformation](/docs/{{version}}/audit-transformation)
-    - [Audit Presentation](/docs/{{version}}/audit-presentation)
-    - [Audit Events](/docs/{{version}}/audit-events)
-    - [Auditable Transition](/docs/{{version}}/auditable-transition)
-    - [Auditor](/docs/{{version}}/auditor)
-- Help
-    - [Problems?](/docs/{{version}}/problems)
-    - [Troubleshooting](/docs/{{version}}/troubleshooting)
+# Summary
+
+* [Introduction](README.md)
+* Essentials
+  * [Introduction](introduction.md)
+  * [Installation](installation.md)
+  * [Upgrading](upgrading.md)
+* Configuration
+  * [General Configuration](general-configuration.md)
+  * [Auditable Configuration](auditable-configuration.md)
+* Basic Usage
+  * [Model Setup](model-setup.md)
+  * [Getting Audits](getting-audits.md)
+* Advanced
+  * [Audit Migration](audit-migration.md)
+  * [Audit Resolvers](audit-resolvers.md)
+  * [Audit Drivers](audit-drivers.md)
+  * [Audit Tags](audit-tags.md)
+  * [Audit Implementation](audit-implementation.md)
+  * [Audit Transformation](audit-transformation.md)
+  * [Audit Presentation](audit-presentation.md)
+  * [Audit Events](audit-events.md)
+  * [Auditable Transition](auditable-transition.md)
+  * [Auditor](auditor.md)
+* Help
+  * [Has Problems?](problems.md)
+  * [Troubleshooting](troubleshooting.md)
+
