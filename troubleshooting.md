@@ -19,10 +19,10 @@ But using `Eloquent` will:
 Article::find($id)->update($data);
 ```
 
-### Console and Jobs
-Eloquent events triggered from the console or from a Job won't be audited by default.
+### Console/CLI and Jobs
+Eloquent events fired from a **Job** or from the **console** (i.e. migrations, tests, commands, Tinker, ...), **WILL NOT** be audited by default.
 
-Check the [General Configuration](general-configuration) to know how to overcome that. 
+Please refer to the [General Configuration](general-configuration) for more information. 
 
 ## Attributes are considered modified, when they're not
 False positives cause Audit records to be created.
