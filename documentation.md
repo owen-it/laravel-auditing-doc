@@ -23,6 +23,6 @@
   * [Auditable Transition](auditable-transition.md)
   * [Auditor](auditor.md)
 * Help
-  * [Has Problems?](problems.md)
+  * [Problems?](problems.md)
   * [Troubleshooting](troubleshooting.md)
 
