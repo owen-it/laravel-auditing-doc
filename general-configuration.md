@@ -87,9 +87,9 @@ return [
 ];
 ```
 
-## Console
+## Console/CLI and Jobs
 
-Eloquent events that are fired when running in the console, are not audited by default.
+Eloquent events fired from a **Job** or from the **console** (i.e. migrations, tests, commands, Tinker, ...), **WILL NOT** be audited by default.
 To enable console auditing, set the `console` value to `true`.
 
 ```php
