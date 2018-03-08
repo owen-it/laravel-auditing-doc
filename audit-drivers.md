@@ -10,6 +10,7 @@ While for most use cases the `Database` driver should suffice, the community has
  Package                              | Repository                                              | Description
 :-------------------------------------|:--------------------------------------------------------|:-----------
  betapeak/laravel-auditing-filesystem | https://github.com/betapeak/laravel-auditing-filesystem | Allows you to store your audits into a CSV file, using any storage disk in your Laravel application.
+ Iconscout/laravel-auditing-elasticsearch | https://github.com/Iconscout/laravel-auditing-elasticsearch | This driver provides the ability to save your model audits in elasticsearch.
 
 ## Creating a custom Driver
 A driver is just a class that implements the `AuditDriver` interface.
