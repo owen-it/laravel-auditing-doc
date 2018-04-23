@@ -4,13 +4,15 @@ Another feature introduced in version **5.0.0** is the ability use an `Audit` re
 ## Transition Rules
 An `Auditable` model can **only** transition through an `Audit` with the same `auditable_id` and `auditable_type`, otherwise, an `AuditableTransitionException` will be thrown.
 
-Besides a matching `auditable_id` and `auditable_type`, attribute compatibility must be met between the `Audit`'s `old_values` / `new_values` and the `Auditable` model being used.
+If an `Auditable` model has [Audit Redactors](audit-redactors) set, an `AuditableTransitionException` will be thrown as well, since redacted data should not be used when transitioning states.
 
-An `AuditableTransitionException` will be thrown if an attribute incompatibility is detected.
+Lastly, attribute compatibility must be met between the `Audit`'s `old_values` / `new_values` and the `Auditable` model.
+
+Expect an `AuditableTransitionException` to be thrown, if an attribute incompatibility is detected.
 
 Incompatible property names can be retrieved using the `getIncompatibilities()` method.
 
-Using a Article model example, here's how it works:
+Using an `Article` model example, here's how it works:
 ```php
 <?php
 
@@ -39,7 +41,7 @@ The method takes two arguments, an `Audit` which will be used as the history to 
 
 > {tip} By default, the **new** data will be used.
 
-Still using the same Article model, here's how it works:
+Still using the same `Article` model, here's how it works:
 ```php
 <?php
 

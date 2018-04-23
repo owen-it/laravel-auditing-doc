@@ -96,7 +96,7 @@ class Article extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     /**
-     * Custom Audit Driver
+     * Custom Audit Driver.
      *
      * @var \App\AuditDrivers\MyCustomDriver
      */
