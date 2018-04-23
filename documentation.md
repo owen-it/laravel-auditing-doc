@@ -1,6 +1,3 @@
-# Summary
-
-* [Introduction](README.md)
 * Essentials
   * [Introduction](introduction.md)
   * [Installation](installation.md)
