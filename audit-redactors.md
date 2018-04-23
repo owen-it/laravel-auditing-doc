@@ -6,14 +6,16 @@ Two redactors are included, out of the box.
 ## LeftRedactor
 The `LeftRedactor` class will mask part of the data, from the left to the right.
 
-Value before being redacted: `How To Audit Eloquent Models`
-Value after being redacted: `#########################els`
+Value before being redacted | Value after being redacted
+:---------------------------|:--------------------------
+`How To Audit Eloquent Models` | `#########################els`
 
 ## RightRedactor
 The `RightRedactor` will work in the same fashion as the previous one, but like the name implies, it will mask the data from the right to the left.
 
-Value before being redacted: `How To Audit Eloquent Models`
-Value after being redacted: `How#########################`
+Value before being redacted | Value after being redacted
+:---------------------------|:--------------------------
+`How To Audit Eloquent Models` | `How#########################`
 
 > {tip} Depending on the length, both redactors should mask ~90% of the data.
 
