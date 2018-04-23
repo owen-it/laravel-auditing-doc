@@ -1,7 +1,7 @@
 # Upgrading
 This document provides the necessary steps to upgrade from a previous version.
 
-> {tip} Version **6.0.x** uses the same database structure as the previous version (**5.0.x**).
+> {tip} Version **6.1.x** uses the same database structure as the previous version (**5.0.x**).
 
 ## PHP
 Support for PHP **5.5.x**/**5.6.x** has been dropped since version **5.0.0**.
@@ -16,9 +16,9 @@ composer require doctrine/dbal
 
 > {note} Any changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
 
-## Upgrade from version 4.1.x to version 6.0.x
+## Upgrade from version 4.1.x to version 6.1.x
 ### Table
-Use the following migration to convert a default **4.1.x** table structure into the **6.0.x** version:
+Use the following migration to convert a default **4.1.x** table structure into the **6.1.x** version:
 
 ```php
 <?php
@@ -52,14 +52,14 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrade from version 3.1.x to version 6.0.x
+## Upgrade from version 3.1.x to version 6.1.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **3.1.x** table structure into the **6.0.x** version:
+Use the following migration to convert a default **3.1.x** table structure into the **6.1.x** version:
 
 ```php
 <?php
@@ -107,14 +107,14 @@ class UpdateAuditsTable extends Migration
 }
 ```
 
-## Upgrade from version 2.4.x to version 6.0.x
+## Upgrade from version 2.4.x to version 6.1.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **2.4.x** table structure into the **6.0.x** version:
+Use the following migration to convert a default **2.4.x** table structure into the **6.1.x** version:
 
 ```php
 <?php
@@ -163,7 +163,7 @@ class UpdateAuditsTable extends Migration
 ```
 
 ## Update the configuration
-Version **6.0.0** brings a slight change in the way [Audit Resolvers](audit-resolvers.md) are registered.
+Version **6.1.0** brings a slight change in the way [Audit Resolvers](audit-resolvers.md) are registered.
 
 > {tip} When in doubt, check the bundled configuration file and update or simply replace your current file and make the appropriate changes.
 
