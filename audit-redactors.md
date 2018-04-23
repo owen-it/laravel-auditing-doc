@@ -3,6 +3,21 @@ Redactors were introduced in version **6.1.0**, and are an easy way to mask sens
 
 Two redactors are included, out of the box.
 
+## Configuration
+To enable this feature, the following entry must be set in the `config/audit.php` configuration file.
+
+```php
+return [
+    // ...
+
+    'redact' => true,
+
+    // ...
+];
+```
+
+> {tip} Redacting an `Audit` is disabled by default.
+
 ## LeftRedactor
 The `LeftRedactor` class will mask part of the data, from the left to the right.
 
