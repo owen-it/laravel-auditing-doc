@@ -28,7 +28,7 @@ Please refer to the [General Configuration](general-configuration) for more info
 False positives cause Audit records to be created.
 This happens when a model with boolean/date attributes gets updated, regardless of change in those attributes.
 
-{tip} This behaviour has been [fixed](https://github.com/laravel/framework/pull/18400) in Laravel 5.5+, but it's still present in older versions. 
+> {tip} This behaviour has been [fixed](https://github.com/laravel/framework/pull/18400) in Laravel 5.5+, but it's still present in older versions. 
 
 The internal data of the Eloquent model will be as follows:
 
@@ -44,7 +44,7 @@ In the **$original** array attribute:
 
 This makes the `getDirty()` and `isDirty()` methods to consider wrongful attribute changes when comparing data.
 
-{tip} For Laravel versions prior to 5.5, use this [trait](https://gist.github.com/crashkonijn/7d581e55770d2379494067d8b0ce0f6d), courtesy of [Peter Klooster](https://github.com/crashkonijn)! 
+> {tip} For Laravel versions prior to 5.5, use this [trait](https://gist.github.com/crashkonijn/7d581e55770d2379494067d8b0ce0f6d), courtesy of [Peter Klooster](https://github.com/crashkonijn)! 
 
 Other discussions about this [subject](https://github.com/laravel/internals/issues/349).
 

@@ -11,7 +11,7 @@ composer require owen-it/laravel-auditing
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
 
->{tip} Changes to the table schema are needed when upgrading from any of the previous versions!
+> {tip} Changes to the table schema are needed when upgrading from any of the previous versions!
 
 # Configuration
 The Laravel and Lumen configurations vary slightly, so here are the instructions for each of the frameworks.
