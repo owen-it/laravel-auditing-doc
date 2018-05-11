@@ -24,18 +24,15 @@ array(11) {
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
   ["audit_tags"]=>
-  array(2) {
-    [0] =>
-    string(3) "foo"
-    [1] =>
-    string(3) "bar"
-  }
+  string(7) "foo,bar"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["audit_updated_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
   string(1) "1"
+  ["user_id"]=>
+  string(8) "App\User"
   ["user_email"]=>
   string(15) "bob@example.com"
   ["user_name"]=>
@@ -59,13 +56,11 @@ echo $audit->getMetadata(true, JSON_PRETTY_PRINT);
     "audit_url": "http:\/\/example.com\/articles\/1",
     "audit_ip_address": "127.0.0.1",
     "audit_user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0",
-    "audit_tags": [
-        "foo",
-        "bar"
-   ],
+    "audit_tags": "foo,bar",
     "audit_created_at": "2017-01-01 01:02:03",
     "audit_updated_at": "2017-01-01 01:02:03",
     "user_id": "1",
+    "user_type": "App\\User",
     "user_email":"bob@example.com",
     "user_name":"Bob"
 }
@@ -81,10 +76,12 @@ echo $audit->event.PHP_EOL;
 echo $audit->url.PHP_EOL;
 echo $audit->ip_address.PHP_EOL;
 echo $audit->user_agent.PHP_EOL;
-echo implode(',', $audit->tags).PHP_EOL;
+echo $audit->tags.PHP_EOL;
+echo implode(',', $audit->getTags()).PHP_EOL;
 echo $audit->created_at->toDateTimeString().PHP_EOL;
 echo $audit->updated_at->toDateTimeString().PHP_EOL;
 echo $audit->user_id.PHP_EOL;
+echo $audit->user_type.PHP_EOL;
 echo $audit->user->email.PHP_EOL;
 echo $audit->user->name.PHP_EOL;
 ```
@@ -97,8 +94,11 @@ http://example.com/articles/1
 127.0.0.1
 Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0
 foo,bar
+foo,bar
+2017-01-01 01:02:03
 2017-01-01 01:02:03
 1
+App\User
 bob@example.com
 Bob
 ```

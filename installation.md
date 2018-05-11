@@ -11,7 +11,7 @@ composer require owen-it/laravel-auditing
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
 
->{tip} Changes to the table schema are needed when upgrading from versions **2.4.x**, **3.1.x** or **4.1.x**!
+>{tip} Changes to the table schema are needed when upgrading from any of the previous versions!
 
 # Configuration
 The Laravel and Lumen configurations vary slightly, so here are the instructions for each of the frameworks.
@@ -29,7 +29,7 @@ Edit the `config/app.php` file and add the following line to register the servic
 ],
 ```
 
-> {tip} If you're on version **5.5** or higher, you can skip this part of the setup in favour of Laravel's Auto-Discovery feature.
+> {tip} If you're on Laravel version **5.5** or higher, you can skip this part of the setup in favour of the Auto-Discovery feature.
 
 ## Lumen
 Edit the `bootstrap/app.php` file and add the following line to register the service provider:
@@ -98,6 +98,4 @@ php artisan migrate
 This is where the `Audit` records will be stored, by default.
 
 # Resolvers
-Version **6.0.0** brings more resolvers, which can be replaced with custom ones.
-
-Find out more about them in the [Audit Resolvers](audit-resolvers) section!
+Find out more about resolvers in the [Audit Resolvers](audit-resolvers) section!

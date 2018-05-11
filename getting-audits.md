@@ -27,7 +27,7 @@ $audit = $article->audits()->find(4);
 $all = $article->audits()->with('user')->get();
 ```
 
-> {tip} Remember to properly set the `User` **keys**, **model** and **resolver** in the `config/audit.php` file.
+> {tip} Remember to properly set the `User` **morph_prefix** and **guards** in the `config/audit.php` file.
 
 ## Getting the Audit metadata
 Retrieve an `array` with the `Audit` metadata.
@@ -44,7 +44,7 @@ var_dump($audit->getMetadata());
 
 **Output:**
 ```php
-array(9) {
+array(10) {
   ["audit_id"]=>
   string(1) "1"
   ["audit_event"]=>
@@ -56,18 +56,15 @@ array(9) {
   ["audit_user_agent"]=>
   string(68) "Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0"
   ["audit_tags"]=>
-  array(2) {
-    [0] =>
-    string(3) "foo"
-    [1] =>
-    string(3) "bar"
-  }
+  string(7) "foo,bar"
   ["audit_created_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["audit_updated_at"]=>
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
   string(1) "1"
+  ["user_type"]=>
+  string(8) "App\User"
 }
 ```
 

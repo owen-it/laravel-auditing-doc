@@ -18,37 +18,40 @@ return [
 
 Read more about it in the [Audit Implementation](audit-implementation) section.
 
-## User Keys & Model
-Specify the `User` keys and model.
+## User
+Version **7.0.0** brings significant changes to the `User` configuration.
+The `primary_key`, `foreign_key` and `model` are no longer necessary, giving way to `morph_prefix` and `guards`.
 
-### Primary and Foreign Keys
-Sometimes, for whatever reason (legacy database, etc), a different key needs to be used.
-The default primary and foreign key values are `id` and `user_id`, respectively.
+### Morph prefix
+The `User` relation has been modified from `BelongsTo` to `MorphTo`, allowing for multiple user types.
+By default, the column names used are `user_id` and `user_type`. For different column names, change the prefix value and update the [migration](audit-migration) accordingly.
 
 ```php
 return [
     // ...
 
     'user' = [
-        'primary_key' => 'id',
-        'foreign_key' => 'user_id',
+        'morph_prefix' => 'user',
     ],
 
     // ...
 ];
 ```
 
-> {note} The `Audit` **resolveData()** method will still use `user_id` and other `user_` prefixed keys for any `User` data, regardless of the foreign key that was set.
+> {note} The `Audit` **resolveData()** method will still use `user_id` and other `user_` prefixed keys for any `User` data, regardless of the morph prefix set.
 
-### Model
-The model value should be set to the [FQCN](http://php.net/manual/en/language.namespaces.rules.php) of the `User` class used by the application.
+### Auth Guards
+Specify which authentication guards the `UserResolver` should check in order to resolve a `User`.
 
 ```php
 return [
     // ...
 
     'user' = [
-        'model' => App\User::class,
+        'guards' => [
+            'web',
+            'api',
+        ],
     ],
 
     // ...
