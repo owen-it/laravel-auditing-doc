@@ -51,4 +51,4 @@ class ArticleController extends Illuminate\Routing\Controller
 }
 ```
 
-> {note} Business logic shouldn't go into a Controller! These are _just_ examples on how to manually call the `Auditor`. Also keep in mind that, unless you set the model's `$auditEvents` property to an empty `array`, you'll get duplicate `Audit` records this way.
+> {note} These are _just_ examples on how to manually call the `Auditor`. Also keep in mind that, unless you set the model's `$auditEvents` property to an empty `array`, you'll get duplicate `Audit` records this way.

@@ -26,7 +26,9 @@ Please refer to the [General Configuration](general-configuration) for more info
 
 ## Attributes are considered modified, when they're not
 False positives cause Audit records to be created.
-This happens when model attributes are updated with **BOOLEAN** and/or **DATE** values.
+This happens when a model with boolean/date attributes gets updated, regardless of change in those attributes.
+
+{tip} This behaviour has been [fixed](https://github.com/laravel/framework/pull/18400) in Laravel 5.5+, but it's still present in older versions. 
 
 The internal data of the Eloquent model will be as follows:
 
@@ -42,11 +44,9 @@ In the **$original** array attribute:
 
 This makes the `getDirty()` and `isDirty()` methods to consider wrongful attribute changes when comparing data.
 
-According to a [maintainer](https://github.com/laravel/framework/issues/16823#issuecomment-267573840), this is an **expected behaviour**.
+{tip} For Laravel versions prior to 5.5, use this [trait](https://gist.github.com/crashkonijn/7d581e55770d2379494067d8b0ce0f6d), courtesy of [Peter Klooster](https://github.com/crashkonijn)! 
 
-As a workaround, consider passing `1` and `0`, instead of `true` and `false`. For date values, append ` 00:00:00`.
-
-At the time of writing, [this](https://github.com/laravel/internals/issues/349) is the only open issue about this subject.
+Other discussions about this [subject](https://github.com/laravel/internals/issues/349).
 
 ## Argument 1 passed to Illuminate\Database\Eloquent\Model::serializeDate() must implement interface DateTimeInterface, null given
 This might happen in version **4.1.x**, because the `updated_at` column values in the `audits` table are set to `NULL`.

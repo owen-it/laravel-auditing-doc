@@ -136,7 +136,7 @@ return [
 ## User Resolver
 Out of the box, this resolver uses the Laravel `Auth` facade.
 
-The `resolve()` method must return the **ID** of the currently logged `User`, or `null` if the `User` cannot be resolved.
+The `resolve()` method must return the `Model` instance of the currently logged user, or `null` if the user cannot be resolved.
 
 When using other authentication mechanisms like [Sentinel](https://github.com/cartalyst/sentinel), a different resolver must be implemented.
 
@@ -153,7 +153,7 @@ class UserResolver implements \OwenIt\Auditing\Contracts\UserResolver
      */
     public static function resolve()
     {
-        return Sentinel::check() ? Sentinel::getUser()->getUserId() : null;
+        return Sentinel::check() ? Sentinel::getUser() : null;
     }
 }
 ```
