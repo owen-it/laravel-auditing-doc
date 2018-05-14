@@ -31,7 +31,7 @@ array(11) {
   string(19) "2017-01-01 01:02:03"
   ["user_id"]=>
   string(1) "1"
-  ["user_id"]=>
+  ["user_type"]=>
   string(8) "App\User"
   ["user_email"]=>
   string(15) "bob@example.com"
