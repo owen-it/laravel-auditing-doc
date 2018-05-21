@@ -15,7 +15,7 @@ $all = $article->audits;
 $first = $article->audits()->first();
 
 // Get last Audit
-$last = $article->audits()->last();
+$last = $article->audits()->latest()->first();
 
 // Get Audit by id
 $audit = $article->audits()->find(4);
@@ -37,7 +37,7 @@ Retrieve an `array` with the `Audit` metadata.
 $article = Article::first();
 
 // Get latest Audit
-$audit = $article->audits()->last();
+$audit = $article->audits()->latest()->first();
 
 var_dump($audit->getMetadata());
 ```
@@ -77,7 +77,7 @@ The data includes the **old** and **new** values for each attribute.
 $article = Article::first();
 
 // Get latest Audit
-$audit = $article->audits()->last();
+$audit = $article->audits()->latest()->first();
 
 var_dump($audit->getModified());
 ```
