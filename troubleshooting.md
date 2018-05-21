@@ -54,3 +54,20 @@ This might happen in version **4.1.x**, because the `updated_at` column values i
 After upgrading the table schema for **4.1.x**, don't forget to set the `updated_at` values to match the ones from `created_at`.
 
 Read the [Upgrading](upgrading) documentation for more details.
+
+## Empty old/new values being audited
+An `Audit` record is more than just **old** and **new** values.
+
+There's metadata like `event`, `user_*`, `url`, `ip_address`, `user_agent` and `tags`, which in some cases is more than enough for accountability purposes.
+
+Still, if you don't want to keep track of such information when the `old_values` and `new_values` are empty, register the following observer in the `boot()` method of the `AppServiceProvider` or similar provider:
+
+```php
+Audit::creating(function (Audit $model) {
+    if (empty($model->old_values) && empty($model->new_values)) {
+        return false;
+    }
+});
+```
+
+> {note} Keep in mind that the `old_values` and `new_values` of a `retrieved` event, will always be empty!
