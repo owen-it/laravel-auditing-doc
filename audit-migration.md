@@ -37,8 +37,8 @@ to
 $table->uuid('user_id')->nullable();
 $table->string('user_type')->nullable();
 $table->index([
-    'auditable_id', 
-    'auditable_type',
+    'user_id', 
+    'user_type',
 ]);
 ```
 
