@@ -60,7 +60,7 @@ An `Audit` record is more than just **old** and **new** values.
 
 There's metadata like `event`, `user_*`, `url`, `ip_address`, `user_agent` and `tags`, which in some cases is more than enough for accountability purposes.
 
-Still, if you don't want to keep track of such information when the `old_values` and `new_values` are empty, register the following observer in the `boot()` method of the `AppServiceProvider` or similar provider:
+Still, if you don't want to keep track of such information when the `old_values` and `new_values` are empty, register the following observer in the `Audit` model's `boot()` method:
 
 ```php
 Audit::creating(function (Audit $model) {
