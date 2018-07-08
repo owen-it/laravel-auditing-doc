@@ -16,6 +16,19 @@ return [
 ];
 ```
 
+## Audit disabled
+By default, the package will audit everything.
+
+```php
+return [
+    // ...
+
+    'disabled' => false,
+
+    // ...
+];
+```
+
 Read more about it in the [Audit Implementation](audit-implementation) section.
 
 ## User
