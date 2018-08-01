@@ -4,7 +4,7 @@ Another feature introduced in version **5.0.0** is the ability use an `Audit` re
 ## Transition Rules
 An `Auditable` model can **only** transition through an `Audit` with the same `auditable_id` and `auditable_type`, otherwise, an `AuditableTransitionException` will be thrown.
 
-If an `Auditable` model has [Audit Redactors](audit-redactors) set, an `AuditableTransitionException` will be thrown as well, since redacted data should not be used when transitioning states.
+If an `Auditable` model has [Attribute Redactors](attribute-modifiers.md) set, an `AuditableTransitionException` will be thrown as well, since redacted data can't be used when transitioning states.
 
 Lastly, attribute compatibility must be met between the `Audit`'s `old_values` / `new_values` and the `Auditable` model.
 
@@ -37,7 +37,7 @@ try {
 ## Transitioning
 The `Auditable` interface defines a `transitionTo()` method, which is in charge of validating and transitioning the model state.
 
-The method takes two arguments, an `Audit` which will be used as the history to go back to, and a `bool` (optional), which will define if the **old** or the **new** data from the `Audit` should be used. 
+The method takes two arguments, an `Audit` which will be used as the history to go back or forward to, and a `bool` (optional), which will define if the **old** or the **new** data from the `Audit` should be used. 
 
 > {tip} By default, the **new** data will be used.
 

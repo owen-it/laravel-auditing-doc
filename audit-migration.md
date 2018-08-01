@@ -60,12 +60,13 @@ $table->index([
 
 > {note} Make sure the `user_*` and/or `auditable_*` column types match the ones used in their respective tables.
 
-## URL/User Agent values with more than 255 characters
-Sometimes, the URL and/or User Agent being audited may be longer than 255 characters, so the corresponding columns should be updated from `string`
+## Values with more than 255 characters
+Sometimes, the URL, Tags or User Agent values may be longer than 255 characters, so the corresponding columns should be updated from `string`
 
 ```php
 $table->string('url')->nullable();
 $table->string('user_agent')->nullable();
+$table->string('tags')->nullable();
 ```
 
 to `text`
@@ -73,6 +74,7 @@ to `text`
 ```php
 $table->text('url')->nullable();
 $table->text('user_agent')->nullable();
+$table->text('tags')->nullable();
 ```
 
 > {note} From version 4.1.3 onward, the default migration creates the `url` column as `text` instead of `string`.

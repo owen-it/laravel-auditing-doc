@@ -1,8 +1,8 @@
 # Upgrading
-This document provides the necessary steps to upgrade from a previous version to **7.0.x**.
+This document provides the necessary steps to upgrade from a previous version to **8.0.x**.
 
 ## PHP
-Support for PHP **5.5.x**/**5.6.x** has been dropped since version **5.0.0**.
+Support for PHP **5.x** has been dropped since version **5.0.0**.
 PHP **7.0.13** or greater is now required.
 
 ## Before upgrading
@@ -14,9 +14,18 @@ composer require doctrine/dbal
 
 > {note} Any custom changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
 
-## Upgrade from version 5.1.x/6.1.x to version 7.0.x
+## Upgrade from version 7.0.x to version 8.0.x
+Version **8.0.x** breaks `AttributeRedactor` (previously called `AuditRedactor`), slightly.
+If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
+
+The `audits` table structure remains the same, so no changes in that regard are needed.
+
+### Configuration
+Overall, the configuration remains the same, with just the `audit.redact` entry being dropped.
+
+## Upgrade from version 5.1.x/6.1.x to version 8.0.x
 ### Table
-Use the following migration to convert a default **5.1.x**/**6.1.x** table structure into the **7.0.x** version:
+Use the following migration to convert a default **5.1.x**/**6.1.x** table structure into the **8.0.x** version:
 
 ```php
 <?php
@@ -60,9 +69,9 @@ class UpdateAuditsTable extends Migration
 
 > {note} If necessary, replace `\App\User::class` with the FQCN of the User model, before setting the `user_type`.
 
-## Upgrade from version 4.1.x to version 7.0.x
+## Upgrade from version 4.1.x to version 8.0.x
 ### Table
-Use the following migration to convert a default **4.1.x** table structure into the **7.0.x** version:
+Use the following migration to convert a default **4.1.x** table structure into the **8.0.x** version:
 
 ```php
 <?php
@@ -107,14 +116,14 @@ class UpdateAuditsTable extends Migration
 
 > {note} If necessary, replace `\App\User::class` with the FQCN of the User model, before setting the `user_type`.
 
-## Upgrade from version 3.1.x to version 7.0.x
+## Upgrade from version 3.1.x to version 8.0.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **3.1.x** table structure into the **7.0.x** version:
+Use the following migration to convert a default **3.1.x** table structure into the **8.0.x** version:
 
 ```php
 <?php
@@ -167,14 +176,14 @@ class UpdateAuditsTable extends Migration
 
 > {note} If necessary, replace `\App\User::class` with the FQCN of the User model, before setting the `user_type`.
 
-## Upgrade from version 2.4.x to version 7.0.x
+## Upgrade from version 2.4.x to version 8.0.x
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
 > {tip} Take a look at the brief example in the [Model Setup](model-setup).
 
 ### Table
-Use the following migration to convert a default **2.4.x** table structure into the **7.0.x** version:
+Use the following migration to convert a default **2.4.x** table structure into the **8.0.x** version:
 
 ```php
 <?php
@@ -234,15 +243,6 @@ class UpdateAuditsTable extends Migration
 > {note} If necessary, replace `\App\User::class` with the FQCN of the User model, before setting the `user_type`.
 
 ## Update the configuration
-The `User` configuration has changed in version **7.0.0**.
+The `audit.redact` entry which was present since version **6.1.0** has been dropped.
 
 > {tip} When in doubt, check the bundled configuration file and update or simply replace your current file and make the appropriate changes.
-
-### Queues
-Audit queue support has been removed since version **4.0.0**.
-
-### Custom message and fields
-Since version **4.0.0**, `Auditable` custom message and fields are no longer supported.
-Models should be updated to reflect this change, by removing the `$auditCustomMessage` and `$auditCustomFields` attributes.
-
-> {tip} Documentation on how to display changes can be seen in the [Audit Presentation](audit-presentation) section.
