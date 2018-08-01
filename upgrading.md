@@ -15,10 +15,12 @@ composer require doctrine/dbal
 > {note} Any custom changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
 
 ## Upgrade from version 7.0.x to version 8.0.x
-Version **8.0.x** breaks `AttributeRedactor` (previously called `AuditRedactor`), slightly.
+Version **8.0.x** breaks `AttributeRedactor` usage, slightly.
 If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
 
 The `audits` table structure remains the same, so no changes in that regard are needed.
+
+> {tip} The `AttributeRedactor` interface was previously called `AuditRedactor`.
 
 ### Configuration
 Overall, the configuration remains the same, with just the `audit.redact` entry being dropped.

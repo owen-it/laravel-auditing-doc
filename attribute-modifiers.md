@@ -59,9 +59,7 @@ class Article extends Model implements Auditable
 > {note} [Auditable Transition](auditable-transition) won't work if an `AttributeRedactor` is set, since redacted data can't be used when transitioning states.
 
 ## Attribute Encoders
-The `AttributeEncoder` interface was introduced in version **8.0.0**.
-
-By default, one encoder is included.
+The `AttributeEncoder` interface was introduced in version **8.0.0**. By default, one encoder is included.
 
 ### Base64Encoder
 As the name implies, the `Base64Encoder` will encode attributes in [Base64](https://en.wikipedia.org/wiki/Base64).
