@@ -104,4 +104,4 @@ class Article extends Model implements Auditable
 }
 ```
 
-> {note} When using the `getModified()` method to retrieve data from an `Audit`, any encoded attributes will be returned in their decoded form.
+> {tip} When using the `getModified()` method to retrieve data from an `Audit`, any encoded attributes will be returned in their decoded form.
