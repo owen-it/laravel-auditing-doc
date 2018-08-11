@@ -78,18 +78,25 @@ protected $commands = [
 After configuring your framework of choice, use the following command to publish the configuration settings:
 
 ```sh
-php artisan auditing:install
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="config"
 ```
 
-This will create the `config/audit.php` configuration file and a migration for the `audits` table in the `database/` directory.
+This will create the `config/audit.php` configuration file.
 
 You can read more about the configuration options in the [General Configuration](general-configuration) section.
 
 # Database
-If needed, the migration file can be customised. 
+Add the `audits` table migration to the `database/` directory.
+
+```sh
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
+```
+ 
+## Customisation
+If needed, the migration file can be customised.
 Have a look at the [Audit Migration](audit-migration) section for some of the changes that can be performed.
 
-Once done, execute the migrate `artisan` command to create the `audits` table in your database:
+Once done, execute the `artisan` command to migrate, creating the `audits` table in your database:
 
 ```sh
 php artisan migrate
