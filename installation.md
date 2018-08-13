@@ -86,7 +86,7 @@ This will create the `config/audit.php` configuration file.
 You can read more about the configuration options in the [General Configuration](general-configuration) section.
 
 # Database
-Publish the `audits` table migration to the `database/` directory with the following command
+Publish the `audits` table migration to the `database/` directory with the following command:
 
 ```sh
 php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
