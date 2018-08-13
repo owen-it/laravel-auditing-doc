@@ -279,6 +279,8 @@ Since Eloquent **5.5.0**, there's a new `retrieved` event. While supported by th
 
 The main reason is to avoid a **huge** amount of `Audit` records, specially on busy applications, so enable with care.
 
+> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide. 
+
 > {note} When caching is active and depending on its configuration, the `retrieved` event might not fire as often!
 
 ## Enable/Disable
