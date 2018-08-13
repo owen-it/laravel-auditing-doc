@@ -277,11 +277,11 @@ The `created` and `updated` events will be handled by a custom `getMultiEventAtt
 ## Retrieved event
 Since Eloquent **5.5.0**, there's a new `retrieved` event. While supported by this package, `retrieved` audits are **not** enabled by default.
 
-The main reason is to avoid a **huge** amount of `Audit` records, specially on busy applications, so enable with care.
+The main reason is to avoid a **huge** amount of `Audit` records, specially on busy applications, so enable it with care.
 
-> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide. 
+Keep in mind that when caching is active and depending on how it's configured, the `retrieved` event might not fire as often!
 
-> {note} When caching is active and depending on its configuration, the `retrieved` event might not fire as often!
+> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide for help. 
 
 ## Enable/Disable
 From version **6.0.1** going forward, enabling and disabling the auditing functionality has become much easier.
