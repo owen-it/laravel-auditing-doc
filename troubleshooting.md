@@ -71,3 +71,32 @@ Audit::creating(function (Audit $model) {
 ```
 
 > {note} Keep in mind that the `old_values` and `new_values` of a `retrieved` event, will always be empty!
+
+## PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!
+This error happens when an `Audit` is being created for a `retrieved` event on a `User` model.
+It boils down to the `UserResolver`, retrieving a `User` record, which will fire a new `retrieved` event, leading to a new resolve cycle and so on.
+
+To avoid this, make sure the `User` model isn't configured for retrieval audits, like so:
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
+
+class User extends Model implements Auditable
+{
+    use \OwenIt\Auditing\Auditable;
+
+    protected $auditEvents = [
+        'created',
+        'updated',
+        'deleted',
+        'restored',
+    ];
+
+    // ...
+}
+```
