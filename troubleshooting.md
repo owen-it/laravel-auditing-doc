@@ -100,3 +100,19 @@ class User extends Model implements Auditable
     // ...
 }
 ```
+## AuditableTransitionException: Expected Auditable id 123, got 123 instead
+When this exception is thrown and the **expected** and **current** ids in the message are the same, it means that there's a casting problem.
+
+To overcome it, make sure the `auditable_id` is included in the `$casts` property, like so:
+
+```php
+protected $casts = [
+    'old_values'   => 'json',
+    'new_values'   => 'json',
+    'auditable_id' => 'integer',
+];
+```
+
+> {note} From version **8.0.3**, the `Audit` model now includes the `auditable_id` in the `$casts` property, defaulting to `integer`. Change it to `string` if you are using UUID.
+
+A description of this issue can be found [here](https://github.com/owen-it/laravel-auditing/issues/432#issuecomment-424738978).
