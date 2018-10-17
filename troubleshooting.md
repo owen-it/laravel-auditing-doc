@@ -100,6 +100,7 @@ class User extends Model implements Auditable
     // ...
 }
 ```
+
 ## AuditableTransitionException: Expected Auditable id 123, got 123 instead
 When this exception is thrown and the **expected** and **current** ids in the message are the same, it means that there's a casting problem.
 
