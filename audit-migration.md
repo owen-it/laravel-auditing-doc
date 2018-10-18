@@ -78,3 +78,22 @@ $table->text('tags')->nullable();
 ```
 
 > {note} From version 4.1.3 onward, the default migration creates the `url` column as `text` instead of `string`.
+
+## JSON WHERE() clauses
+Given the [Query Builder](https://laravel.com/docs/5.7/queries#json-where-clauses) supports querying JSON columns, the `old_values` and `new_values` column types can be updated from `text`
+
+```php
+$table->text('old_values')->nullable();
+$table->text('new_values')->nullable();
+```
+
+to `json`
+
+```php
+$table->json('old_values')->nullable();
+$table->json('new_values')->nullable();
+```
+
+This will provide an additional way to filter `Audit` data.
+
+> {tip} Not all RDBMS support this feature, so check before making any changes.
