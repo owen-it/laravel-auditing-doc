@@ -119,7 +119,7 @@ protected $casts = [
 A description of this issue can be found [here](https://github.com/owen-it/laravel-auditing/issues/432#issuecomment-424738978).
 
 ## Attribute accessors and modifiers are not applied to SoftDeleted models
-Because not everyone uses the `SoftDeletes` trait, the `Audit` relationships (`Auditable` and `User`) will return `null` by default, when a record has been soft deleted.
+Because not everyone uses the `SoftDeletes` trait, the `Audit` relationships (`Auditable` and `User`) will return `null` by default, if any of those related records has been soft deleted.
 
 To overcome this problem, the relation methods in the `Audit` model must be updated to include trashed models:
 
@@ -141,6 +141,4 @@ public function user(): MorphTo
 }
 ```
 
-To make it easy to override, since version **8.0.3** the `auditable()` and `user()` methods have been moved from the `Audit` trait to the `Audit` model.
-
-> {tip} If you have a custom `Audit` model, you need to update your class by adding these two methods!
+> {tip} A custom `Audit` model needs to be created with the above methods. Don't forget to update the `Audit` implementation in your configuration!

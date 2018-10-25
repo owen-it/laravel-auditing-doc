@@ -4,29 +4,6 @@ This lets the user extend implementations other than the traditional `Illuminate
 
 > {tip} `Audit` models must implement the `OwenIt\Auditing\Contracts\Audit` interface!
 
-## Auditable and User relationships
-Since version **8.0.3**, the `auditable()` and `user()` methods no longer exist in the `Audit` trait, meaning they need to be set in the `Audit` model.
-
-```php
-/**
- * {@inheritdoc}
- */
-public function auditable(): MorphTo
-{
-    return $this->morphTo();
-}
-
-/**
- * {@inheritdoc}
- */
-public function user(): MorphTo
-{
-    return $this->morphTo();
-}
-```
-
-> {note} This is a small change, that should only affect users that have custom `Audit` implementations.
-
 ## MongoDB Audit model example
 Start by installing the [jenssegers/mongodb](https://github.com/jenssegers/laravel-mongodb) package:
 ```sh
