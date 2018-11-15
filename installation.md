@@ -85,6 +85,18 @@ This will create the `config/audit.php` configuration file.
 
 You can read more about the configuration options in the [General Configuration](general-configuration) section.
 
+Lumen by default doesn't read from `config` location. Make sure to load the configuration on boot. Edit the `bootstrap/app.php`:
+
+```php
+// ...
+
+$app->configure('audit');
+
+return $app;
+
+// ...
+```
+
 # Database
 Publish the `audits` table migration to the `database/` directory with the following command:
 
