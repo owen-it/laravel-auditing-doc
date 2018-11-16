@@ -17,7 +17,7 @@ Implementation:
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
 {
@@ -36,6 +36,14 @@ class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
         'new_values'   => 'json',
         'auditable_id' => 'integer',
     ];
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getTable(): string
+    {
+        return parent::getTable();
+    }
 
     /**
      * {@inheritdoc}
