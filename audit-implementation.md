@@ -17,7 +17,6 @@ Implementation:
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Relations\MorphTo;
 
 class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
 {
@@ -40,7 +39,7 @@ class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
     /**
      * {@inheritdoc}
      */
-    public function auditable(): MorphTo
+    public function auditable()
     {
         return $this->morphTo();
     }
@@ -48,7 +47,7 @@ class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
     /**
      * {@inheritdoc}
      */
-    public function user(): MorphTo
+    public function user()
     {
         return $this->morphTo();
     }

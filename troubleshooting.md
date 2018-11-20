@@ -127,7 +127,7 @@ To overcome this problem, the relation methods in the `Audit` model must be upda
 /**
  * {@inheritdoc}
  */
-public function auditable(): MorphTo
+public function auditable()
 {
     return $this->morphTo()->withTrashed();
 }
@@ -135,7 +135,7 @@ public function auditable(): MorphTo
 /**
  * {@inheritdoc}
  */
-public function user(): MorphTo
+public function user()
 {
     return $this->morphTo()->withTrashed();
 }
