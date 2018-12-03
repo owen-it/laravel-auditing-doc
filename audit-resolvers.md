@@ -49,7 +49,7 @@ return [
 ```
 
 ## URL Resolver
-This resolver uses the `Request::fullUrlWithQuery()` method to get the current URL (including any query strings).
+This resolver uses the `Request::fullUrl()` method to get the current URL (including any query strings).
 
 Here's a resolver example where query strings are not included.
 
@@ -72,7 +72,7 @@ class UrlResolver implements \OwenIt\Auditing\Contracts\UrlResolver
         }
 
         // Just the full URL without query strings
-        return Request::fullUrl();
+        return Request::url();
     }
 }
 ```
