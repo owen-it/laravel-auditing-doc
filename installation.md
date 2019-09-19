@@ -3,7 +3,7 @@ The Laravel Auditing package should be installed via [Composer](http://getcompos
 To get the latest package version, execute the following command from your project root:
 
 ```sh
-composer require owen-it/laravel-auditing
+ composer require owen-it/laravel-auditing "^8.0"
 ```
 
 > {tip} This package supports **Laravel** and **Lumen** from version 5.2 onward.
