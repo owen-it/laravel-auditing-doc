@@ -6,7 +6,7 @@ To get the latest package version, execute the following command from your proje
 composer require owen-it/laravel-auditing
 ```
 
-> {tip} This package supports **Laravel** and **Lumen** from version 5.2 onward.
+> {tip} This package supports **Laravel** and **Lumen** from version 5.8 onward. To use it in earlier versions, check [v8.0 documentation](http://www.laravel-auditing.com/docs/8.0/installation).
 
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
