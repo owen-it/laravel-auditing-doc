@@ -192,7 +192,7 @@ class Article extends Model implements Auditable
 }
 ```
 
-The above configuration, will only keep the `10` latest `Audit` records.
+The above configuration will only keep the `10` latest `Audit` records.
 
 > {tip} By default, the `$auditThreshold` value is set to `0` (zero), which stands for no limit.
 
@@ -281,7 +281,7 @@ The main reason is to avoid a **huge** amount of `Audit` records, specially on b
 
 Keep in mind that when caching is active and depending on how it's configured, the `retrieved` event might not fire as often!
 
-> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide for help. 
+> {tip} If you get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide for help. 
 
 ## Enable/Disable
 From version **6.0.1** going forward, enabling and disabling the auditing functionality has become much easier.
