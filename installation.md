@@ -83,7 +83,7 @@ php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" 
 
 This will create the `config/audit.php` configuration file.
 
-You can read more about the configuration options in the [General Configuration](general-configuration) section.
+You can read more about the configuration options in the [General Configuration](https://github.com/owen-it/laravel-auditing-doc/blob/master/general-configuration.md) section.
 
 Lumen by default doesn't read from `config` location. Make sure to load the configuration on boot. Edit the `bootstrap/app.php`:
 
@@ -106,7 +106,7 @@ php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" 
  
 ## Customisation
 If needed, the migration file can be customised.
-Have a look at the [Audit Migration](audit-migration) section for some of the changes that can be performed.
+Have a look at the [Audit Migration](https://github.com/owen-it/laravel-auditing-doc/blob/master/audit-migration.md) section for some of the changes that can be performed.
 
 Once done, execute the `artisan` command to migrate, creating the `audits` table in your database:
 
@@ -117,4 +117,4 @@ php artisan migrate
 This is where the `Audit` records will be stored, by default.
 
 # Resolvers
-Find out more about resolvers in the [Audit Resolvers](audit-resolvers) section!
+Find out more about resolvers in the [Audit Resolvers](https://github.com/owen-it/laravel-auditing-doc/blob/master/audit-resolvers.md) section!
