@@ -23,8 +23,11 @@ class User extends Model implements Auditable
     public function transformAudit(array $data): array
     {
         if (Arr::has($data, 'new_values.role_id')) {
-            $data['old_values']['role_name'] = Role::find($this->getOriginal('role_id'))->name;
             $data['new_values']['role_name'] = Role::find($this->getAttribute('role_id'))->name;
+        }
+        
+        if (Arr::has($data, 'old_values.role_id')) {
+            $data['old_values']['role_name'] = Role::find($this->getOriginal('role_id'))->name;
         }
 
         return $data;
