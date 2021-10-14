@@ -16,7 +16,7 @@ return [
 ];
 ```
 
-Read more about it in the [Audit Implementation](audit-implementation) section.
+Read more about it in the [Audit Implementation](audit-implementation.md) section.
 
 ## User
 Version **7.0.0** brings significant changes to the `User` configuration.
@@ -24,7 +24,7 @@ The `primary_key`, `foreign_key` and `model` are no longer necessary, giving way
 
 ### Morph prefix
 The `User` relation has been modified from `BelongsTo` to `MorphTo`, allowing for multiple user types.
-By default, the column names used are `user_id` and `user_type`. For different column names, change the prefix value and update the [migration](audit-migration) accordingly.
+By default, the column names used are `user_id` and `user_type`. For different column names, change the prefix value and update the [migration](audit-migration.md) accordingly.
 
 ```php
 return [
