@@ -281,7 +281,7 @@ The main reason is to avoid a **huge** amount of `Audit` records, specially on b
 
 Keep in mind that when caching is active and depending on how it's configured, the `retrieved` event might not fire as often!
 
-> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting) guide for help. 
+> {tip} If tou get a **PHP Fatal error:  Maximum function nesting level of '512' reached, aborting!** after enabling the `retrieved` event, make sure to check the [troubleshooting](troubleshooting.md) guide for help. 
 
 ## Enable/Disable
 From version **6.0.1** going forward, enabling and disabling the auditing functionality has become much easier.
