@@ -7,6 +7,9 @@ composer require owen-it/laravel-auditing
 ```
 
 > {tip} This package supports **Laravel** and **Lumen** from version 5.8 onward. To use it in earlier versions, check [v8.0 documentation](http://www.laravel-auditing.com/docs/8.0/installation).
+### You can follow this video tutorial as well for installation.
+
+[<img src="https://img.youtube.com/vi/5azPbhmQaXs/0.jpg" width="250">](https://youtu.be/5azPbhmQaXs)
 
 # Upgrading
 If you're [upgrading](upgrading), make sure the `audits` table schema is up to date!
