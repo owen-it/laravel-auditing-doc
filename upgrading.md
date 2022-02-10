@@ -14,6 +14,38 @@ composer require doctrine/dbal
 
 > {note} Any custom changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
 
+## Upgrade from version 12.x to 13
+Version 13 introduces a couple of changes to config and resolvers.
+
+### Resolvers
+If you have made custom resolver implementations of _UrlResolver_, _UserAgentResolver_ or _IpAddressResolver_, they now extend the Resolver contract 
+
+```php
+class UrlResolver implements \OwenIt\Auditing\Contracts\Resolver
+```
+Except for the user resolver, resolvers are now dynamic and can be added or removed by updating the config file.
+
+Previously there was a config key "resolver", which is now gone and replaced by "resolvers".
+```php
+'resolvers' => [
+    'ip_address' => OwenIt\Auditing\Resolvers\IpAddressResolver::class,
+    'user_agent' => OwenIt\Auditing\Resolvers\UserAgentResolver::class,
+    'url'        => OwenIt\Auditing\Resolvers\UrlResolver::class,
+],
+```
+
+The user resolver has moved to the user config key
+```php
+'user'      => [
+    'morph_prefix' => 'user',
+    'guards'       => [
+        'web',
+        'api',
+    ],
+    'resolver' => OwenIt\Auditing\Resolvers\UserResolver::class
+], 
+```
+
 ## Upgrade from version 7.0.x to version 8.0.x
 Version **8.0.x** breaks `AttributeRedactor` usage, slightly.
 If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
