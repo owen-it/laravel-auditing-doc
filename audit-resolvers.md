@@ -1,11 +1,52 @@
 # Audit Resolvers
-A resolver is a class that implements one of the following contracts:
-- `OwenIt\Auditing\Contracts\IpAddressResolver`
-- `OwenIt\Auditing\Contracts\UrlResolver`
-- `OwenIt\Auditing\Contracts\UserAgentResolver`
-- `OwenIt\Auditing\Contracts\UserResolver`
+A resolver is a class that implements the `\OwenIt\Auditing\Contracts\Resolver` contract, except the UserResolver, which implements `OwenIt\Auditing\Contracts\UserResolver`.
 
 Each resolver must have a **public static** `resolve()` method with the appropriate logic.
+
+The resolvers add (meta-)data to the corresponding column in the audit table. Laravel-audit ships with 4 resolvers by default which adds data to the 'url', 'ip_address', 'user_agent' and user morph columns.
+
+## Custom resolvers
+Since version 13.0, you may add or remove resolvers as relevant. For example: 
+ - If you do not need the user agent in the audit table, you can remove the user agent from the resolvers array in audit.php config file and entirely drop the column from the table
+ - If you want to add another meaningful piece of information to the table, you can create a new resolver, and just add it to the array in audit.php
+```php
+'resolvers' => [
+    'ip_address' => OwenIt\Auditing\Resolvers\IpAddressResolver::class,
+    'user_agent' => OwenIt\Auditing\Resolvers\UserAgentResolver::class,
+    'url'        => OwenIt\Auditing\Resolvers\UrlResolver::class,
+    'tenant_id' => \App\AuditResolvers\TenantIdResolver::class // resolver that sets a tenant_id on the audits
+],
+```
+The resolver key in the array corresponds to the column name in the table. In this example a column name "tenant_id" is needed.
+
+To create a custom resolver, create a class that implements the `OwenIt\Auditing\Contracts\Resolver` interface, and give it a resolve method. `artisan auditing:audit-resolver ` will create one for you.
+
+The auditable eloquent model is passed to the resolver so that you can set values from not only the laravel environment, but also from the specific Auditable.
+
+Here we check if the auditable has a tenant method, which signals to us that it has a tenant_id.
+```php
+<?php
+
+namespace App\AuditResolvers;
+
+use OwenIt\Auditing\Contracts\Auditable;
+use OwenIt\Auditing\Contracts\Resolver;
+
+class TenantIdResolver implements Resolver
+{
+
+    public static function resolve(Auditable $auditable = null)
+    {
+        if(method_exists($auditable, 'tenant')) {
+            return $auditable->tenant_id;
+        }
+
+        return null;
+    }
+} 
+```
+
+Now records in audit table can be filtered by tenant.
 
 ## IP Address Resolver
 By default, this resolver uses the `Request::ip()` method to get the current IP address.
@@ -20,7 +61,7 @@ namespace App\Resolvers;
 
 use Illuminate\Support\Facades\Request;
 
-class IpAddressResolver implements \OwenIt\Auditing\Contracts\IpAddressResolver
+class IpAddressResolver implements \OwenIt\Auditing\Contracts\Resolver
 {
     /**
      * {@inheritdoc}
@@ -38,7 +79,7 @@ Set the custom _IP Address_ resolver in the `config/audit.php` configuration fil
 return [
     // ...
 
-    'resolver' = [
+    'resolvers' = [
         // ...
         'ip_address' => App\Resolvers\IpAddressResolver::class,
         // ...
@@ -60,7 +101,7 @@ namespace App\Resolvers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 
-class UrlResolver implements \OwenIt\Auditing\Contracts\UrlResolver
+class UrlResolver implements \OwenIt\Auditing\Contracts\Resolver
 {
     /**
      * {@inheritdoc}
@@ -83,7 +124,7 @@ Set the custom _URL_ resolver in the `config/audit.php` configuration file:
 return [
     // ...
 
-    'resolver' = [
+    'resolvers' = [
         // ...
         'url' => App\Resolvers\UrlResolver::class,
         // ...
@@ -104,7 +145,7 @@ namespace App\Resolvers;
 
 use Illuminate\Support\Facades\Request;
 
-class UserAgentResolver implements \OwenIt\Auditing\Contracts\UserAgentResolver
+class UserAgentResolver implements \OwenIt\Auditing\Contracts\Resolver
 {
     /**
      * {@inheritdoc}
@@ -123,7 +164,7 @@ Set the custom _User Agent_ resolver in the `config/audit.php` configuration fil
 return [
     // ...
 
-    'resolver' = [
+    'resolvers' = [
         // ...
         'user_agent' => App\Resolvers\UserAgentResolver::class,
         // ...
@@ -164,9 +205,9 @@ Set the custom _User_ resolver in the `config/audit.php` configuration file:
 return [
     // ...
 
-    'resolver' = [
+    'user' = [
         // ...
-        'user' => App\Resolvers\UserResolver::class,
+        'resolver' => App\Resolvers\UserResolver::class,
         // ...
     ],
 
