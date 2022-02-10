@@ -104,6 +104,38 @@ class Article extends Model implements Auditable
 }
 ```
 
+## Empty audits
+When excluding values you may end up with audits that are empty. Since version 13 you may choose to discard audits which does not have values to show.
+This is done in the config in the following section:
+
+```php
+return [
+    // ...
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Empty Values
+    |--------------------------------------------------------------------------
+    |
+    | Should Audit records be stored when the recorded old_values & new_values
+    | are both empty?
+    |
+    | Some events may be empty on purpose. Use allowed_empty_values to exclude
+    | those from the empty values check. For example when auditing
+    | model retrieved events which will never have new and old values
+    |
+    */
+    'empty_values'         => true,
+    'allowed_empty_values' => [
+        'retrieved'
+    ],
+    
+    // ... 
+]
+```
+
+
+
 ## Audit timestamps
 The standard auditing behaviour is to ignore all default timestamp attributes (`created_at`, `updated_at` and `deleted_at`).
 If there's a need to include them in the `Audit` data, just set the `$auditTimestamps` attribute to `true`.

@@ -46,6 +46,30 @@ The user resolver has moved to the user config key
 ], 
 ```
 
+### Empty values config
+Now you can choose to omit the writing of empty audits. You need to add the following section to to config/audit.php file:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Empty Values
+|--------------------------------------------------------------------------
+|
+| Should Audit records be stored when the recorded old_values & new_values
+| are both empty?
+|
+| Some events may be empty on purpose. Use allowed_empty_values to exclude
+| those from the empty values check. For example when auditing
+| model retrieved events which will never have new and old values
+|
+*/
+
+'empty_values'         => true,
+'allowed_empty_values' => [
+    'retrieved'
+], 
+```
+
 ## Upgrade from version 7.0.x to version 8.0.x
 Version **8.0.x** breaks `AttributeRedactor` usage, slightly.
 If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
