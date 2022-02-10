@@ -20,6 +20,7 @@
   * [Audit Events](audit-events.md)
   * [Auditable Transition](auditable-transition.md)
   * [Auditor](auditor.md)
+  * [Custom Audits](audit-custom.md)
 * Help
   * [Problems?](problems.md)
   * [Troubleshooting](troubleshooting.md)
