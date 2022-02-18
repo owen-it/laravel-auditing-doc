@@ -58,7 +58,20 @@ class Article extends Model implements Auditable
 }
 ```
 
-> {tip} The default value is an empty `array`, which treats all model properties as OK for auditing.
+> {tip} The default value is an empty `array`, which treats all model properties as OK for auditing. 
+
+### Globally
+You may set a default exclude set in the config. 
+```php
+return [
+    // ...
+    
+    'exclude' => ['id'],
+    
+    // ...
+]; 
+```
+Note that presence of an `$auditExclude` in the specific model always override this default.
 
 ## Strict audits
 By default, the `$hidden` and `$visible` values of a model aren't considered when including/excluding audited properties.

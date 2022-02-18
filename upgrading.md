@@ -1,9 +1,8 @@
 # Upgrading
-This document provides the necessary steps to upgrade from a previous version to **8.0.x**.
+This document provides the necessary steps to upgrade from a previous version.
 
 ## PHP
-Support for PHP **5.x** has been dropped since version **5.0.0**.
-PHP **7.0.13** or greater is now required.
+PHP **^7.3** or greater is required.
 
 ## Before upgrading
 The `doctrine/dbal` package is required to successfully execute the upgrade migrations, so make sure it's installed.
