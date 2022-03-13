@@ -16,6 +16,10 @@ composer require doctrine/dbal
 ## Upgrade from version 12.x to 13
 Version 13 introduces a couple of changes to config and resolvers.
 
+
+> {note} Version 13 introduces breaing changes in the config file around resolvers. Please rename the 'resolver' key to 'resolvers' and _move_ the user resolver to 'user' key: `'resolver' => OwenIt\Auditing\Resolvers\UserResolver::class`.
+
+
 ### Resolvers
 If you have made custom resolver implementations of _UrlResolver_, _UserAgentResolver_ or _IpAddressResolver_, they now extend the Resolver contract 
 
