@@ -17,7 +17,7 @@ composer require doctrine/dbal
 Version 13 introduces a couple of changes to config and resolvers.
 
 
-> {note} Version 13 introduces breaing changes in the config file around resolvers. Please rename the 'resolver' key to 'resolvers' and _move_ the user resolver to 'user' key: `'resolver' => OwenIt\Auditing\Resolvers\UserResolver::class`.
+> {note} Version 13 introduces breaking changes in the config file around resolvers. Please rename the 'resolver' key to 'resolvers' and _move_ the user resolver to 'user' key: `'resolver' => OwenIt\Auditing\Resolvers\UserResolver::class`.
 
 
 ### Resolvers
