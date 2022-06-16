@@ -103,3 +103,20 @@ array(2) {
 ```
 
 > {note} By default, `Audit` records will be sorted by `created_at` in ascending order (oldest to newest).
+
+## Getting Audits without using a specific Model
+One can create a model and point to the `audits` table in DB using the `protected $table = 'audits';`
+
+```php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class AuditModelIn extends Model
+{
+    use HasFactory;
+    protected $table = "audits";
+}
+```
