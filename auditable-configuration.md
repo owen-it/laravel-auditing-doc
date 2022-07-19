@@ -2,7 +2,7 @@
 The auditing process can behave differently, depending on what has been set.
 
 ## Include attributes
-The `$auditInclude` property acts as an attribute **white list**, meaning that only the property names in that `array` will be audited.
+The `$auditInclude` property acts as an attribute **allow list**, meaning that only the property names in that `array` will be audited.
 
 ```php
 <?php
@@ -32,7 +32,7 @@ class Article extends Model implements Auditable
 > {tip} The default value is an empty `array`, which treats all model properties as OK for auditing.
 
 ## Exclude attributes
-On the other hand, the `$auditExclude` acts as a **black list**, excluding all the properties in the `array` from being audited.
+On the other hand, the `$auditExclude` acts as a **block list**, excluding all the properties in the `array` from being audited.
 
 ```php
 <?php
