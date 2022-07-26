@@ -42,6 +42,8 @@ return [
 
 ### Auth Guards
 Specify which authentication guards the `UserResolver` should check in order to resolve a `User`.
+Note: 
+If you are using laravel/sanctum, you will need to update the config/audit.php so that the appropriate guards are used. laravel-auditing has the api guard enabled by default, but that guard has gone away and is replaced with sanctum
 
 ```php
 return [
