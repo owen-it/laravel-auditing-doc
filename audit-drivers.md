@@ -19,7 +19,7 @@ Usually, a custom driver resides in the `app/AuditDrivers` folder of a Laravel/L
 To create a new driver, run the following command:
 
 ```sh
-php artisan make:audit-driver MyCustomDriver
+php artisan auditing:audit-driver MyCustomDriver
 ```
 
 The above command will place a file called `MyCustomDriver.php` in the `app/AuditDrivers` folder with the following content:
