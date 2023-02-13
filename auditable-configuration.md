@@ -192,7 +192,7 @@ class Article extends Model implements Auditable
 }
 ```
 
-The above configuration, will only keep the `10` latest `Audit` records.
+The above configuration will only keep the `10` latest `Audit` records.
 
 > {tip} By default, the `$auditThreshold` value is set to `0` (zero), which stands for no limit.
 
