@@ -33,7 +33,6 @@ class MongoAudit extends Model implements \OwenIt\Auditing\Contracts\Audit
     protected $casts = [
         'old_values'   => 'json',
         'new_values'   => 'json',
-        'auditable_id' => 'integer',
     ];
 
     /**
@@ -68,6 +67,14 @@ return [
 
     'implementation' => App\Models\MongoAudit::class,
 
+    // Uncomment below if you need to specify the details of the mongo database connection (useful in hybrid setups with multiple DBs)
+    // 'drivers' => [
+    //     'database' => [
+    //         'table' => 'audits',
+    //         'connection' => 'mongodb'
+    //     ]
+    // ],    
+    
     // ...
 ];
 ```
