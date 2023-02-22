@@ -19,4 +19,4 @@ class User extends Model implements Auditable
 ```
 
 By default, the `Database` audit driver will be used.
-If needed, you can also implement your own [Audit Driver](audit-drivers).
+If needed, you can also implement your own [Audit Driver](audit-drivers.md).
