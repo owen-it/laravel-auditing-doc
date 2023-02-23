@@ -22,7 +22,7 @@ Article::find($id)->update($data);
 ### Console/CLI and Jobs
 Eloquent events fired from a **Job** or from the **console** (i.e. migrations, tests, commands, Tinker, ...), **WILL NOT** be audited by default.
 
-Please refer to the [General Configuration](general-configuration) for more information. 
+Please refer to the [General Configuration](general-configuration.md) for more information. 
 
 ## Attributes are considered modified, when they're not
 False positives cause Audit records to be created.
@@ -53,7 +53,7 @@ This might happen in version **4.1.x**, because the `updated_at` column values i
 
 After upgrading the table schema for **4.1.x**, don't forget to set the `updated_at` values to match the ones from `created_at`.
 
-Read the [Upgrading](upgrading) documentation for more details.
+Read the [Upgrading](upgrading.md) documentation for more details.
 
 ## Empty old/new values being audited
 An `Audit` record is more than just **old** and **new** values.

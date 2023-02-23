@@ -12,11 +12,11 @@ The `doctrine/dbal` package is required to successfully execute the upgrade migr
 composer require doctrine/dbal
 ```
 
-> {note} Any custom changes made to the initial [Audit Migration](audit-migration) should be taken into account, do not blindly copy and paste!
+> {note} Any custom changes made to the initial [Audit Migration](audit-migration.md) should be taken into account, do not blindly copy and paste!
 
 ## Upgrade from version 7.0.x to version 8.0.x
 Version **8.0.x** breaks `AttributeRedactor` usage, slightly.
-If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
+If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers.md) section and update your models, accordingly.
 
 The `audits` table structure remains the same, so no changes in that regard are needed.
 
@@ -122,7 +122,7 @@ class UpdateAuditsTable extends Migration
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
-> {tip} Take a look at the brief example in the [Model Setup](model-setup).
+> {tip} Take a look at the brief example in the [Model Setup](model-setup.md).
 
 ### Table
 Use the following migration to convert a default **3.1.x** table structure into the **8.0.x** version:
@@ -182,7 +182,7 @@ class UpdateAuditsTable extends Migration
 ### Model
 All `Auditable` models must implement the `OwenIt\Auditing\Contracts\Auditable` interface.
 
-> {tip} Take a look at the brief example in the [Model Setup](model-setup).
+> {tip} Take a look at the brief example in the [Model Setup](model-setup.md).
 
 ### Table
 Use the following migration to convert a default **2.4.x** table structure into the **8.0.x** version:
