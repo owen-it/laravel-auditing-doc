@@ -73,6 +73,9 @@ Now you can choose to omit the writing of empty audits. You need to add the foll
 ], 
 ```
 
+## Upgrade from version 10.x to 11.x
+Version 11 makes no major breaking changes, but requires PHP 7.3 or higher. This version adds support for Laravel 8.x, which required making a few changes to the `OwenIT\Auditing\Auditor` class. If you are already running PHP 7.3 or higher and you use the default `Auditor` class, no changes are required for this update. If you're using your own implementation of the `Auditor` class, please review the changelog here and update your implementation to use `$this->container->make()` instead of `$this->app->make()` for compatibility with Laravel 8.
+
 ## Upgrade from version 7.0.x to version 8.0.x
 Version **8.0.x** breaks `AttributeRedactor` usage, slightly.
 If you were previously using it, make sure to read the [Attribute Modifiers](attribute-modifiers) section and update your models, accordingly.
