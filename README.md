@@ -1,6 +1,7 @@
 # Laravel Auditing Documentation
 
-[link to start of docs](documentation.md)
+> **Warning**
+> Please note that the documentation for this project has moved to a new repository. You can find the new documentation here: [Laravel Auditing Docs](https://github.com/owen-it/laravel-auditing.com/tree/main/docs/guide). We apologize for any inconvenience caused, and we hope you find the new documentation helpful. Thank you for your continued support!
 
 ## Contributing
 
